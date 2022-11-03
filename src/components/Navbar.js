@@ -45,7 +45,7 @@ const Navbar = () => {
                 <div className="flex items-center gap-x-4">
                     <FaLinkedin className='cursor-pointer text-md hover:text-blue-500'/>
                     <FaGithub className='cursor-pointer text-md hover:text-gray-700 dark:hover:text-gray-400'/>
-                    <FaStackOverflow className='cursor-pointer text-md hover:text-orange-500'/>
+                    <FaStackOverflow className='cursor-pointer text-md hover:text-orange-600'/>
                     <FaTwitter className='cursor-pointer text-md hover:text-blue-500'/>
                 </div>
 
@@ -61,8 +61,8 @@ const Navbar = () => {
                     <span className='hidden sm:block text-sm text-gray-600 dark:text-gray-400 mt-0.5 font-semibold'>{date}</span>
                     <div onClick={ThemeSwitcher} title="Theme">
                 {  theme === "light" ?
-                    <BsMoonStarsFill className='cursor-pointer text-md hover:text-orange-500'/>:
-                    <ImSun className='cursor-pointer text-md dark:text-orange-500 dark:hover:text-gray-300 hover:text-gray-500'/>
+                    <BsMoonStarsFill className='cursor-pointer text-md hover:text-orange-600'/>:
+                    <ImSun className='cursor-pointer text-md dark:text-orange-600 dark:hover:text-gray-300 hover:text-gray-500'/>
                 }
                     </div>
                 </div>
@@ -79,7 +79,7 @@ const Navbar = () => {
                 </form>
               </div>
               <ul className='my-5 flex gap-x-8 !gap-y-0 font-semibold border-b border-gray-500 border-opacity-30 text-gray-600 dark:text-gray-100'>
-                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 border-b-2 border-orange-500'>
+                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 border-b-2 border-orange-600'>
                         <a href="/">Explore</a>
                     </li>
                     <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>

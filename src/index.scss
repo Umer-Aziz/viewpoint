@@ -7,6 +7,19 @@ body {
     @apply font-black-ops overflow-x-hidden;
 }
 
+::-webkit-scrollbar {
+    width: 6px; 
+  }
+  
+  ::-webkit-scrollbar-track {
+   @apply bg-gray-300;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+  background: #EA4C13;
+  border-radius: 24px;
+  }
+
 .dark {
    @apply bg-dull-black text-gray-300;
 }

@@ -11,6 +11,12 @@ darkMode: "class",
       },
       fontFamily:{
         "black-ops" :"'Baloo 2', cursive"
+      },
+      width:{
+        30 : "7.5rem" // 120px
+      },
+      height:{
+       22 : "5.5rem" // 88px
       }
     },
   },
