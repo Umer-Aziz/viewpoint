@@ -4,13 +4,13 @@
 @tailwind utilities;
 
 body {
-    @apply font-black-ops;
+    @apply font-black-ops overflow-x-hidden;
 }
 
 .dark {
-   @apply bg-dull-black;
+   @apply bg-dull-black text-gray-100;
 }
 
 .container{
-    @apply py-3 px-4 sm:px-6 lg:px-8 2xl:px-0 max-w-7xl mx-auto;
+    @apply px-4 sm:px-6 lg:px-8 2xl:px-0 max-w-7xl mx-auto;
 }

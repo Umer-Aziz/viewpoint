@@ -1,7 +1,8 @@
 import React, { useState , useEffect } from 'react'
 import { FaGithub , FaLinkedin , FaTwitter ,  FaStackOverflow } from "react-icons/fa";
 import { BsMoonStarsFill } from "react-icons/bs";
-import { ImSun } from "react-icons//im";
+import { ImSun } from "react-icons/im";
+import { GrFormSearch } from "react-icons/gr";
 import moment from "moment"
 const Navbar = () => {
 
@@ -39,7 +40,7 @@ const Navbar = () => {
     <>
         <div>
             <header className='bg-gray-100 dark:bg-gray-600 dark:bg-opacity-5'>
-            <div className='container flex justify-between text-gray-500 dark:text-gray-100'>
+            <div className='container py-3 flex justify-between text-gray-500 dark:text-gray-100'>
                 
                 <div className="flex items-center gap-x-4">
                     <FaLinkedin className='cursor-pointer text-md hover:text-blue-500'/>
@@ -60,13 +61,56 @@ const Navbar = () => {
                     <span className='hidden sm:block text-sm text-gray-600 dark:text-gray-400 mt-0.5 font-semibold'>{date}</span>
                     <div onClick={ThemeSwitcher} title="Theme">
                 {  theme === "light" ?
-                    <BsMoonStarsFill className='cursor-pointer text-md hover:text-yellow-500'/>:
-                    <ImSun className='cursor-pointer text-md dark:text-yellow-500 dark:hover:text-gray-300 hover:text-gray-500'/>
+                    <BsMoonStarsFill className='cursor-pointer text-md hover:text-orange-500'/>:
+                    <ImSun className='cursor-pointer text-md dark:text-orange-500 dark:hover:text-gray-300 hover:text-gray-500'/>
                 }
                     </div>
                 </div>
             </div>
             </header>
+            <nav className='container py-6'>
+              <div className='flex justify-between gap-x-6'>
+                <img className='w-24 md:32 lg:w-40' src="./img/dark-logo.png" alt="logo" />
+                <form className='px-3 sm:px-4 py-2 bg-white flex items-center rounded border border-gray-300 dark:border-dull-black'>
+                <input className='outline-none bg-transparent text-gray-700 max-w-[150px] sm:max-w-max' type="search" name="search" id="search" placeholder='Search..'/>
+                <button>
+                <GrFormSearch className='text-2xl'/>
+                </button>
+                </form>
+              </div>
+              <ul className='my-5 flex gap-x-8 !gap-y-0 font-semibold border-b border-gray-500 border-opacity-30 text-gray-600 dark:text-gray-100'>
+                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 border-b-2 border-orange-500'>
+                        <a href="/">Explore</a>
+                    </li>
+                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
+                        <a href="/">Business</a>
+                    </li>
+                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
+                        <a href="/">Technology</a>
+                    </li>
+                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 hidden sm:block'>
+                        <a href="/">Programming</a>
+                    </li>
+                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 hidden sm:block'>
+                        <a href="/">Cybersecurity</a>
+                    </li>
+                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 hidden md:block'>
+                        <a href="/">Scamming</a>
+                    </li>
+                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 hidden md:block'>
+                        <a href="/">Fitness</a>
+                    </li>
+                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 hidden xl:block'>
+                        <a href="/">lifeStyle</a>
+                    </li>
+                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 hidden xl:block'>
+                        <a href="/">Sport</a>
+                    </li>
+                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 hidden xl:block'>
+                        <a href="/">Tips & Tricks</a>
+                    </li>
+                   </ul>
+            </nav>
         </div>
     </>
   )
