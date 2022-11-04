@@ -1,4 +1,5 @@
 import React from "react";
+import HeroBottom from "../components/HeroBottom";
 import Homehero from "../components/Homehero";
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
     <>
       <main>
         <Homehero/>
+        <HeroBottom/>
       </main>
     </>
   );

@@ -19,6 +19,7 @@ border-radius: 24px;
 
 body {
     @apply font-black-ops overflow-x-hidden;
+    height: 3000px;
 
     .navbar-ul::-webkit-scrollbar {
       display: none !important; 
