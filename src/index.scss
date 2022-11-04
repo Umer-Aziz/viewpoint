@@ -5,6 +5,13 @@
 
 body {
     @apply font-black-ops overflow-x-hidden;
+    
+    .blog-title {
+    display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow:hidden;
+    }
 }
 
 ::-webkit-scrollbar {
@@ -25,5 +32,5 @@ body {
 }
 
 .container{
-    @apply px-4 sm:px-6 lg:px-8 2xl:px-0 max-w-7xl mx-auto;
+    @apply px-4 sm:px-6 lg:px-8 2xl:px-0 max-w-7xl mx-auto overflow-x-hidden;
 }
