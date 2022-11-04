@@ -78,7 +78,8 @@ const Navbar = () => {
                 </button>
                 </form>
               </div>
-              <ul className='mt-5 flex gap-x-8 !gap-y-0 font-semibold border-b border-gray-500 border-opacity-30 text-gray-600 dark:text-gray-100'>
+              <ul className='navbar-ul mt-5 flex gap-x-8 !gap-y-0 font-semibold border-b border-gray-500 border-opacity-30
+               text-gray-600 dark:text-gray-100 overflow-x-scroll xl:overflow-x-hidden'>
                     <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 border-b-2 border-orange-600'>
                         <a href="/">Explore</a>
                     </li>
@@ -88,25 +89,25 @@ const Navbar = () => {
                     <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
                         <a href="/">Technology</a>
                     </li>
-                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 hidden sm:block'>
+                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
                         <a href="/">Programming</a>
                     </li>
-                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 hidden sm:block'>
+                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
                         <a href="/">Cybersecurity</a>
                     </li>
-                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 hidden md:block'>
+                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
                         <a href="/">Scamming</a>
                     </li>
-                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 hidden md:block'>
+                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
                         <a href="/">Fitness</a>
                     </li>
-                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 hidden xl:block'>
+                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
                         <a href="/">lifeStyle</a>
                     </li>
-                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 hidden xl:block'>
+                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
                         <a href="/">Sport</a>
                     </li>
-                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 hidden xl:block'>
+                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 whitespace-nowrap'>
                         <a href="/">Tips & Tricks</a>
                     </li>
                    </ul>
