@@ -6,7 +6,7 @@ const HeroBottom = () => {
     <div className='container text-gray-600 dark:text-gray-300'>
 
         <div className='py-6 md:py-10 border-b border-gray-600 border-opacity-10 dark:border-opacity-30'>
-            <h3 className='px-2 py-1 text-gray-400 text-lg font-semibold border-l-2 border-orange-700 uppercase'>must read</h3>
+            <h3 className='px-3 py-1 text-gray-400 text-lg font-semibold border-l-2 border-orange-700 uppercase'>must read</h3>
             <div className='my-3 grid gap-y-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-4 md:gap-x-6'>
 
             <div className='flex gap-x-4 p-3 shadow-md rounded group cursor-pointer'>

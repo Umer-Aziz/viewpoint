@@ -107,10 +107,10 @@ const Homehero = () => {
             {/* Trending Block  */}
             {show === true ? (
               <div className="my-8 trending grid gap-y-6">
-                <div className="flex gap-x-3">
+                <div className="flex gap-x-3 group cursor-pointer">
                   <div className="w-24 h-20 xl:w-28 xl:h-22 rounded-md overflow-hidden">
                     <img
-                      className="bg-cover object-cover"
+                      className="bg-cover object-cover w-full group-hover:scale-105 transition-all duration-500"
                       src="https://media.istockphoto.com/photos/group-of-business-people-in-office-cafeteria-picture-id1125784640?k=20&m=1125784640&s=612x612&w=0&h=zfl8ueIYN0zJi-3TETjb7kUhpa8jsyiAKFIymir1P8Q="
                       alt="trending-post"
                     />
@@ -130,10 +130,10 @@ const Homehero = () => {
                   </div>
                 </div>
 
-                <div className="flex gap-x-3">
+                <div className="flex gap-x-3 group cursor-pointer">
                   <div className="w-24 h-20 xl:w-28 xl:h-22 rounded-md overflow-hidden">
                     <img
-                      className="bg-cover object-cover"
+                      className="bg-cover object-cover w-full group-hover:scale-105 transition-all duration-500"
                       src="https://media.istockphoto.com/photos/high-angle-view-asian-colleague-with-indian-coworker-in-wheelchair-a-picture-id1331469785?k=20&m=1331469785&s=612x612&w=0&h=EOXTjSxma3XTCNaEmG5geDfrLi-UTM18i8Ou5pt5Mf4="
                       alt="trending-post"
                     />
@@ -152,10 +152,10 @@ const Homehero = () => {
                   </div>
                 </div>
 
-                <div className="flex gap-x-3">
+                <div className="flex gap-x-3 group cursor-pointer">
                   <div className="w-24 h-20 xl:w-28 xl:h-22 rounded-md overflow-hidden">
                     <img
-                      className="bg-cover object-cover"
+                      className="bg-cover object-cover w-full group-hover:scale-105 transition-all duration-500"
                       src="https://media.istockphoto.com/photos/running-on-treadmill-picture-id542197916?k=20&m=542197916&s=612x612&w=0&h=UFLdzG2sz7oX_YKbCaGV6_hXIGF_e7Lzxuw_E5EL3M4="
                       alt="trending-post"
                     />
@@ -174,10 +174,10 @@ const Homehero = () => {
                   </div>
                 </div>
 
-                <div className="flex gap-x-3">
+                <div className="flex gap-x-3 group cursor-pointer">
                   <div className="w-24 h-20 xl:w-28 xl:h-22 rounded-md overflow-hidden">
                     <img
-                      className="bg-cover object-cover"
+                      className="bg-cover object-cover w-full group-hover:scale-105 transition-all duration-500"
                       src="https://media.istockphoto.com/photos/children-playing-soccer-outdoors-picture-id1321901975?k=20&m=1321901975&s=612x612&w=0&h=Xd0lpN7APrqaT369NBfIYgQ7Hs9BpWNJ2Qk9sbZO8Y0="
                       alt="trending-post"
                     />
@@ -198,10 +198,10 @@ const Homehero = () => {
               </div>
             ) : (
               <div className="my-8 trending grid gap-y-6">
-                <div className="flex gap-x-3">
+                <div className="flex gap-x-3 group cursor-pointer">
                   <div className="w-24 h-20 xl:w-28 xl:h-22 rounded-md overflow-hidden">
                     <img
-                      className="bg-cover object-cover"
+                      className="bg-cover object-cover w-full group-hover:scale-105 transition-all duration-500"
                       src="https://media.istockphoto.com/photos/group-of-business-people-in-office-cafeteria-picture-id1125784640?k=20&m=1125784640&s=612x612&w=0&h=zfl8ueIYN0zJi-3TETjb7kUhpa8jsyiAKFIymir1P8Q="
                       alt="trending-post"
                     />
@@ -221,10 +221,10 @@ const Homehero = () => {
                   </div>
                 </div>
 
-                <div className="flex gap-x-3">
+                <div className="flex gap-x-3 group cursor-pointer">
                   <div className="w-24 h-20 xl:w-28 xl:h-22 rounded-md overflow-hidden">
                     <img
-                      className="bg-cover object-cover"
+                      className="bg-cover object-cover w-full group-hover:scale-105 transition-all duration-500"
                       src="https://media.istockphoto.com/photos/high-angle-view-asian-colleague-with-indian-coworker-in-wheelchair-a-picture-id1331469785?k=20&m=1331469785&s=612x612&w=0&h=EOXTjSxma3XTCNaEmG5geDfrLi-UTM18i8Ou5pt5Mf4="
                       alt="trending-post"
                     />
