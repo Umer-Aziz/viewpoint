@@ -1,7 +1,8 @@
 import React from "react";
-import HeroBottom from "../components/HeroBottom";
-import Homehero from "../components/Homehero";
-import RandomPost from "../components/RandomPost";
+import HeroBottom from "../components/home/HeroBottom";
+import Homehero from "../components/home/Homehero";
+import PicksPosts from "../components/home/PicksPosts";
+import RandomPost from "../components/home/RandomPost";
 
 const Home = () => {
 
@@ -13,6 +14,7 @@ const Home = () => {
         <Homehero/>
         <HeroBottom/>
         <RandomPost/>
+        <PicksPosts/>
       </main>
     </>
   );

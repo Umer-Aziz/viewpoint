@@ -11,9 +11,9 @@ const Homehero = () => {
           <div className="grid gap-y-6 lg:gap-y-0 lg:flex sm:gap-x-6 lg:gap-x-6">
             {/* main div */}
             <div className="sm:max-w-xl xl:min-w-[38rem] shadow rounded group cursor-pointer">
-              <div className="max-h-80 overflow-hidden">
+              <div className="max-h-80 lg:max-h-max overflow-hidden">
                 <img
-                  className="sm:min-h-[18rem] bg-cover object-cover group-hover:scale-105 transition-all duration-500"
+                  className="sm:min-h-[18rem] xl:min-h-[22rem] bg-cover object-cover group-hover:scale-105 transition-all duration-500"
                   src="https://media.istockphoto.com/photos/future-technology-3d-concept-automated-retail-warehouse-agv-robots-picture-id1349338733?k=20&m=1349338733&s=612x612&w=0&h=EuiGg8nr_VxK0uhT1JBHAGny-tnt-kALqZQaQBssFrQ="
                   alt="blog-post"
                 />
