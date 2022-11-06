@@ -6,17 +6,17 @@ import { GrFormSearch } from "react-icons/gr";
 import moment from "moment"
 const Navbar = () => {
 
-    const [ theme , setTheme ] = useState(null);
+    const [ theme , setTheme ] = useState("dark");
 
     // checking default browser theme 
-    useEffect(() => {
-      if(window.matchMedia(("prefers-color-scheme:dark"))){
-        setTheme("dark")
-      }
-      else{
-        setTheme("light")
-      }
-    }, [])
+    // useEffect(() => {
+    //   if(window.matchMedia(("prefers-color-scheme:dark"))){
+    //     setTheme("dark")
+    //   }
+    //   else{
+    //     setTheme("light")
+    //   }
+    // }, [])
     
 
 
@@ -71,7 +71,7 @@ const Navbar = () => {
             <nav className='container pt-6'>
               <div className='flex justify-between gap-x-6'>
                 <img className='w-24 md:32 lg:w-40' src="./img/dark-logo.png" alt="logo" />
-                <form className='px-3 sm:px-4 py-2 bg-white flex items-center rounded border border-gray-300 dark:border-dull-black'>
+                <form className='px-3 sm:px-4 py-2 bg-white flex items-center rounded border border-gray-300 dark:border-dull-black shadow-sm'>
                 <input className='outline-none bg-transparent text-gray-700 max-w-[150px] sm:max-w-max' type="search" name="search" id="search" placeholder='Search..'/>
                 <button>
                 <GrFormSearch className='text-2xl'/>

@@ -17,9 +17,16 @@ background: #EA4C13;
 border-radius: 24px;
 }
 
+.dark {
+  @apply bg-dull-black text-gray-300;
+}
+
+.container{
+   @apply px-4 sm:px-6 lg:px-8 2xl:px-0 max-w-7xl mx-auto overflow-x-hidden;
+}
+
 body {
     @apply font-black-ops overflow-x-hidden;
-    height: 3000px;
 
     .navbar-ul::-webkit-scrollbar {
       display: none !important; 
@@ -48,13 +55,10 @@ body {
     }
     .owl-dots{
       transform: translateY(-10px) !important;
+      .active span {
+        background-color: #EA4C13 !important;
+      }
     }
 }
 
-.dark {
-   @apply bg-dull-black text-gray-300;
-}
 
-.container{
-    @apply px-4 sm:px-6 lg:px-8 2xl:px-0 max-w-7xl mx-auto overflow-x-hidden;
-}
