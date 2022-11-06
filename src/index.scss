@@ -24,13 +24,27 @@ body {
     .navbar-ul::-webkit-scrollbar {
       display: none !important; 
     }
-    
-    
     .blog-title {
     display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow:hidden;
+    }
+    .owl-nav {
+      @apply flex justify-start;
+      button {
+       background-color: #EA4C13 !important;
+       height: 32px !important;
+       display: flex !important;
+       align-items: center !important;
+       span {
+        padding: 0px 12px !important;
+       font-size: 24px !important;
+       }
+      }
+    }
+    .owl-dots{
+      transform: translateY(-10px) !important;
     }
 }
 
