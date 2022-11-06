@@ -32,12 +32,13 @@ const options = {
     <>
         <section className='container'>
            
-            <div className='py-10 text-gray-300'>
+            <div className='py-10 text-gray-300 lg:flex lg:justify-between gap-x-4 lg:gap-x-6 xl:gap-x-8'>
 
-                <div>
-                <h3 class="px-3 py-2 text-gray-400 text-lg font-semibold border-l-2 border-orange-700 uppercase">Top Picks For You</h3>
                 
-                <OwlCarousel  className='owl-theme slider-items owl-carousel py-8 grid md:grid-cols-2 gap-y-6 lg:grid-cols-3 max-w-4xl gap-x-4' {...options}>
+                <div className='w-12/12'>
+  
+                <h3 class="px-3 py-2 text-gray-400 text-lg font-semibold border-l-2 border-orange-700 uppercase">Top Picks For You</h3>
+                <OwlCarousel  className='owl-theme slider-items owl-carousel py-8 grid md:grid-cols-2 gap-y-6 lg:grid-cols-3 lg:max-w-3xl xl:max-w-[58.5rem] gap-x-4' {...options}>
 
                      <div className='item max-h-96 shadow group overflow-hidden relative'>
                           <div className='overflow-hidden rounded md:rounded-md cursor-pointer'>
@@ -140,7 +141,66 @@ const options = {
                     
                      
                 </OwlCarousel>
+                </div>
 
+                {/* categories */}
+                <div className='max-w-60 xl:w-80'>
+                <h5 class="w-full px-3 py-2 text-gray-400 text-md font-semibold border-l-2 border-orange-700 uppercase">Blog Categories</h5>
+                  <div className='py-8 w-12/12'>
+                      <div className='text-md font-semibold text-gray-600 dark:text-gray-300'>
+
+                        <div className='flex justify-between pb-2 border-dark cursor-pointer'>
+                          <p className='hover:text-gray-700 dark:hover:text-gray-400 '>Business</p>
+                          <span className='text-md px-2 font-normal text-gray-50 bg-orange-600 rounded'>2</span>
+                        </div>
+
+                        <div className='flex justify-between py-2 border-dark cursor-pointer'>
+                          <p className='hover:text-gray-700 dark:hover:text-gray-400 '>Technology</p>
+                          <span className='text-md px-2 font-normal text-gray-50 bg-orange-600 rounded'>3</span>
+                        </div>
+
+                        <div className='flex justify-between py-2 border-dark cursor-pointer'>
+                          <p className='hover:text-gray-700 dark:hover:text-gray-400 '>Programming</p>
+                          <span className='text-md px-2 font-normal text-gray-50 bg-orange-600 rounded'>7</span>
+                        </div>
+
+                        <div className='flex justify-between py-2 border-dark cursor-pointer'>
+                          <p className='hover:text-gray-700 dark:hover:text-gray-400 '>CyberSecurity</p>
+                          <span className='text-md px-2 font-normal text-gray-50 bg-orange-600 rounded'>6</span>
+                        </div>
+
+                        <div className='flex justify-between py-2 border-dark cursor-pointer'>
+                          <p className='hover:text-gray-700 dark:hover:text-gray-400 '>Scamming</p>
+                          <span className='text-md px-2 font-normal text-gray-50 bg-orange-600 rounded'>6</span>
+                        </div>
+
+                        <div className='flex justify-between py-2 border-dark cursor-pointer'>
+                          <p className='hover:text-gray-700 dark:hover:text-gray-400 '>Fitness</p>
+                          <span className='text-md px-2 font-normal text-gray-50 bg-orange-600 rounded'>2</span>
+                        </div>
+
+                        <div className='flex justify-between py-2 border-dark cursor-pointer'>
+                          <p className='hover:text-gray-700 dark:hover:text-gray-400 '>LifeStyle</p>
+                          <span className='text-md px-2 font-normal text-gray-50 bg-orange-600 rounded'>13</span>
+                        </div>
+
+                        <div className='flex justify-between py-2 border-dark cursor-pointer'>
+                          <p className='hover:text-gray-700 dark:hover:text-gray-400 '>Sports</p>
+                          <span className='text-md px-2 font-normal text-gray-50 bg-orange-600 rounded'>8</span>
+                        </div>
+
+                        <div className='flex justify-between py-2 border-dark cursor-pointer'>
+                          <p className='hover:text-gray-700 dark:hover:text-gray-400  whitespace-nowrap'>Tips & Tricks</p>
+                          <span className='text-md px-2 font-normal text-gray-50 bg-orange-600 rounded'>1</span>
+                        </div>
+
+                        <div className='flex justify-between py-2 border-dark cursor-pointer'>
+                          <p className='hover:text-gray-700 dark:hover:text-gray-400 '>Others</p>
+                          <span className='text-md px-2 font-normal text-gray-50 bg-orange-600 rounded'>0</span>
+                        </div>
+
+                      </div>
+                  </div>
                 </div>
             
             </div>

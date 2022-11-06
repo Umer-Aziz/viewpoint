@@ -30,6 +30,9 @@ body {
   -webkit-box-orient: vertical;
   overflow:hidden;
     }
+    .border-dark {
+      @apply border-b border-gray-600 border-opacity-10 dark:border-opacity-30;
+    }
     .owl-nav {
       @apply flex justify-start;
       button {

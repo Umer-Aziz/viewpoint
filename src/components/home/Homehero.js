@@ -7,8 +7,8 @@ const Homehero = () => {
   return (
     <>
       <section className="container mx-auto py-10 text-gray-600 dark:text-gray-300">
-        <div className="grid sm:flex sm:gap-x-6">
-          <div className="grid gap-y-6 lg:gap-y-0 lg:flex sm:gap-x-6 lg:gap-x-6">
+        <div className="grid gap-y-6 sm:flex sm:gap-x-6">
+          <div className="grid gap-y-6 lg:flex sm:gap-x-6 lg:gap-x-6">
             {/* main div */}
             <div className="sm:max-w-xl xl:min-w-[38rem] shadow rounded group cursor-pointer">
               <div className="max-h-80 lg:max-h-max overflow-hidden">
@@ -76,7 +76,7 @@ const Homehero = () => {
           </div>
 
           {/* Treding / Latest Post  */}
-          <div className="sm:w-72 md:w-80 xl:w-88 hidden sm:block">
+          <div className="w-auto sm:w-72 md:w-80 xl:w-88">
             <div className="grid grid-cols-2">
               <button
                 onClick={() => {
@@ -108,14 +108,14 @@ const Homehero = () => {
             {show === true ? (
               <div className="my-8 trending grid gap-y-6">
                 <div className="flex gap-x-3 group cursor-pointer">
-                  <div className="w-24 h-20 xl:w-28 xl:h-22 rounded-md overflow-hidden">
+                  <div className="h-22 max-w-[8rem] md:w-24 md:w-22 xl:w-28 xl:h-22 rounded-md overflow-hidden">
                     <img
                       className="bg-cover object-cover w-full group-hover:scale-105 transition-all duration-500"
                       src="https://media.istockphoto.com/photos/group-of-business-people-in-office-cafeteria-picture-id1125784640?k=20&m=1125784640&s=612x612&w=0&h=zfl8ueIYN0zJi-3TETjb7kUhpa8jsyiAKFIymir1P8Q="
                       alt="trending-post"
                     />
                   </div>
-                  <div className="w-44 lg:w-52 -translate-y-1 lg:-translate-y-0.5">
+                  <div className="w-full min-w-[11rem] md:w-44 lg:w-52 -translate-y-1 lg:-translate-y-0.5">
                     <h4 className="text-md font-semibold blog-title">
                       Lorem ipsum dolor sit sot , amet consectetur adipisicing.
                       Lorem ipsum dolor sit amet consectetur adipisicing.
@@ -131,14 +131,14 @@ const Homehero = () => {
                 </div>
 
                 <div className="flex gap-x-3 group cursor-pointer">
-                  <div className="w-24 h-20 xl:w-28 xl:h-22 rounded-md overflow-hidden">
+                  <div className="h-22 max-w-[8rem] md:w-24 md:w-22 xl:w-28 xl:h-22 rounded-md overflow-hidden">
                     <img
                       className="bg-cover object-cover w-full group-hover:scale-105 transition-all duration-500"
                       src="https://media.istockphoto.com/photos/high-angle-view-asian-colleague-with-indian-coworker-in-wheelchair-a-picture-id1331469785?k=20&m=1331469785&s=612x612&w=0&h=EOXTjSxma3XTCNaEmG5geDfrLi-UTM18i8Ou5pt5Mf4="
                       alt="trending-post"
                     />
                   </div>
-                  <div className="w-44 lg:w-52 -translate-y-1 lg:-translate-y-0.5">
+                  <div className="w-full min-w-[11rem] md:w-44 lg:w-52 -translate-y-1 lg:-translate-y-0.5">
                     <h4 className="text-md font-semibold blog-title">
                       Lorem ipsum dolor sit, amet consectetur adipisicing.
                     </h4>
@@ -153,14 +153,14 @@ const Homehero = () => {
                 </div>
 
                 <div className="flex gap-x-3 group cursor-pointer">
-                  <div className="w-24 h-20 xl:w-28 xl:h-22 rounded-md overflow-hidden">
+                  <div className="h-22 max-w-[8rem] md:w-24 md:w-22 xl:w-28 xl:h-22 rounded-md overflow-hidden">
                     <img
                       className="bg-cover object-cover w-full group-hover:scale-105 transition-all duration-500"
                       src="https://media.istockphoto.com/photos/running-on-treadmill-picture-id542197916?k=20&m=542197916&s=612x612&w=0&h=UFLdzG2sz7oX_YKbCaGV6_hXIGF_e7Lzxuw_E5EL3M4="
                       alt="trending-post"
                     />
                   </div>
-                  <div className="w-44 lg:w-52 -translate-y-1 lg:-translate-y-0.5">
+                  <div className="w-full min-w-[11rem] md:w-44 lg:w-52 -translate-y-1 lg:-translate-y-0.5">
                     <h4 className="text-md font-semibold blog-title">
                       Lorem ipsum dolor sit, amet consectetur adipisicing.
                     </h4>
@@ -175,14 +175,14 @@ const Homehero = () => {
                 </div>
 
                 <div className="flex gap-x-3 group cursor-pointer">
-                  <div className="w-24 h-20 xl:w-28 xl:h-22 rounded-md overflow-hidden">
+                  <div className="h-22 max-w-[8rem] md:w-24 md:w-22 xl:w-28 xl:h-22 rounded-md overflow-hidden">
                     <img
                       className="bg-cover object-cover w-full group-hover:scale-105 transition-all duration-500"
                       src="https://media.istockphoto.com/photos/children-playing-soccer-outdoors-picture-id1321901975?k=20&m=1321901975&s=612x612&w=0&h=Xd0lpN7APrqaT369NBfIYgQ7Hs9BpWNJ2Qk9sbZO8Y0="
                       alt="trending-post"
                     />
                   </div>
-                  <div className="w-44 lg:w-52 -translate-y-1 lg:-translate-y-0.5">
+                  <div className="w-full min-w-[11rem] md:w-44 lg:w-52 -translate-y-1 lg:-translate-y-0.5">
                     <h4 className="text-md font-semibold blog-title">
                       Lorem ipsum dolor sit, amet consectetur adipisicing.
                     </h4>
@@ -199,14 +199,14 @@ const Homehero = () => {
             ) : (
               <div className="my-8 trending grid gap-y-6">
                 <div className="flex gap-x-3 group cursor-pointer">
-                  <div className="w-24 h-20 xl:w-28 xl:h-22 rounded-md overflow-hidden">
+                  <div className="h-22 max-w-[8rem] md:w-24 md:w-22 xl:w-28 xl:h-22 rounded-md overflow-hidden">
                     <img
                       className="bg-cover object-cover w-full group-hover:scale-105 transition-all duration-500"
                       src="https://media.istockphoto.com/photos/group-of-business-people-in-office-cafeteria-picture-id1125784640?k=20&m=1125784640&s=612x612&w=0&h=zfl8ueIYN0zJi-3TETjb7kUhpa8jsyiAKFIymir1P8Q="
                       alt="trending-post"
                     />
                   </div>
-                  <div className="w-44 lg:w-52 -translate-y-1 lg:-translate-y-0.5">
+                  <div className="w-full min-w-[11rem] md:w-44 lg:w-52 -translate-y-1 lg:-translate-y-0.5">
                     <h4 className="text-md font-semibold blog-title">
                       Lorem ipsum dolor sit sot , amet consectetur adipisicing.
                       Lorem ipsum dolor sit amet consectetur adipisicing.
@@ -222,14 +222,14 @@ const Homehero = () => {
                 </div>
 
                 <div className="flex gap-x-3 group cursor-pointer">
-                  <div className="w-24 h-20 xl:w-28 xl:h-22 rounded-md overflow-hidden">
+                  <div className="h-22 max-w-[8rem] md:w-24 md:w-22 xl:w-28 xl:h-22 rounded-md overflow-hidden">
                     <img
                       className="bg-cover object-cover w-full group-hover:scale-105 transition-all duration-500"
                       src="https://media.istockphoto.com/photos/high-angle-view-asian-colleague-with-indian-coworker-in-wheelchair-a-picture-id1331469785?k=20&m=1331469785&s=612x612&w=0&h=EOXTjSxma3XTCNaEmG5geDfrLi-UTM18i8Ou5pt5Mf4="
                       alt="trending-post"
                     />
                   </div>
-                  <div className="w-44 lg:w-52 -translate-y-1 lg:-translate-y-0.5">
+                  <div className="w-full min-w-[11rem] md:w-44 lg:w-52 -translate-y-1 lg:-translate-y-0.5">
                     <h4 className="text-md font-semibold blog-title">
                       Lorem ipsum dolor sit, amet consectetur adipisicing.
                     </h4>
