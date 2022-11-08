@@ -147,7 +147,7 @@ const options = {
                 <div className='max-w-60 xl:w-80'>
                 <h5 class="w-full px-3 py-2 text-gray-400 text-md font-semibold border-l-2 border-orange-700 uppercase">Blog Categories</h5>
                   <div className='py-8 w-12/12'>
-                      <div className='text-md font-semibold text-gray-600 dark:text-gray-300'>
+                      <div className='text-md font-semibold text-gray-700 dark:text-gray-300'>
 
                         <div className='flex justify-between pb-2 border-dark cursor-pointer'>
                           <p className='hover:text-gray-700 dark:hover:text-gray-400 '>Business</p>

@@ -3,14 +3,14 @@ import { WiTime8 } from "react-icons/wi"
 const RandomPost = () => {
   return (
     <>
-        <div className='container py-10'>
+        <div className='container py-10 text-gray-700 dark:text-gray-300'>
 
             <h3 class="px-3 py-1 text-gray-400 text-lg font-semibold border-l-2 border-orange-700 uppercase">Random Posts</h3>
             
             <div className='my-6 grid gap-y-6 lg:grid-cols-2 lg:gap-x-6 xl:gap-x-8'>
 
               <div className='py-3 shadow rounded xl:min-w-[38rem] group cursor-pointer'>
-              <div className='overflow-hidden w-full'>
+              <div className='overflow-hidden w-full rounded md:rounded-md'>
                   <img className='bg-cover object-fill rounded lg:rounded-md w-full lg:min-h-[20rem] xl:min-h-[24rem] group-hover:scale-105 transition-all duration-500' src="https://media.istockphoto.com/id/1339226443/es/foto/la-pareja-usa-un-dispositivo-de-tel%C3%A9fono-inteligente-mientras-est%C3%A1-sentada-en-un-sof%C3%A1-en-el.jpg?s=612x612&w=0&k=20&c=qjWr8z3ZtJspxKqRtBUxkQzQkqXxIlOP5IY-m6yKa3w=" alt="random-posts" />
                 </div>
                 <div className='px-3 lg:px-4'>

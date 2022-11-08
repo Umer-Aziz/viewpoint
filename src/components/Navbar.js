@@ -3,20 +3,21 @@ import { FaGithub , FaLinkedin , FaTwitter ,  FaStackOverflow } from "react-icon
 import { BsMoonStarsFill } from "react-icons/bs";
 import { ImSun } from "react-icons/im";
 import { GrFormSearch } from "react-icons/gr";
-import moment from "moment"
+import moment from "moment";
+import { Link } from 'react-router-dom';
 const Navbar = () => {
 
     const [ theme , setTheme ] = useState("dark");
 
     // checking default browser theme 
-    // useEffect(() => {
-    //   if(window.matchMedia(("prefers-color-scheme:dark"))){
-    //     setTheme("dark")
-    //   }
-    //   else{
-    //     setTheme("light")
-    //   }
-    // }, [])
+    useEffect(() => {
+      if(window.matchMedia(("prefers-color-scheme:dark"))){
+        setTheme("dark")
+      }
+      else{
+        setTheme("light")
+      }
+    }, [])
     
 
 
@@ -52,10 +53,10 @@ const Navbar = () => {
                 <div className='flex items-center gap-x-6 sm:gap-x-8'>
                    <ul className='flex gap-x-4 font-semibold'>
                     <li className='hover:text-gray-600 dark:hover:text-gray-300'>
-                        <a href="/">Blogs</a>
+                        <Link to="/blogs">Blogs</Link>
                     </li>
                     <li className='hover:text-gray-600 dark:hover:text-gray-300'>
-                        <a href="/">About</a>
+                    <a target="_blank" rel="noreferrer" href="https://umeraziz-engineer.herokuapp.com">About</a>
                     </li>
                    </ul>
                     <span className='hidden sm:block text-sm text-gray-600 dark:text-gray-400 mt-0.5 font-semibold'>{date}</span>
@@ -70,7 +71,7 @@ const Navbar = () => {
             </header>
             <nav className='container pt-6'>
               <div className='flex justify-between gap-x-6'>
-                <img className='w-24 md:32 lg:w-40' src="./img/dark-logo.png" alt="logo" />
+              <Link to="/"><img className='w-24 md:32 lg:w-40' src="./img/dark-logo.png" alt="logo" /></Link> 
                 <form className='px-3 sm:px-4 py-2 bg-white flex items-center rounded border border-gray-300 dark:border-dull-black shadow-sm'>
                 <input className='outline-none bg-transparent text-gray-700 max-w-[150px] sm:max-w-max' type="search" name="search" id="search" placeholder='Search..'/>
                 <button>

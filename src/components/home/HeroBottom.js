@@ -3,7 +3,7 @@ import React from 'react'
 const HeroBottom = () => {
   return (
    <>
-    <div className='container text-gray-600 dark:text-gray-300'>
+    <div className='container text-gray-700 dark:text-gray-300'>
 
         <div className='py-6 md:py-10 border-b border-gray-600 border-opacity-10 dark:border-opacity-30'>
             <h3 className='px-3 py-1 text-gray-400 text-lg font-semibold border-l-2 border-orange-700 uppercase'>must read</h3>
