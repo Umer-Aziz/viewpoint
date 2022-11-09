@@ -1,5 +1,6 @@
 import React from 'react'
-import { WiTime8 } from "react-icons/wi"
+import { WiTime8 } from "react-icons/wi";
+import { IoIosArrowForward , IoIosArrowBack } from "react-icons/io";
 
 const Blogs = () => {
   return (
@@ -175,6 +176,38 @@ const Blogs = () => {
   </div>
 
   </div>
+
+ {/* pagination  */}
+  <div class="flex justify-center mt-12">
+    <a href="/" class="flex items-center justify-center px-4 py-2 mx-1 text-gray-500 capitalize bg-gray-50 rounded-md cursor-not-allowed rtl:-scale-x-100 dark:bg-gray-600 dark:bg-opacity-5 dark:text-gray-600">
+        <IoIosArrowBack/>
+    </a>
+
+    <a href="/" class="hidden px-4 py-2 mx-1 transition-colors duration-300 transform rounded-md sm:inline bg-orange-600 hover:bg-orange-600 dark:hover:bg-orange-600 text-gray-50 dark:text-gray-100">
+        1
+    </a>
+
+    <a href="/" class="hidden px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-gray-100 rounded-md sm:inline dark:bg-gray-600 dark:bg-opacity-5 dark:text-gray-200 hover:bg-orange-600 dark:hover:bg-orange-600 hover:text-gray-50 dark:hover:text-gray-100">
+        2
+    </a>
+
+    <a href="/" class="hidden px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-gray-100 rounded-md sm:inline dark:bg-gray-600 dark:bg-opacity-5 dark:text-gray-200 hover:bg-orange-600 dark:hover:bg-orange-600 hover:text-gray-50 dark:hover:text-gray-100">
+        ...
+    </a>
+
+    <a href="/" class="hidden px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-gray-100 rounded-md sm:inline dark:bg-gray-600 dark:bg-opacity-5 dark:text-gray-200 hover:bg-orange-600 dark:hover:bg-orange-600 hover:text-gray-50 dark:hover:text-gray-100">
+        9
+    </a>
+
+    <a href="/" class="hidden px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-gray-100 rounded-md sm:inline dark:bg-gray-600 dark:bg-opacity-5 dark:text-gray-200 hover:bg-orange-600 dark:hover:bg-orange-600 hover:text-gray-50 dark:hover:text-gray-100">
+        10
+    </a>
+
+    <a href="/" class="flex items-center justify-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-gray-100 rounded-md rtl:-scale-x-100 dark:bg-gray-600 dark:bg-opacity-5 dark:text-gray-200 hover:bg-orange-600 dark:hover:bg-orange-600 hover:text-gray-50 dark:hover:text-gray-100">
+       <IoIosArrowForward/>
+    </a>
+</div>
+
 </div>
         </section>
     </>
