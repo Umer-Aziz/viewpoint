@@ -185,7 +185,7 @@ export const Footer = () => {
                   placeholder="Email"
                   required
                   type="text"
-                  className="flex-grow w-full h-12 px-4 mb-3 transition duration-200 bg-gray-50 text-gray-600 border border-gray-300 rounded shadow-sm appearance-none md:mr-2 md:mb-0 focus:outline-none focus:shadow-outline"
+                  className="flex-grow w-full h-12 px-4 mb-3 transition duration-200 bg-gray-50 text-gray-600 border border-gray-300 rounded shadow-sm appearance-none md:mr-2 md:mb-0 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
                 <button
                   type="submit"
