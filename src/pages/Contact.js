@@ -21,20 +21,19 @@ const Contact = () => {
                         <SlLocationPin className='text-orange-600 md:text-xl'/>
 
                         <span className="mx-2 text-gray-700 truncate w-72 dark:text-gray-400">
-                            Cecilia Chapman 711-2880 Nulla
-                            St. Mankato Mississippi 96522
+                           Mirpur azad kashmir - Pakistan
                         </span>
                     </p>
                     <p className="flex items-center">
                         <BsTelephonePlus className='text-orange-600 md:text-xl'/>
 
-                        <span className="mx-3 text-gray-700 truncate w-72 dark:text-gray-400">(257) 563-7401</span>
+                        <a href='tel:923146018728' className="mx-3 text-gray-700 truncate w-72 dark:text-gray-400">(257) 563-7401</a>
                     </p>
 
                     <p className="flex items-center">
                        <FiMail className='text-orange-600 md:text-xl'/>
 
-                        <span className="mx-3 text-gray-700 truncate w-72 dark:text-gray-400">acb@example.com</span>
+                        <a href="mailto:umeraziz682@gmail.com" target="_blank" rel='noreferrer' className="mx-3 text-gray-700 truncate w-72 dark:text-gray-400">viewpoint@gmail.com</a>
                     </p>
                 </div>
 
