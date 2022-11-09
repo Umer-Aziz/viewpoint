@@ -37,7 +37,7 @@ const options = {
                 
                 <div className='w-12/12'>
   
-                <h3 class="px-3 py-2 text-gray-400 text-lg font-semibold border-l-2 border-orange-700 uppercase">Top Picks For You</h3>
+                <h3 className="px-3 py-2 text-gray-400 text-lg font-semibold border-l-2 border-orange-700 uppercase">Top Picks For You</h3>
                 <OwlCarousel  className='owl-theme slider-items owl-carousel py-8 grid md:grid-cols-2 gap-y-6 lg:grid-cols-3 lg:max-w-3xl xl:max-w-[58.5rem] gap-x-4' {...options}>
 
                      <div className='item max-h-96 shadow group overflow-hidden relative'>
@@ -49,7 +49,7 @@ const options = {
                           </div>
                           <div className='-translate-y-24 translate-x-5 transition-all duration-500'>
                             <p className='z-10 text-sm text-orange-600 font-semibold'>LifeStyle</p>
-                            <h3 class="z-10 my-2 text-xl font-semibold blog-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>                          </div>
+                            <h3 className="z-10 my-2 text-xl font-semibold blog-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>                          </div>
                             <p className='z-10 p-2 absolute top-10 left-0 -translate-x-96 group-hover:translate-x-0 group-hover:text-gray-50 transition-all duration-500'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime quasi at porro dignissimos. Ab eos ipsum numquam iure beatae. Iste quia expedita quo eius.</p>
                             <div className='hidden dark:group-hover:hidden group-hover:block absolute top-0 left-0 right-0 bottom-0 bg-gray-700 bg-opacity-50 rounded md:rounded-md'></div>
                      </div>
@@ -63,7 +63,7 @@ const options = {
                           </div>
                           <div className='-translate-y-24 translate-x-5 transition-all duration-500'>
                             <p className='z-10 text-sm text-orange-600 font-semibold'>LifeStyle</p>
-                            <h3 class="z-10 my-2 text-xl font-semibold blog-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>                          </div>
+                            <h3 className="z-10 my-2 text-xl font-semibold blog-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>                          </div>
                             <p className='z-10 p-2 absolute top-10 left-0 -translate-x-96 group-hover:translate-x-0 group-hover:text-gray-50 transition-all duration-500'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime quasi at porro dignissimos. Ab eos ipsum numquam iure beatae. Iste quia expedita quo eius.</p>
                             <div className='hidden dark:group-hover:hidden group-hover:block absolute top-0 left-0 right-0 bottom-0 bg-gray-700 bg-opacity-50 rounded md:rounded-md'></div>
                      </div>
@@ -77,7 +77,7 @@ const options = {
                           </div>
                           <div className='-translate-y-24 translate-x-5 transition-all duration-500'>
                             <p className='z-10 text-sm text-orange-600 font-semibold'>LifeStyle</p>
-                            <h3 class="z-10 my-2 text-xl font-semibold blog-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>                          </div>
+                            <h3 className="z-10 my-2 text-xl font-semibold blog-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>                          </div>
                             <p className='z-10 p-2 absolute top-10 left-0 -translate-x-96 group-hover:translate-x-0 group-hover:text-gray-50 transition-all duration-500'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime quasi at porro dignissimos. Ab eos ipsum numquam iure beatae. Iste quia expedita quo eius.</p>
                             <div className='hidden dark:group-hover:hidden group-hover:block absolute top-0 left-0 right-0 bottom-0 bg-gray-700 bg-opacity-50 rounded md:rounded-md'></div>                 
                      </div>
@@ -91,7 +91,7 @@ const options = {
                           </div>
                           <div className='-translate-y-24 translate-x-5 transition-all duration-500'>
                             <p className='z-10 text-sm text-orange-600 font-semibold'>LifeStyle</p>
-                            <h3 class="z-10 my-2 text-xl font-semibold blog-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>                          </div>
+                            <h3 className="z-10 my-2 text-xl font-semibold blog-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>                          </div>
                             <p className='z-10 p-2 absolute top-10 left-0 -translate-x-96 group-hover:translate-x-0 group-hover:text-gray-50 transition-all duration-500'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime quasi at porro dignissimos. Ab eos ipsum numquam iure beatae. Iste quia expedita quo eius.</p>
                             <div className='hidden dark:group-hover:hidden group-hover:block absolute top-0 left-0 right-0 bottom-0 bg-gray-700 bg-opacity-50 rounded md:rounded-md'></div>
                      </div>
@@ -105,7 +105,7 @@ const options = {
                           </div>
                           <div className='-translate-y-24 translate-x-5 transition-all duration-500'>
                             <p className='z-10 text-sm text-orange-600 font-semibold'>LifeStyle</p>
-                            <h3 class="z-10 my-2 text-xl font-semibold blog-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>                          </div>
+                            <h3 className="z-10 my-2 text-xl font-semibold blog-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>                          </div>
                             <p className='z-10 p-2 absolute top-10 left-0 -translate-x-96 group-hover:translate-x-0 group-hover:text-gray-50 transition-all duration-500'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime quasi at porro dignissimos. Ab eos ipsum numquam iure beatae. Iste quia expedita quo eius.</p>
                             <div className='hidden dark:group-hover:hidden group-hover:block absolute top-0 left-0 right-0 bottom-0 bg-gray-700 bg-opacity-50 rounded md:rounded-md'></div>                 
                      </div>
@@ -119,7 +119,7 @@ const options = {
                           </div>
                           <div className='-translate-y-24 translate-x-5 transition-all duration-500'>
                             <p className='z-10 text-sm text-orange-600 font-semibold'>LifeStyle</p>
-                            <h3 class="z-10 my-2 text-xl font-semibold blog-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>                          </div>
+                            <h3 className="z-10 my-2 text-xl font-semibold blog-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>                          </div>
                             <p className='z-10 p-2 absolute top-10 left-0 -translate-x-96 group-hover:translate-x-0 group-hover:text-gray-50 transition-all duration-500'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime quasi at porro dignissimos. Ab eos ipsum numquam iure beatae. Iste quia expedita quo eius.</p>
                             <div className='hidden dark:group-hover:hidden group-hover:block absolute top-0 left-0 right-0 bottom-0 bg-gray-700 bg-opacity-50 rounded md:rounded-md'></div>
                      </div>
@@ -133,7 +133,7 @@ const options = {
                           </div>
                           <div className='-translate-y-24 translate-x-5 transition-all duration-500'>
                             <p className='z-10 text-sm text-orange-600 font-semibold'>LifeStyle</p>
-                            <h3 class="z-10 my-2 text-xl font-semibold blog-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>                          </div>
+                            <h3 className="z-10 my-2 text-xl font-semibold blog-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>                          </div>
                             <p className='z-10 p-2 absolute top-10 left-0 -translate-x-96 group-hover:translate-x-0 group-hover:text-gray-50 transition-all duration-500'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime quasi at porro dignissimos. Ab eos ipsum numquam iure beatae. Iste quia expedita quo eius.</p>
                             <div className='hidden dark:group-hover:hidden group-hover:block absolute top-0 left-0 right-0 bottom-0 bg-gray-700 bg-opacity-50 rounded md:rounded-md'></div>                 
                      </div>
@@ -145,7 +145,7 @@ const options = {
 
                 {/* categories */}
                 <div className='max-w-60 xl:w-80'>
-                <h5 class="w-full px-3 py-2 text-gray-400 text-md font-semibold border-l-2 border-orange-700 uppercase">Blog Categories</h5>
+                <h5 className="w-full px-3 py-2 text-gray-400 text-md font-semibold border-l-2 border-orange-700 uppercase">Blog Categories</h5>
                   <div className='py-8 w-12/12'>
                       <div className='text-md font-semibold text-gray-700 dark:text-gray-300'>
 
