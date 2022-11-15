@@ -5,6 +5,7 @@ import { ImSun } from "react-icons/im";
 import { GrFormSearch } from "react-icons/gr";
 import moment from "moment";
 import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 const Navbar = () => {
 
     const [ theme , setTheme ] = useState("dark");
@@ -71,7 +72,7 @@ const Navbar = () => {
             </header>
             <nav className='container pt-6'>
               <div className='flex justify-between gap-x-6'>
-              <Link to="/"><img className='w-24 md:32 lg:w-40' src="./img/dark-logo.png" alt="logo" /></Link> 
+              <NavLink to="/"><img className='w-24 md:32 lg:w-40' src="./img/dark-logo.png" alt="logo" /></NavLink> 
                 <form className='px-3 sm:px-4 py-2 bg-white flex items-center rounded border border-gray-300 dark:border-dull-black shadow-sm'>
                 <input className='outline-none bg-transparent text-gray-700 max-w-[150px] sm:max-w-max' type="search" name="search" id="search" placeholder='Search..'/>
                 <button>
@@ -82,34 +83,40 @@ const Navbar = () => {
               <ul className='navbar-ul mt-5 flex gap-x-8 !gap-y-0 font-semibold border-b border-gray-500 border-opacity-30
                text-gray-600 dark:text-gray-100 overflow-x-scroll xl:overflow-x-hidden'>
                     <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 border-b-2 border-orange-600'>
-                        <a href="/">Explore</a>
+                        <NavLink to="/">Explore</NavLink>
                     </li>
                     <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
-                        <a href="/">Business</a>
+                        <NavLink to="/category/business">Business</NavLink>
                     </li>
                     <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
-                        <a href="/">Technology</a>
+                        <NavLink to="/category/technology">Technology</NavLink>
                     </li>
                     <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
-                        <a href="/">Programming</a>
+                        <NavLink to="/category/programming">Programming</NavLink>
                     </li>
                     <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
-                        <a href="/">Cybersecurity</a>
+                        <NavLink to="/category/cybersecurity">Cybersecurity</NavLink>
+
                     </li>
                     <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
-                        <a href="/">Scamming</a>
+                        <NavLink to="/category/scamming">Scamming</NavLink>
+
                     </li>
                     <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
-                        <a href="/">Fitness</a>
+                        <NavLink to="/category/fitness">Fitness</NavLink>
+
                     </li>
                     <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
-                        <a href="/">lifeStyle</a>
+                        <NavLink to="/category/lifestyle">lifeStyle</NavLink>
+
                     </li>
                     <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
-                        <a href="/">Sport</a>
+                        <NavLink to="/category/sports">Sports</NavLink>
+
                     </li>
                     <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 whitespace-nowrap'>
-                        <a href="/">Tips & Tricks</a>
+                        <NavLink to="/category/others">Others</NavLink>
+
                     </li>
                    </ul>
             </nav>

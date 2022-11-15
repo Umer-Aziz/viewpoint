@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -150,52 +151,47 @@ const options = {
                       <div className='text-md font-semibold text-gray-700 dark:text-gray-300'>
 
                         <div className='flex justify-between pb-2 border-dark cursor-pointer'>
-                          <p className='hover:text-gray-700 dark:hover:text-gray-400 '>Business</p>
+                          <Link to="/category/business" className='hover:text-gray-700 dark:hover:text-gray-400 '>Business</Link>
                           <span className='text-md px-2 font-normal text-gray-50 bg-orange-600 rounded'>2</span>
                         </div>
 
                         <div className='flex justify-between py-2 border-dark cursor-pointer'>
-                          <p className='hover:text-gray-700 dark:hover:text-gray-400 '>Technology</p>
+                          <Link to="/category/technology" className='hover:text-gray-700 dark:hover:text-gray-400 '>Technology</Link>
                           <span className='text-md px-2 font-normal text-gray-50 bg-orange-600 rounded'>3</span>
                         </div>
 
                         <div className='flex justify-between py-2 border-dark cursor-pointer'>
-                          <p className='hover:text-gray-700 dark:hover:text-gray-400 '>Programming</p>
+                          <Link to="/category/programming" className='hover:text-gray-700 dark:hover:text-gray-400 '>Programming</Link>
                           <span className='text-md px-2 font-normal text-gray-50 bg-orange-600 rounded'>7</span>
                         </div>
 
                         <div className='flex justify-between py-2 border-dark cursor-pointer'>
-                          <p className='hover:text-gray-700 dark:hover:text-gray-400 '>CyberSecurity</p>
+                          <Link to="/category/cybersecurity" className='hover:text-gray-700 dark:hover:text-gray-400 '>CyberSecurity</Link>
                           <span className='text-md px-2 font-normal text-gray-50 bg-orange-600 rounded'>6</span>
                         </div>
 
                         <div className='flex justify-between py-2 border-dark cursor-pointer'>
-                          <p className='hover:text-gray-700 dark:hover:text-gray-400 '>Scamming</p>
+                          <Link to="/category/scamming" className='hover:text-gray-700 dark:hover:text-gray-400 '>Scamming</Link>
                           <span className='text-md px-2 font-normal text-gray-50 bg-orange-600 rounded'>6</span>
                         </div>
 
                         <div className='flex justify-between py-2 border-dark cursor-pointer'>
-                          <p className='hover:text-gray-700 dark:hover:text-gray-400 '>Fitness</p>
+                          <Link to="/category/fitness" className='hover:text-gray-700 dark:hover:text-gray-400 '>Fitness</Link>
                           <span className='text-md px-2 font-normal text-gray-50 bg-orange-600 rounded'>2</span>
                         </div>
 
                         <div className='flex justify-between py-2 border-dark cursor-pointer'>
-                          <p className='hover:text-gray-700 dark:hover:text-gray-400 '>LifeStyle</p>
+                          <Link to="/category/lifestyle" className='hover:text-gray-700 dark:hover:text-gray-400 '>lifeStyle</Link>
                           <span className='text-md px-2 font-normal text-gray-50 bg-orange-600 rounded'>13</span>
                         </div>
 
                         <div className='flex justify-between py-2 border-dark cursor-pointer'>
-                          <p className='hover:text-gray-700 dark:hover:text-gray-400 '>Sports</p>
+                          <Link to="/category/sports" className='hover:text-gray-700 dark:hover:text-gray-400'>Sports</Link>
                           <span className='text-md px-2 font-normal text-gray-50 bg-orange-600 rounded'>8</span>
                         </div>
 
                         <div className='flex justify-between py-2 border-dark cursor-pointer'>
-                          <p className='hover:text-gray-700 dark:hover:text-gray-400  whitespace-nowrap'>Tips & Tricks</p>
-                          <span className='text-md px-2 font-normal text-gray-50 bg-orange-600 rounded'>1</span>
-                        </div>
-
-                        <div className='flex justify-between py-2 border-dark cursor-pointer'>
-                          <p className='hover:text-gray-700 dark:hover:text-gray-400 '>Others</p>
+                          <Link to="/category/others" className='hover:text-gray-700 dark:hover:text-gray-400 '>Others</Link>
                           <span className='text-md px-2 font-normal text-gray-50 bg-orange-600 rounded'>0</span>
                         </div>
 

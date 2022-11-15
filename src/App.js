@@ -6,6 +6,9 @@ import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 import ScrolltoTop from "./components/ScrolltoTop";
 import Error from "./pages/404";
+import Category from "./pages/Category";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
 
 function App() {
   return (
@@ -14,10 +17,13 @@ function App() {
     <Navbar/>
     <ScrolltoTop/>
     <Routes>
+    <Route path="*" element={<Error/>}/>
     <Route exact path="/" element={<Home/>}/>
     <Route exact path="/blogs" element={<Blogs/>}/>
+    <Route exact path="/category/:category" element={<Category/>}/>
     <Route exact path="/contact" element={<Contact/>}/>
-    <Route path="*" element={<Error/>}/>
+    <Route exact path="/privacy-policy" element={<PrivacyPolicy/>}/>
+    <Route exact path="/terms-conditions" element={<Terms/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>
