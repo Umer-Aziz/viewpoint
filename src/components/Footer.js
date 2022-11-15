@@ -1,178 +1,83 @@
 import React from "react";
 import { FaGithub , FaLinkedin , FaTwitter ,  FaStackOverflow } from "react-icons/fa";
-
+import { NavLink , Link } from "react-router-dom";
 export const Footer = () => {
     return (
       <div className="bg-gray-100 dark:bg-gray-600 dark:bg-opacity-5">
         <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 xl:max-w-7xl 2xl:px-0">
           <div className="grid row-gap-10 mb-8 lg:grid-cols-6">
-            <div className="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4">
+            <div className="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-2">
               <div>
                 <p className="font-medium tracking-wide dark:text-gray-300 text-gray-600">
                   Category
                 </p>
                 <ul className="mt-2 space-y-2">
-                  <li>
-                    <a
-                      href="/"
-                      className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                    >
-                      News
-                    </a>
+                  
+                 
+                  <li className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200">
+                    <NavLink to="/category/technology">Technology</NavLink>
                   </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                    >
-                      World
-                    </a>
+                  <li className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200">
+                    <NavLink to="/category/programming">Programming</NavLink>
                   </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                    >
-                      Games
-                    </a>
+                  <li className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200">
+                    <NavLink to="/category/programming">CyberSecurity</NavLink>
                   </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                    >
-                      References
-                    </a>
+                  <li className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200">
+                    <NavLink to="/category/programming">LifeStyle</NavLink>
                   </li>
+                  <li className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200">
+                    <NavLink to="/category/programming">Scamming</NavLink>
+                  </li>
+                  
                 </ul>
               </div>
               <div>
-                <p className="font-medium tracking-wide dark:text-gray-300 text-gray-600">Apples</p>
+                <p className="font-medium tracking-wide dark:text-gray-300 text-gray-600">Pages</p>
                 <ul className="mt-2 space-y-2">
                   <li>
-                    <a
-                      href="/"
+                    <Link
+                      to="/blogs"
                       className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
                     >
-                      Web
-                    </a>
+                      Blogs
+                    </Link>
                   </li>
                   <li>
                     <a
-                      href="/"
+                     target="_blank"
+                     rel="noreferrer"
+                      href="https://umeraziz-engineer.herokuapp.com/"
                       className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
                     >
-                      eCommerce
+                      About
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="/"
+                    <Link
+                      to="/contact"
                       className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
                     >
-                      Business
-                    </a>
+                      Contact
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="/"
+                    <Link
+                      to="/privacy-policy"
                       className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
                     >
-                      Entertainment
-                    </a>
+                      Privacy & Policy
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="/"
+                    <Link
+                      to="/terms-conditions"
                       className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
                     >
-                      Portfolio
-                    </a>
+                      Terms & Conditions
+                    </Link>
                   </li>
-                </ul>
-              </div>
-              <div>
-                <p className="font-medium tracking-wide dark:text-gray-300 text-gray-600">Cherry</p>
-                <ul className="mt-2 space-y-2">
-                  <li>
-                    <a
-                      href="/"
-                      className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                    >
-                      Media
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                    >
-                      Brochure
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                    >
-                      Nonprofit
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                    >
-                      Educational
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                    >
-                      Projects
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <p className="font-medium tracking-wide dark:text-gray-300 text-gray-600">
-                  Business
-                </p>
-                <ul className="mt-2 space-y-2">
-                  <li>
-                    <a
-                      href="/"
-                      className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                    >
-                      Infopreneur
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                    >
-                      Personal
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                    >
-                      Wiki
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                    >
-                      Forum
-                    </a>
-                  </li>
+                 
                 </ul>
               </div>
             </div>
@@ -195,8 +100,7 @@ export const Footer = () => {
                 </button>
               </form>
               <p className="mt-4 text-sm text-gray-500">
-                Bacon ipsum dolor amet short ribs pig sausage prosciuto chicken
-                spare ribs salami.
+                Subscribe to get latest articles in your email box!
               </p>
             </div>
           </div>
