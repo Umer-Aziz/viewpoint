@@ -4,7 +4,7 @@ const Category = () => {
   return (
     <>
         <main className='container'>
-            <div className='pt-12 pb-20'>
+            <div className='pt-8 pb-20'>
             
               {/* All blogs */}
             <div className='grid gap-y-6 md:grid-cols-2 lg:grid-cols-3 gap-x-6'>

@@ -1,7 +1,7 @@
 import React from "react";
 import { WiTime8 } from "react-icons/wi";
 import PostSwitcher from "./PostSwitcher";
-
+import { Link } from "react-router-dom";
 const Homehero = () => {
   return (
     <>
@@ -10,6 +10,7 @@ const Homehero = () => {
           <div className="grid gap-y-6 lg:flex sm:gap-x-6 lg:gap-x-6">
             {/* main div */}
             <div className="sm:max-w-xl xl:min-w-[38rem] shadow rounded group cursor-pointer">
+            <Link to={`/article/lorem-ibsum-slug`}>
               <div className="max-h-80 lg:max-h-max overflow-hidden">
                 <img
                   className="sm:min-h-[18rem] xl:min-h-[22rem] bg-cover object-cover group-hover:scale-105 transition-all duration-500"
@@ -39,6 +40,7 @@ const Homehero = () => {
                   </p>
                 </div>
               </div>
+              </Link>
             </div>
 
             <div className="lg:max-w-xs shadow rounded group cursor-pointer">

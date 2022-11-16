@@ -4,11 +4,12 @@ import { BsMoonStarsFill } from "react-icons/bs";
 import { ImSun } from "react-icons/im";
 import { GrFormSearch } from "react-icons/gr";
 import moment from "moment";
-import { Link } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
+import { Link , NavLink , useLocation } from 'react-router-dom';
+
 const Navbar = () => {
 
     const [ theme , setTheme ] = useState("dark");
+    let path = useLocation().pathname;
 
     // checking default browser theme 
     useEffect(() => {
@@ -82,39 +83,39 @@ const Navbar = () => {
               </div>
               <ul className='navbar-ul mt-5 flex gap-x-8 !gap-y-0 font-semibold border-b border-gray-500 border-opacity-30
                text-gray-600 dark:text-gray-100 overflow-x-scroll xl:overflow-x-hidden'>
-                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 border-b-2 border-orange-600'>
+                    <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 ${path === "/" && "border-b-2 border-orange-600"}`}>
                         <NavLink to="/">Explore</NavLink>
                     </li>
-                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
+                    <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 ${path === "/category/business" && "border-b-2 border-orange-600"}`}>
                         <NavLink to="/category/business">Business</NavLink>
                     </li>
-                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
+                    <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 ${path === "/category/technology" && "border-b-2 border-orange-600"}`}>
                         <NavLink to="/category/technology">Technology</NavLink>
                     </li>
-                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
+                    <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 ${path === "/category/programming" && "border-b-2 border-orange-600"}`}>
                         <NavLink to="/category/programming">Programming</NavLink>
                     </li>
-                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
+                    <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 ${path === "/category/cybersecurity" && "border-b-2 border-orange-600"}`}>
                         <NavLink to="/category/cybersecurity">Cybersecurity</NavLink>
 
                     </li>
-                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
+                    <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 ${path === "/category/scamming" && "border-b-2 border-orange-600"}`}>
                         <NavLink to="/category/scamming">Scamming</NavLink>
 
                     </li>
-                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
+                    <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 ${path === "/category/fitness" && "border-b-2 border-orange-600"}`}>
                         <NavLink to="/category/fitness">Fitness</NavLink>
 
                     </li>
-                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
+                    <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 ${path === "/category/lifestyle" && "border-b-2 border-orange-600"}`}>
                         <NavLink to="/category/lifestyle">lifeStyle</NavLink>
 
                     </li>
-                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300'>
+                    <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 ${path === "/category/sports" && "border-b-2 border-orange-600"}`}>
                         <NavLink to="/category/sports">Sports</NavLink>
 
                     </li>
-                    <li className='py-2 hover:text-gray-700 dark:hover:text-gray-300 whitespace-nowrap'>
+                    <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 whitespace-nowrap ${path === "/category/others" && "border-b-2 border-orange-600"}`}>
                         <NavLink to="/category/others">Others</NavLink>
 
                     </li>
