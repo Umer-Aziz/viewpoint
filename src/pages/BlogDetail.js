@@ -1,4 +1,6 @@
 import React,{ useEffect } from "react";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { WiTime8 } from "react-icons/wi"
 import PostSwitcher from "../components/home/PostSwitcher";
 import hljs from "highlight.js";
 import 'highlight.js/styles/github-dark.css';
@@ -10,6 +12,7 @@ const BlogDetail = () => {
     document.querySelectorAll('code').forEach((el) => {
       hljs.highlightElement(el);
     });
+    
    }, [])
    
  
@@ -17,6 +20,7 @@ const BlogDetail = () => {
     <>
       <main className="container pt-10 pb-20 text-gray-600 dark:text-gray-300">
         <div className="grid gap-y-12 md:flex md:justify-between md:gap-x-6 lg:gap-x-8 xl:gap-x-12">
+        <div>
           <article className="w-full">
             <div>
               <h6 className="text-sm font-medium text-orange-600 capitalize">
@@ -42,12 +46,14 @@ const BlogDetail = () => {
             </div>
 
             {/* main Content  */}
-            <div className="main-content">
+            <div className="main-content w-full">
+              <div>
               <img
                 className="my-3 bg-cover object-cover w-full rounded-md"
                 src="https://media.istockphoto.com/id/1363276509/es/foto/maestra-dando-conferencias-de-ciencias-de-la-computaci%C3%B3n-a-diversos-grupos-multi%C3%A9tnicos-de.jpg?s=612x612&w=0&k=20&c=c8yFDf_yUJiC_qsRNBAo_kppLhY9RT5nXpcpcnhHGlM="
                 alt="article-pic"
               />
+              </div>
               <div className="article-content">
                 <h2>Lorem ipsum dolor sit amet consectetur.</h2>
                 <p>
@@ -124,6 +130,79 @@ int main() {
               </div>
             </div>
           </article>
+          
+          {/* previous / Next Post  */}
+          <div className="md:px-8 flex justify-between pt-6 pb-10 border-b border-gray-600 border-opacity-10 dark:border-opacity-30">
+            <button className="flex items-center gap-x-0.5 font-medium text-orange-600 hover:text-orange-700"><IoIosArrowBack/> Previous</button>
+            <button className="flex items-center gap-x-0.5 font-medium text-orange-600 hover:text-orange-700"><span>Next</span><IoIosArrowForward/></button>
+          </div>
+
+          {/* Similar posts  */}
+
+           <div className="my-10">
+           <h3 className="px-3 py-1 text-gray-400 text-lg font-semibold border-l-2 border-orange-700 uppercase">Similar Posts</h3>
+          <div className='py-6 grid gap-y-6 md:grid-cols-2 xl:grid-cols-3 gap-x-6'>
+
+            <div className='py-3 shadow rounded group cursor-pointer'>
+            <div className='overflow-hidden w-full rounded md:rounded-md'>
+            <img className='bg-cover md:h-40 xl:h-52 object-fill rounded lg:rounded-md w-full group-hover:scale-105 transition-all 
+            duration-500' 
+            src="https://media.istockphoto.com/id/1402667894/es/foto/pantalla-de-conferencia-de-energ%C3%ADa.jpg?s=612x612&w=0&k=20&c=if8B0E4TJ1ohnU-yZKGXosQfx2ctOh7JTWllo6VxWkc=" alt="blog-posts" />
+            </div>
+            <div className='px-2 lg:px-3'>
+            <p className="mt-2 lg:mt-3 text-sm text-orange-600 font-semibold">Technology</p>
+            <h3 className="my-2 text-xl font-semibold blog-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>
+            <p className='hidden xl:block my-1'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus fuga unde neque nihil ratione cumque eveniet distinctio nulla</p>
+            <p className="lg:mt-2 flex items-center gap-x-1 text-gray-500">
+                <WiTime8 className="text-sm" />
+                <span className="text-sm font-semibold">
+                12 November, 2022
+                </span>
+            </p>
+            </div>
+            </div>
+
+            <div className='py-3 shadow rounded group cursor-pointer'>
+            <div className='overflow-hidden w-full rounded md:rounded-md'>
+            <img className='bg-cover md:h-40 xl:h-52 object-fill rounded lg:rounded-md w-full group-hover:scale-105 transition-all 
+            duration-500' 
+            src="https://media.istockphoto.com/id/854321536/es/foto/mira-este-vestido-magn%C3%ADfico.jpg?s=612x612&w=0&k=20&c=6Nh1enezE-wNc-GXA3ADbKHH7AiVSYZFmCjXu84q_tw=" alt="blog-posts" />
+            </div>
+            <div className='px-2 lg:px-3'>
+            <p className="mt-2 lg:mt-3 text-sm text-orange-600 font-semibold">LifeStyle</p>
+            <h3 className="my-2 text-xl font-semibold blog-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>
+            <p className='hidden xl:block my-1'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus fuga unde neque nihil ratione cumque eveniet distinctio nulla</p>
+            <p className="lg:mt-2 flex items-center gap-x-1 text-gray-500">
+                <WiTime8 className="text-sm" />
+                <span className="text-sm font-semibold">
+                12 November, 2022
+                </span>
+            </p>
+            </div>
+            </div>
+
+            <div className='py-3 shadow rounded group cursor-pointer'>
+            <div className='overflow-hidden w-full rounded md:rounded-md'>
+            <img className='md:h-40 xl:h-52 bg-cover object-fill rounded lg:rounded-md w-full group-hover:scale-105 transition-all 
+            duration-500' 
+            src="https://media.istockphoto.com/id/155596905/es/foto/mujer-ropa-de-alta-categor%C3%ADa.jpg?s=612x612&w=0&k=20&c=AOusb6rXetcs-beZ9IK70-cCOUQccT-rupOqFhjlCTg=" alt="blog-posts" />
+            </div>
+            <div className='px-2 lg:px-3'>
+            <p className="mt-2 lg:mt-3 text-sm text-orange-600 font-semibold">LifeStyle</p>
+            <h3 className="my-2 text-xl font-semibold blog-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>
+            <p className='hidden xl:block my-1'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus fuga unde neque nihil ratione cumque eveniet distinctio nulla</p>
+            <p className="lg:mt-2 flex items-center gap-x-1 text-gray-500">
+                <WiTime8 className="text-sm" />
+                <span className="text-sm font-semibold">
+                12 November, 2022
+                </span>
+            </p>
+            </div>
+            </div>
+
+          </div>
+        </div>
+          </div>
           <div className="w-auto sm:w-72 md:w-80 xl:w-88">
             <PostSwitcher />
           </div>
