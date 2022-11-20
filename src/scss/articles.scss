@@ -10,7 +10,7 @@
         @apply pt-2 text-lg font-semibold;
     }
     p{
-        @apply pt-4 lg:text-lg;
+        @apply pt-4 ;
     }
 
         li:before {
@@ -20,7 +20,17 @@
         a{
             @apply text-blue-800 dark:text-blue-500 hover:underline;
         }
-    code {
-        @apply text-gray-100 block mt-4 p-4 bg-gray-900 dark:bg-gray-600 dark:bg-opacity-20 bg-opacity-90 whitespace-pre-wrap;        
-    }
+        pre{
+            @apply relative;
+            code::after {
+                content: "Copy";
+                @apply absolute top-2 right-3 hover:text-orange-600 font-semibold;
+            } 
+            code:hover::after{
+             @apply text-orange-600;
+            }
+            code {
+                @apply block mt-4 bg-[#282828]  whitespace-pre-wrap cursor-pointer;   
+            }
+        }
 }

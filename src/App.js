@@ -10,13 +10,14 @@ import Category from "./pages/Category";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
 import BlogDetail from "./pages/BlogDetail";
+import Dashboard from "./admin/Dashboard";
 
 function App() {
   return (
    <>
    <BrowserRouter>
-    <Navbar/>
     <ScrolltoTop/>
+    <Navbar/>
     <Routes>
     <Route path="*" element={<Error/>}/>
     <Route exact path="/" element={<Home/>}/>
@@ -26,6 +27,9 @@ function App() {
     <Route exact path="/contact" element={<Contact/>}/>
     <Route exact path="/privacy-policy" element={<PrivacyPolicy/>}/>
     <Route exact path="/terms-conditions" element={<Terms/>}/>
+
+    {/* admin Routes  */}
+    <Route exact path="/dashboard" element={<Dashboard/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>

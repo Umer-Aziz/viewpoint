@@ -5,16 +5,23 @@ import PostSwitcher from "../components/home/PostSwitcher";
 import hljs from "highlight.js";
 import 'highlight.js/styles/github-dark.css';
 
+
 const BlogDetail = () => {
 
   // first, find all the div.code blocks
    useEffect(() => {
-    document.querySelectorAll('code').forEach((el) => {
+    document.querySelectorAll('pre code').forEach((el) => {
       hljs.highlightElement(el);
+      el.addEventListener("click",()=>{
+       let CopyText = el.innerText;
+        navigator.clipboard.writeText(CopyText)
+      })
     });
+    hljs.configure({ignoreUnescapedHTML: true});
+    hljs.safeMode();
+
     
    }, [])
-   
  
   return (
     <>
@@ -79,6 +86,26 @@ const BlogDetail = () => {
                   Provident delectus illo necessitatibus quasi vitae iste quae
                   tenetur quos? Deserunt doloribus iure suscipit quia.
                 </p>
+                <pre>
+                  <code>  
+{
+  `p {
+    position: relative;
+    background-color: blue;
+}
+
+p:before {
+    content: '';
+    position: absolute;
+    left:100%;
+    width: 10px;
+    height: 100%;
+    background-color: red;
+}`
+}
+                  </code>
+     
+                </pre>
                 <p>
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                   Consequuntur ut, omnis voluptate nesciunt rerum pariatur,
@@ -126,6 +153,7 @@ int main() {
 }`
 }
                   </code>
+     
                 </pre>
               </div>
             </div>
@@ -133,8 +161,8 @@ int main() {
           
           {/* previous / Next Post  */}
           <div className="md:px-8 flex justify-between pt-6 pb-10 border-b border-gray-600 border-opacity-10 dark:border-opacity-30">
-            <button className="flex items-center gap-x-0.5 font-medium text-orange-600 hover:text-orange-700"><IoIosArrowBack/> Previous</button>
-            <button className="flex items-center gap-x-0.5 font-medium text-orange-600 hover:text-orange-700"><span>Next</span><IoIosArrowForward/></button>
+            <button className="flex items-center gap-x-0.5 font-semibold text-orange-600 hover:text-orange-700"><IoIosArrowBack/> Previous</button>
+            <button className="flex items-center gap-x-0.5 font-semibold text-orange-600 hover:text-orange-700"><span>Next</span><IoIosArrowForward/></button>
           </div>
 
           {/* Similar posts  */}

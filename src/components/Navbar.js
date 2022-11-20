@@ -73,7 +73,7 @@ const Navbar = () => {
             </header>
             <nav className='container pt-6'>
               <div className='flex justify-between gap-x-6'>
-              <NavLink to="/"><img className='w-24 md:32 lg:w-40' src="./img/dark-logo.png" alt="logo" /></NavLink> 
+              <NavLink to="/"><img className='w-24 md:32 lg:w-40' src="../img/dark-logo.png" alt="logo" /></NavLink> 
                 <form className='px-3 sm:px-4 py-2 bg-white flex items-center rounded border border-gray-300 dark:border-dull-black shadow-sm'>
                 <input className='outline-none bg-transparent text-gray-700 max-w-[150px] sm:max-w-max' type="search" name="search" id="search" placeholder='Search..'/>
                 <button>
