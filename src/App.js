@@ -13,6 +13,7 @@ import BlogDetail from "./pages/BlogDetail";
 import Dashboard from "./admin/Dashboard";
 
 function App() {
+
   return (
    <>
    <BrowserRouter>
