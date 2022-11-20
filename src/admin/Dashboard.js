@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaHome } from "react-icons/fa"
-import { AiOutlinePlus } from "react-icons/ai"
+import Overview from '../components/admin/Overview'
 
 const Dashboard = () => {
   return (
@@ -8,7 +8,7 @@ const Dashboard = () => {
         <main className='container py-10'>
         <div className='flex '>
         {/* Sidebar  */}
-          <section>
+        <section>
             
 <div className="relative border-r border-gray-600 border-opacity-10 dark:border-opacity-30">
     <div className="flex flex-col sm:flex-row sm:justify-around">
@@ -51,14 +51,7 @@ const Dashboard = () => {
           {/* overview */}
           <section className='pl-4 text-gray-600 dark:text-gray-300 w-full'>
           <div>
-
-            <div className='flex justify-between items-center'>
-            <h1 className='text-2xl text-orange-600'>Overview</h1>
-            <a href="/" className='flex items-center text-orange-600 gap-x-2 py-2 px-4 uppercase border rounded border-orange-600 hover:text-gray-100 hover:bg-orange-600'>
-             <AiOutlinePlus className='font-semibold'/> 
-             <span>new posts</span>
-             </a>
-            </div>
+          <Overview/>
           </div>
           </section>
         </div>
