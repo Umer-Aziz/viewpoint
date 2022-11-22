@@ -11,6 +11,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
 import BlogDetail from "./pages/BlogDetail";
 import Dashboard from "./admin/Dashboard";
+import AllBlogs from "./admin/AllBlogs";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
 
     {/* admin Routes  */}
     <Route exact path="/dashboard" element={<Dashboard/>}/>
+    <Route exact path="/dashboard/allblogs" element={<AllBlogs/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>
