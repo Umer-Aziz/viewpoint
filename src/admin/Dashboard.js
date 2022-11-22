@@ -1,5 +1,8 @@
 import React from 'react'
-import { FaHome } from "react-icons/fa"
+import { FaHome , FaBlog , FaRegEdit } from "react-icons/fa"
+import { RiUserSettingsLine , RiLogoutCircleRLine } from "react-icons/ri"
+import { MdOutlineAttachEmail } from "react-icons/md"
+
 import Overview from '../components/admin/Overview'
 
 const Dashboard = () => {
@@ -22,9 +25,37 @@ const Dashboard = () => {
                 </a>
 
                 <a href="/dashboard" className="sidebar-list">
-                    <FaHome className='text-xl -translate-y-0.5'/>
+                    <FaBlog className='text-xl -translate-y-0.5'/>
                     <span className="mx-4 md:text-lg font-normal hidden md:flex">
-                        Dashboard
+                     Show All Blogs
+                    </span>
+                </a>
+
+                <a href="/dashboard" className="sidebar-list">
+                    <MdOutlineAttachEmail className='text-xl -translate-y-0.5'/>
+                    <span className="mx-4 md:text-lg font-normal hidden md:flex">
+                        Blogs Subscriber
+                    </span>
+                </a>
+                
+                <a href="/dashboard" className="sidebar-list">
+                    <FaRegEdit className='text-xl -translate-y-0.5'/>
+                    <span className="mx-4 md:text-lg font-normal hidden md:flex">
+                        Add New Blog
+                    </span>
+                </a>
+
+                <a href="/dashboard" className="sidebar-list">
+                    <RiUserSettingsLine className='text-xl -translate-y-0.5'/>
+                    <span className="mx-4 md:text-lg font-normal hidden md:flex">
+                        Setting
+                    </span>
+                </a>
+
+                <a href="/dashboard" className="sidebar-list">
+                    <RiLogoutCircleRLine className='text-xl -translate-y-0.5'/>
+                    <span className="mx-4 md:text-lg font-normal hidden md:flex">
+                        Logout
                     </span>
                 </a>
                 

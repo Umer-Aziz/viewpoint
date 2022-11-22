@@ -14,7 +14,7 @@ const Overview = () => {
             <h1 className='text-2xl text-orange-600'>Overview</h1>
             <a href="/" className='flex items-center text-orange-600 gap-x-2 py-2 px-4 uppercase border rounded border-orange-600 hover:text-gray-100 hover:bg-orange-600'>
              <AiOutlinePlus className='font-semibold'/> 
-             <span>new posts</span>
+             <span>new post</span>
              </a>
             </div>
 
@@ -47,31 +47,32 @@ const Overview = () => {
         <div className='flex justify-center'>
         <PieChart/>
         </div>
-            <div className='xl:w-4/6 overflow-x-scroll'>
+            <div className='xl:w-4/6 overflow-x-scroll md:overflow-x-hidden'>
             <h4 class="text-2xl text-orange-600 mb-4">Recent Blogs</h4>
          {/* <!-- component --> */}
         <table className="border-collapse w-full max-w-full overflow-x-auto min-w-[43rem]">
             <thead>
                 <tr className='text-gray-600 dark:text-gray-300'>
-                    <th className="p-3 font-bold uppercase bg-[#F3F4F6] dark:bg-[#1F1F20] border border-gray-600 border-opacity-10 dark:border-opacity-30">Blog Title</th>
-                    <th className="p-3 font-bold uppercase bg-[#F3F4F6] dark:bg-[#1F1F20] border border-gray-600 border-opacity-10 dark:border-opacity-30">Date</th>
-                    <th className="p-3 font-bold uppercase bg-[#F3F4F6] dark:bg-[#1F1F20] border border-gray-600 border-opacity-10 dark:border-opacity-30">Status</th>
-                    <th className="p-3 font-bold uppercase bg-[#F3F4F6] dark:bg-[#1F1F20] border border-gray-600 border-opacity-10 dark:border-opacity-30">Actions</th>
+                    <th className="p-3 font-bold uppercase bg-[#F3F4F6] dark:bg-dull-gray border border-gray-600 border-opacity-10 dark:border-opacity-30">Blog Title</th>
+                    <th className="p-3 font-bold uppercase bg-[#F3F4F6] dark:bg-dull-gray border border-gray-600 border-opacity-10 dark:border-opacity-30">Date</th>
+                    <th className="p-3 font-bold uppercase bg-[#F3F4F6] dark:bg-dull-gray border border-gray-600 border-opacity-10 dark:border-opacity-30">Status</th>
+                    <th className="p-3 font-bold uppercase bg-[#F3F4F6] dark:bg-dull-gray border border-gray-600 border-opacity-10 dark:border-opacity-30">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr className="bg-white lg:hover:bg-gray-100 table-row flex-row flex-wrap flex-no-wrap mb-0">
-                    <td className="w-full max-w-[26rem] p-3 text-gray-800 text-center border border-b table-cell static">
+                <tr className="bg-white dark:bg-dull-black text-gray-600 dark:text-gray-300
+                 lg:hover:bg-gray-100 lg:dark:hover:bg-dull-gray table-row flex-row flex-wrap flex-no-wrap">
+                    <td className="w-full max-w-[26rem] p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell  static">
                         Lorem ipsum dolor sit amet consectetur adipisicing. Lorem ipsum dolor sit.
                     </td>
-                    <td className="w-full p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 block lg:table-cell relative lg:static ">
                         10/12/2022
                     </td>
-                    <td className="w-full p-3 text-gray-800 text-center border border-b table-cell static">
-                        <span className="rounded bg-yellow-400 py-1 px-3 text-xs font-bold">Draft</span>
+                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell  static">
+                        <span className="rounded text-gray-800 bg-yellow-400 py-1 px-3 text-xs font-bold">Draft</span>
                         {/* <span className="rounded bg-green-400 py-1 px-3 text-xs font-bold">Published</span> */}
                     </td>
-                    <td className="w-full p-3 text-gray-800 text-center border border-b table-cell static">
+                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell  static">
                         <div className='flex justify-center gap-x-2'>
                         <a href="/" className="text-green-600 hover:text-green-700 md:text-xl"><FaRegEdit/></a>
                         <button className="text-red-600 hover:text-red-700 md:text-xl"><MdDeleteForever/></button>
@@ -79,18 +80,79 @@ const Overview = () => {
                     </td>
                 </tr>
 
-                <tr className="bg-white lg:hover:bg-gray-100 table-row flex-row flex-wrap flex-no-wrap mb-0">
-                    <td className="w-full max-w-[26rem] p-3 text-gray-800 text-center border border-b table-cell static">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing.
+                <tr className="bg-white dark:bg-dull-black text-gray-600 dark:text-gray-300
+                 lg:hover:bg-gray-100 lg:dark:hover:bg-dull-gray table-row flex-row flex-wrap flex-no-wrap">
+                    <td className="w-full max-w-[26rem] p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell  static">
+                        Lorem ipsum dolor sit amet consectetur adipisicing. Lorem ipsum dolor sit.
                     </td>
-                    <td className="w-full p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 block lg:table-cell relative lg:static ">
                         10/12/2022
                     </td>
-                    <td className="w-full p-3 text-gray-800 text-center border border-b table-cell static">
-                        {/* <span className="rounded bg-yellow-400 py-1 px-3 text-xs font-bold">Draft</span> */}
-                        <span className="rounded bg-green-400 py-1 px-3 text-xs font-bold">Published</span>
+                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell  static">
+                        {/* <span className="rounded text-gray-800 bg-yellow-400 py-1 px-3 text-xs font-bold">Draft</span> */}
+                        <span className="rounded text-gray-800 bg-green-400 py-1 px-3 text-xs font-bold">Published</span>
                     </td>
-                    <td className="w-full p-3 text-gray-800 text-center border border-b table-cell static">
+                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell  static">
+                        <div className='flex justify-center gap-x-2'>
+                        <a href="/" className="text-green-600 hover:text-green-700 md:text-xl"><FaRegEdit/></a>
+                        <button className="text-red-600 hover:text-red-700 md:text-xl"><MdDeleteForever/></button>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr className="bg-white dark:bg-dull-black text-gray-600 dark:text-gray-300
+                 lg:hover:bg-gray-100 lg:dark:hover:bg-dull-gray table-row flex-row flex-wrap flex-no-wrap">
+                    <td className="w-full max-w-[26rem] p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell  static">
+                        Lorem ipsum dolor sit amet consectetur adipisicing. Lorem ipsum dolor sit.
+                    </td>
+                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 block lg:table-cell relative lg:static ">
+                        10/12/2022
+                    </td>
+                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell  static">
+                        <span className="rounded text-gray-800 bg-yellow-400 py-1 px-3 text-xs font-bold">Draft</span>
+                        {/* <span className="rounded bg-green-400 py-1 px-3 text-xs font-bold">Published</span> */}
+                    </td>
+                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell  static">
+                        <div className='flex justify-center gap-x-2'>
+                        <a href="/" className="text-green-600 hover:text-green-700 md:text-xl"><FaRegEdit/></a>
+                        <button className="text-red-600 hover:text-red-700 md:text-xl"><MdDeleteForever/></button>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr className="bg-white dark:bg-dull-black text-gray-600 dark:text-gray-300
+                 lg:hover:bg-gray-100 lg:dark:hover:bg-dull-gray table-row flex-row flex-wrap flex-no-wrap">
+                    <td className="w-full max-w-[26rem] p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell  static">
+                        Lorem ipsum dolor sit amet consectetur adipisicing. Lorem ipsum dolor sit.
+                    </td>
+                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 block lg:table-cell relative lg:static ">
+                        10/12/2022
+                    </td>
+                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell  static">
+                        {/* <span className="rounded text-gray-800 bg-yellow-400 py-1 px-3 text-xs font-bold">Draft</span> */}
+                        <span className="rounded text-gray-800 bg-green-400 py-1 px-3 text-xs font-bold">Published</span>
+                    </td>
+                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell  static">
+                        <div className='flex justify-center gap-x-2'>
+                        <a href="/" className="text-green-600 hover:text-green-700 md:text-xl"><FaRegEdit/></a>
+                        <button className="text-red-600 hover:text-red-700 md:text-xl"><MdDeleteForever/></button>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr className="bg-white dark:bg-dull-black text-gray-600 dark:text-gray-300
+                 lg:hover:bg-gray-100 lg:dark:hover:bg-dull-gray table-row flex-row flex-wrap flex-no-wrap">
+                    <td className="w-full max-w-[26rem] p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell  static">
+                        Lorem ipsum dolor sit amet consectetur adipisicing. Lorem ipsum dolor sit.
+                    </td>
+                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 block lg:table-cell relative lg:static ">
+                        10/12/2022
+                    </td>
+                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell  static">
+                        <span className="rounded text-gray-800 bg-yellow-400 py-1 px-3 text-xs font-bold">Draft</span>
+                        {/* <span className="rounded bg-green-400 py-1 px-3 text-xs font-bold">Published</span> */}
+                    </td>
+                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell  static">
                         <div className='flex justify-center gap-x-2'>
                         <a href="/" className="text-green-600 hover:text-green-700 md:text-xl"><FaRegEdit/></a>
                         <button className="text-red-600 hover:text-red-700 md:text-xl"><MdDeleteForever/></button>
