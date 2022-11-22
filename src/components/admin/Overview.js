@@ -42,15 +42,16 @@ const Overview = () => {
             {/* recent posts  */}
 
             <section className='py-8'>
-                <div className='grid xl:flex gap-12'>
+                <div className='grid xl:flex gap-8'>
                 {/* chart  */}
-        <div className='flex justify-center'>
+        <div className='flex justify-center max-w-md mx-auto'>
         <PieChart/>
         </div>
             <div className='xl:w-4/6 overflow-x-scroll md:overflow-x-hidden'>
             <h4 class="text-2xl text-orange-600 mb-4">Recent Blogs</h4>
          {/* <!-- component --> */}
-        <table className="border-collapse w-full max-w-full overflow-x-auto min-w-[43rem]">
+        
+        <table className="border-collapse w-full max-w-full overflow-x-auto min-w-[43rem] md:min-w-full">
             <thead>
                 <tr className='text-gray-600 dark:text-gray-300'>
                     <th className="p-3 font-bold uppercase bg-[#F3F4F6] dark:bg-dull-gray border border-gray-600 border-opacity-10 dark:border-opacity-30">Blog Title</th>
@@ -162,6 +163,7 @@ const Overview = () => {
                
             </tbody>
         </table>
+
         </div> 
                 </div>
             </section>
