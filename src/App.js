@@ -12,6 +12,9 @@ import Terms from "./pages/Terms";
 import BlogDetail from "./pages/BlogDetail";
 import Dashboard from "./admin/Dashboard";
 import AllBlogs from "./admin/AllBlogs";
+import BlogSubscriber from "./admin/BlogSubscriber";
+import AddBlogs from "./admin/AddBlogs";
+import Setting from "./admin/Setting";
 
 function App() {
 
@@ -33,6 +36,9 @@ function App() {
     {/* admin Routes  */}
     <Route exact path="/dashboard" element={<Dashboard/>}/>
     <Route exact path="/dashboard/allblogs" element={<AllBlogs/>}/>
+    <Route exact path="/dashboard/subscriber" element={<BlogSubscriber/>}/>
+    <Route exact path="/dashboard/addblogs" element={<AddBlogs/>}/>
+    <Route exact path="/dashboard/setting" element={<Setting/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>

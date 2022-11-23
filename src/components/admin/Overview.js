@@ -54,10 +54,10 @@ const Overview = () => {
          <table className="border-collapse w-full max-w-full overflow-x-auto min-w-[43rem] md:min-w-full">
             <thead>
                 <tr className='text-gray-600 dark:text-gray-300'>
-                    <th className="p-3 font-bold uppercase bg-[#F3F4F6] dark:bg-dull-gray border border-gray-600 border-opacity-10 dark:border-opacity-30">Blog Title</th>
-                    <th className="p-3 font-bold uppercase bg-[#F3F4F6] dark:bg-dull-gray border border-gray-600 border-opacity-10 dark:border-opacity-30">Date</th>
-                    <th className="p-3 font-bold uppercase bg-[#F3F4F6] dark:bg-dull-gray border border-gray-600 border-opacity-10 dark:border-opacity-30">Status</th>
-                    <th className="p-3 font-bold uppercase bg-[#F3F4F6] dark:bg-dull-gray border border-gray-600 border-opacity-10 dark:border-opacity-30">Actions</th>
+                    <th className="p-3 font-bold uppercase bg-light-gray dark:bg-dull-gray border border-gray-600 border-opacity-10 dark:border-opacity-30">Blog Title</th>
+                    <th className="p-3 font-bold uppercase bg-light-gray dark:bg-dull-gray border border-gray-600 border-opacity-10 dark:border-opacity-30">Date</th>
+                    <th className="p-3 font-bold uppercase bg-light-gray dark:bg-dull-gray border border-gray-600 border-opacity-10 dark:border-opacity-30">Status</th>
+                    <th className="p-3 font-bold uppercase bg-light-gray dark:bg-dull-gray border border-gray-600 border-opacity-10 dark:border-opacity-30">Actions</th>
                 </tr>
             </thead>
             <tbody>

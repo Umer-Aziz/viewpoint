@@ -3,7 +3,11 @@ import { FaHome , FaBlog , FaRegEdit } from "react-icons/fa"
 import { RiUserSettingsLine , RiLogoutCircleRLine } from "react-icons/ri"
 import { MdOutlineAttachEmail } from "react-icons/md";
 import { NavLink } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 const Sidebar = () => {
+
+    let path = useLocation().pathname;
+
   return (
     <>
          <section>
@@ -12,40 +16,40 @@ const Sidebar = () => {
                 <div className="flex flex-col">
                     <div className="lg:w-56 lg:min-h-[80vh] flex lg:grid">
                         <nav className="flex gap-x-4 lg:flex-col pr-2 md:pr-3 lg:pr-6 text-gray-600 dark:text-gray-300">
-                            <NavLink to="/dashboard" className="sidebar-list text-gray-100 rounded-lg bg-orange-600">
+                            <NavLink to="/dashboard" className={`sidebar-list rounded-lg ${path === "/dashboard" && "text-gray-100 bg-orange-600" }`}>
                                 <FaHome className='text-xl -translate-y-0.5'/>
                                 <span className="mx-4 md:text-lg font-normal hidden lg:flex">
                                     Dashboard
                                 </span>
                             </NavLink>
             
-                            <NavLink to="/dashboard/allblogs" className="sidebar-list">
+                            <NavLink to="/dashboard/allblogs" className={`sidebar-list ${path === "/dashboard/allblogs" && "text-gray-100 bg-orange-600" }`}>
                                 <FaBlog className='text-xl -translate-y-0.5'/>
                                 <span className="mx-4 md:text-lg font-normal hidden lg:flex">
                                  Show All Blogs
                                 </span>
                             </NavLink>
             
-                            <a href="/dashboard" className="sidebar-list">
+                            <NavLink to="/dashboard/subscriber" className={`sidebar-list ${path === "/dashboard/subscriber" && "text-gray-100 bg-orange-600" }`}>
                                 <MdOutlineAttachEmail className='text-xl -translate-y-0.5'/>
                                 <span className="mx-4 md:text-lg font-normal hidden lg:flex">
                                     Blogs Subscriber
                                 </span>
-                            </a>
+                            </NavLink>
                             
-                            <a href="/dashboard" className="sidebar-list">
+                            <NavLink to="/dashboard/addblogs" className={`sidebar-list ${path === "/dashboard/addblogs" && "text-gray-100 bg-orange-600" }`}>
                                 <FaRegEdit className='text-xl -translate-y-0.5'/>
                                 <span className="mx-4 md:text-lg font-normal hidden lg:flex">
                                     Add New Blog
                                 </span>
-                            </a>
+                            </NavLink>
             
-                            <a href="/dashboard" className="sidebar-list">
+                            <NavLink to="/dashboard/setting" className={`sidebar-list ${path === "/dashboard/setting" && "text-gray-100 bg-orange-600" }`}>
                                 <RiUserSettingsLine className='text-xl -translate-y-0.5'/>
                                 <span className="mx-4 md:text-lg font-normal hidden lg:flex">
                                     Setting
                                 </span>
-                            </a>
+                            </NavLink>
                             
                             
                             
