@@ -84,7 +84,7 @@ const AddBlogs = () => {
                     <option value="others">Others</option>
                   </select>
                   
-                  <div className='mt-2 flex gap-3 md:gap-4 xl:gap-6'>
+                  <div className='mt-2 flex flex-wrap gap-3 md:gap-4 xl:gap-6'>
                   <div className='flex gap-1'>
                   <label htmlFor="latest">Latest Post</label>
                     <input className='accent-orange-600' type="checkbox" name="latest" id="Latest" />

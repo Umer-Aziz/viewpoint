@@ -10,12 +10,12 @@ const Setting = () => {
          <Sidebar/>
           {/* Setting */}      
           <div className='py-10 lg:py-0 lg:pl-4 w-full text-gray-600 dark:text-gray-300'>
-          <h4 class="text-2xl text-orange-600 mb-4">Settings</h4>
+          <h4 className="text-2xl text-orange-600 mb-4">Settings</h4>
 
          <div className='grid lg:grid-cols-2 gap-8'>
          {/* profile detail */}
           <div className='grid gap-8 w-full'>
-          <div className=''>
+          <div>
             <div className='w-80 h-80 rounded-full overflow-hidden shadow-xl mx-auto'>
               <img className='bg-cover bg-center object-cover' src="https://user-images.githubusercontent.com/62507205/183687106-3d0979dd-9e78-49e9-86e4-0cb127a713d0.png" alt="profile-pic" />
             </div>
