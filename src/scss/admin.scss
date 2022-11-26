@@ -2,3 +2,7 @@
     @apply flex items-center p-1 md:p-2 mb-6 transition-colors hover:text-gray-100
     hover:bg-orange-600 duration-200 rounded-lg border lg:border-x-0 lg:border-y border-gray-600 border-opacity-10 dark:border-opacity-30;
 }
+
+.input-style {
+    @apply outline-none py-2.5 px-4 rounded text-gray-600 bg-gray-100;
+}

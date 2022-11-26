@@ -3,7 +3,7 @@ import { AiOutlinePlus } from "react-icons/ai"
 import { FaBlog , FaRegEdit } from "react-icons/fa"
 import { MdPendingActions , MdOutlineAttachEmail , MdDeleteForever } from "react-icons/md"
 import PieChart from './PieChart'
-
+import { Link } from 'react-router-dom'
 
 const Overview = () => {
   return (
@@ -12,10 +12,10 @@ const Overview = () => {
        <div>
        <div className='flex justify-between items-center'>
             <h1 className='text-2xl text-orange-600'>Overview</h1>
-            <a href="/" className='flex items-center text-orange-600 gap-x-2 py-2 px-4 uppercase border rounded border-orange-600 hover:text-gray-100 hover:bg-orange-600'>
+            <Link to="/dashboard/addblogs" className='flex items-center text-orange-600 gap-x-2 py-2 px-4 uppercase border rounded border-orange-600 hover:text-gray-100 hover:bg-orange-600'>
              <AiOutlinePlus className='font-semibold'/> 
              <span>new post</span>
-             </a>
+             </Link>
             </div>
 
             <div className="py-8 grid md:grid-cols-3 gap-6">
