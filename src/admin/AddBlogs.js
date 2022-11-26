@@ -2,17 +2,13 @@ import React, { useState } from 'react'
 import Sidebar from '../components/admin/Sidebar'
 import JoditEditor from 'jodit-react';
 import { MdCancel } from "react-icons/md"
-
- // tags Input 
- const TagsInput = (SelectedTags)=>{
-
+const AddBlogs = () => {
   const [ tags , setTags ] = useState([]);
 
   // addTags 
   const addTag = (event) =>{
     if(event.target.value !== "" ){
       setTags([ ...tags , event.target.value ]);
-      SelectedTags.selected([ ...tags , event.target.value ]);
       event.target.value = "";
     }
   }
@@ -20,40 +16,9 @@ import { MdCancel } from "react-icons/md"
   // removeTags 
   const removeTags = (indextoRemove)=>{
     setTags(tags.filter((_, index) => index !== indextoRemove ));
+
   }
 
-    return (
-            <div className='grid gap-y-1'>
-                  <label htmlFor="des" className='text-lg font-medium'>Blog Tags</label>
-                  <div className='py-3 px-4 border border-orange-600 rounded-md text-gray-100'>
-                    <ul className='flex gap-2 flex-wrap'>
-                     {
-                      tags.map((tag,index)=>{
-                        return (
-                        <li key={index} className='px-2 py-1 rounded flex items-center gap-x-1 bg-orange-600'>
-                        <span>{tag}</span>
-                        <MdCancel onClick={()=>{removeTags(index)}} className='cursor-pointer'/>
-                      </li>
-                        )
-                      })
-                     }
-                      
-                      <input className='lg:w-60 outline-none bg-transparent text-gray-600' type="text" id='tags' name='tags'
-                        onKeyUp={e => (e.key === "Enter" ? addTag(e) : null)}
-                      />
-                    </ul>
-                  </div>
-                </div>
-    )
-  }
-
-const AddBlogs = () => {
- 
-  // const [ Selectedtags , setSelectedTag] = useState([]);
-
-  const selected = tag => console.log(tag) ;
-
-  // console.log(Selectedtags);
 
   return (
     <>
@@ -80,7 +45,27 @@ const AddBlogs = () => {
                   <label htmlFor="des" className='text-lg font-medium'>Description</label>
                   <input placeholder='Description' className='input-style' type="text" name="des" id="des" />
                 </div>
-          <TagsInput selected={selected}/>
+          <div className='grid gap-y-1'>
+                  <label htmlFor="des" className='text-lg font-medium'>Blog Tags</label>
+                  <div className='py-3 px-4 border border-orange-600 rounded-md text-gray-100'>
+                    <ul className='flex gap-2 flex-wrap'>
+                     {
+                      tags.map((tag,index)=>{
+                        return (
+                        <li key={index} className='px-2 py-1 rounded flex items-center gap-x-1 bg-orange-600'>
+                        <span>{tag}</span>
+                        <MdCancel onClick={()=>{removeTags(index)}} className='cursor-pointer'/>
+                      </li>
+                        )
+                      })
+                     }
+                      
+                      <input className='lg:w-60 outline-none bg-transparent text-gray-600 dark:text-gray-100' type="text" id='tags' name='tags'
+                        onKeyUp={e => (e.key === "Enter" ? addTag(e) : null)}
+                      />
+                    </ul>
+                  </div>
+                </div>
           <div className='grid gap-y-1'>
                   <label htmlFor="content" className='text-lg font-medium'>Content</label>
                   <JoditEditor placeholder='Description' className='input-style min-h-[10rem]' type="text" name="content" id="content" />
