@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import Sidebar from '../components/admin/Sidebar'
 import JoditEditor from 'jodit-react';
-import { MdCancel } from "react-icons/md"
+import { MdCancel , MdPublic } from "react-icons/md"
+import { VscSaveAs } from "react-icons/vsc"
 const AddBlogs = () => {
   const [ tags , setTags ] = useState([]);
 
@@ -19,6 +20,9 @@ const AddBlogs = () => {
 
   }
 
+  const addBlog = (e) =>{
+  e.preventDefault();
+  }
 
   return (
     <>
@@ -30,20 +34,21 @@ const AddBlogs = () => {
           <div className='py-10 lg:py-0 lg:pl-4 w-full text-gray-600 dark:text-gray-300'>
           <h4 className="text-2xl text-orange-600 mb-4">Add a New Post</h4>
 
+         <form action="" onSubmit={addBlog}>
          <div className='grid gap-4'>
          <div className='grid lg:grid-cols-2 gap-y-4 gap-x-8'>
           <div className='grid gap-y-1'>
                   <label htmlFor="title" className='text-lg font-medium'>Title</label>
-                  <input placeholder='Title' className='input-style' type="text" name="title" id="title" />
+                  <input required placeholder='Title' className='input-style' type="text" name="title" id="title" />
                 </div>
           <div className='grid gap-y-1'>
                   <label htmlFor="BImg" className='text-lg font-medium'>Blog Image</label>
-                  <input placeholder='URL' className='input-style' type="text" name="BImg" id="BImg" />
+                  <input required placeholder='URL' className='input-style' type="text" name="BImg" id="BImg" />
                 </div>
           </div>
           <div className='grid gap-y-1'>
                   <label htmlFor="des" className='text-lg font-medium'>Description</label>
-                  <input placeholder='Description' className='input-style' type="text" name="des" id="des" />
+                  <input required placeholder='Description' className='input-style' type="text" name="des" id="des" />
                 </div>
           <div className='grid gap-y-1'>
                   <label htmlFor="des" className='text-lg font-medium'>Blog Tags</label>
@@ -60,17 +65,62 @@ const AddBlogs = () => {
                       })
                      }
                       
-                      <input className='lg:w-60 outline-none bg-transparent text-gray-600 dark:text-gray-100' type="text" id='tags' name='tags'
+                      <input required className='lg:w-60 outline-none bg-transparent text-gray-600 dark:text-gray-100' type="text" id='tags' name='tags'
                         onKeyUp={e => (e.key === "Enter" ? addTag(e) : null)}
                       />
                     </ul>
                   </div>
                 </div>
+                <div className='grid gap-y-1'>
+                  <label htmlFor="des" className='text-lg font-medium'>Categories</label>
+                  <select className='input-style' type="text" name="category" id="category" >
+                    <option value="business">Business</option>
+                    <option value="technology">Technology</option>
+                    <option value="programming">Programming</option>
+                    <option value="scamming">Scamming</option>
+                    <option value="fitness">Fitness</option>
+                    <option value="lifestyle">Lifestyle</option>
+                    <option value="sports">Sports</option>
+                    <option value="others">Others</option>
+                  </select>
+                  
+                  <div className='mt-2 flex gap-3 md:gap-4 xl:gap-6'>
+                  <div className='flex gap-1'>
+                  <label htmlFor="latest">Latest Post</label>
+                    <input className='accent-orange-600' type="checkbox" name="latest" id="Latest" />
+                  </div>
+                  <div className='flex gap-1'>
+                  <label htmlFor="trending">Trending Post</label>
+                    <input className='accent-orange-600' type="checkbox" name="trending" id="trending" />
+                  </div>
+                  <div className='flex gap-1'>
+                  <label htmlFor="mustread">Must Reads</label>
+                    <input className='accent-orange-600' type="checkbox" name="mustread" id="mustread" />
+                  </div>
+                  <div className='flex gap-1'>
+                  <label htmlFor="randompost">Random Post</label>
+                    <input className='accent-orange-600' type="checkbox" name="randompost" id="randompost" />
+                  </div>
+                  <div className='flex gap-1'>
+                  <label htmlFor="toppicks">Top Picks</label>
+                    <input className='accent-orange-600' type="checkbox" name="toppicks" id="toppicks" />
+                  </div>
+                  </div>
+                  
+                  
+              </div>
           <div className='grid gap-y-1'>
                   <label htmlFor="content" className='text-lg font-medium'>Content</label>
                   <JoditEditor placeholder='Description' className='input-style min-h-[10rem]' type="text" name="content" id="content" />
                 </div>
+
+                <div className='py-4 flex gap-4'>
+                  <button className='btn'><VscSaveAs/> <span>Save</span></button>
+                  <button className='btn'><MdPublic/><span>Published</span></button>
+                </div>
          </div>
+
+         </form>
           </div>
         </div>
         </main>

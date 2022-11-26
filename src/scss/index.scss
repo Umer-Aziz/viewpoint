@@ -30,7 +30,9 @@ border-radius: 24px;
 
 body {
     @apply font-black-ops overflow-x-hidden;
-
+      .btn {
+        @apply py-2.5 px-4 flex items-center gap-2 border border-orange-600 text-orange-600 rounded md:rounded-md hover:text-gray-100 hover:bg-orange-600 transition-all duration-300;
+      }
     .navbar-ul::-webkit-scrollbar {
       display: none !important; 
     }
