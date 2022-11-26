@@ -10,22 +10,24 @@ const changeHandler = (event)=>{
 }
 
 const handleForm = (e)=>{
+  e.preventDefault();
 
   const config = { 
-    Host : "smtp.elasticemail.com",
-    Username : "username",
-    Password : "password",
-    To : 'them@website.com',
-    From : "you@isp.com",
-    Subject : "This is the subject",
-    Body : "And this is the body"
+    SecureToken : "2e295e82-452d-4012-912c-b4c2bceecd2a",
+    From : formstate.emailfrom,
+    To : formstate.emailto,
+    Subject : formstate.emailsubject,
+    Body : formstate.msg
   }
   if(window.Email){
     window.Email.send(config).then(()=>{
       alert("email Send");
+    }).catch((error)=>{
+      console.log("error",error)
     })
+
   }
-  e.preventDefault();
+ setFormstate("");
 }
   return (
    <>
@@ -57,19 +59,19 @@ const handleForm = (e)=>{
            <form action="" className='py-3 grid gap-4' onSubmit={handleForm}>
                 <div className='grid gap-y-1'>
                   <label htmlFor="emailfrom">From</label>
-                  <input placeholder='Email From' onChange={changeHandler} className='outline-none py-2 px-4 rounded text-gray-600' type="email" name="emailfrom" id="emailfrom" />
+                  <input placeholder='Email From' value={formstate.emailfrom || ""} onChange={changeHandler} className='outline-none py-2 px-4 rounded text-gray-600' type="email" name="emailfrom" id="emailfrom" />
                 </div>
                 <div className='grid gap-y-1'>
                   <label htmlFor="emailto">To</label>
-                  <input placeholder='Email to' onChange={changeHandler} className='outline-none py-2 px-4 rounded text-gray-600' type="email" name="emailto" id="emailto" />
+                  <input placeholder='Email to' value={ formstate.emailto || "" } onChange={changeHandler} className='outline-none py-2 px-4 rounded text-gray-600' type="email" name="emailto" id="emailto" />
                 </div>
                 <div className='grid gap-y-1'>
                   <label htmlFor="emailsubject">Email Subject</label>
-                  <input placeholder='Subject' onChange={changeHandler} className='outline-none py-2 px-4 rounded text-gray-600' type="email" name="emailsubject" id="emailsubject" />
+                  <input placeholder='Subject' value={formstate.emailsubject || ""} onChange={changeHandler} className='outline-none py-2 px-4 rounded text-gray-600' type="text" name="emailsubject" id="emailsubject" />
                   </div>
                 <div className='grid gap-y-1'>
                   <label htmlFor="msg">Message</label>
-                  <textarea placeholder='Message...' onChange={changeHandler} className='lg:min-h-[8rem] outline-none py-2 px-4 rounded text-gray-600' type="text" name="msg" id="msg" ></textarea>
+                  <textarea placeholder='Message...' value={formstate.msg || "" } onChange={changeHandler} className='lg:min-h-[8rem] outline-none py-2 px-4 rounded text-gray-600' type="text" name="msg" id="msg" ></textarea>
                   </div>
                   <div className='mt-4'>
                   <button className='btn'>Send</button>
