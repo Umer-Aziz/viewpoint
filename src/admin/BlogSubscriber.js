@@ -4,10 +4,29 @@ import Sidebar from '../components/admin/Sidebar'
 const BlogSubscriber = () => {
 
   const [ formstate , setFormstate ] = useState({});
+  const [ visible , setVisible ] = useState(false);
 
 const changeHandler = (event)=>{
   setFormstate({ ...formstate , [event.target.name] : event.target.value })
 }
+
+const emails = [
+  "umeraziz682@gmail.com",
+  "umeraziz019@gmail.com",
+  "umars25271997@gmail.com"
+]
+
+let emailsend = "";
+let bccemail = "";
+
+if(visible === true ){
+  emailsend = formstate.emailto
+  bccemail = "jacksparrow434445@gmail.com"
+}else{
+  bccemail = emails
+  emailsend = "jacksparrow434445@gmail.com"
+}
+
 
 const handleForm = (e)=>{
   e.preventDefault();
@@ -15,7 +34,8 @@ const handleForm = (e)=>{
   const config = { 
     SecureToken : "2e295e82-452d-4012-912c-b4c2bceecd2a",
     From : formstate.emailfrom,
-    To : formstate.emailto,
+    To : emailsend,
+    Bcc : bccemail,
     Subject : formstate.emailsubject,
     Body : formstate.msg
   }
@@ -27,7 +47,8 @@ const handleForm = (e)=>{
     })
 
   }
- setFormstate("");
+  console.log("config ",config)
+//  setFormstate("");
 }
   return (
    <>
@@ -61,10 +82,23 @@ const handleForm = (e)=>{
                   <label htmlFor="emailfrom">From</label>
                   <input placeholder='Email From' value={formstate.emailfrom || ""} onChange={changeHandler} className='outline-none py-2 px-4 rounded text-gray-600' type="email" name="emailfrom" id="emailfrom" />
                 </div>
-                <div className='grid gap-y-1'>
+  
+                <div className='flex gap-3'>
+               <div className='flex items-center gap-2'>
+               <span className='font-semibold text-orange-600'>Send to One</span>
+                  <input className='accent-orange-600' onClick={()=>{setVisible(true)}} name='sendto' type="radio" value="0" />
+               </div>
+               <div className='flex items-center gap-2'>
+               <span className='font-semibold text-orange-600'>Send to All</span>
+                  <input className='accent-orange-600' onClick={()=>{setVisible(false)}} name='sendto' type="radio"  value="1"/>
+               </div>
+                </div>
+                 {visible && 
+                 <div className='grid gap-y-1'>
                   <label htmlFor="emailto">To</label>
                   <input placeholder='Email to' value={ formstate.emailto || "" } onChange={changeHandler} className='outline-none py-2 px-4 rounded text-gray-600' type="email" name="emailto" id="emailto" />
                 </div>
+                 }
                 <div className='grid gap-y-1'>
                   <label htmlFor="emailsubject">Email Subject</label>
                   <input placeholder='Subject' value={formstate.emailsubject || ""} onChange={changeHandler} className='outline-none py-2 px-4 rounded text-gray-600' type="text" name="emailsubject" id="emailsubject" />
