@@ -15,6 +15,7 @@ import AllBlogs from "./admin/AllBlogs";
 import BlogSubscriber from "./admin/BlogSubscriber";
 import AddBlogs from "./admin/AddBlogs";
 import Setting from "./admin/Setting";
+import Login from "./components/admin/Login";
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
 
     {/* admin Routes  */}
     <Route exact path="/dashboard" element={<Dashboard/>}/>
+    <Route exact path="/dashboard/login" element={<Login/>}/>
     <Route exact path="/dashboard/allblogs" element={<AllBlogs/>}/>
     <Route exact path="/dashboard/subscriber" element={<BlogSubscriber/>}/>
     <Route exact path="/dashboard/addblogs" element={<AddBlogs/>}/>
