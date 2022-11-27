@@ -17,10 +17,30 @@ import AddBlogs from "./admin/AddBlogs";
 import Setting from "./admin/Setting";
 import Login from "./components/admin/Login";
 
+import { ToastContainer, toast , Zoom } from 'react-toastify';
+
 function App() {
+
+  const customId = "custom-id-yes";
+
+
+  const Toast = (text)=>{
+    toast.info(text, {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme:"colored",
+        transition: Zoom , 
+        toastId: customId
+        });
+}
 
   return (
    <>
+    <ToastContainer toastStyle={{ backgroundColor: "#ea4c13" }}/>
    <BrowserRouter>
     <ScrolltoTop/>
     <Navbar/>
@@ -29,7 +49,7 @@ function App() {
     <Route exact path="/" element={<Home/>}/>
     <Route exact path="/blogs" element={<Blogs/>}/>
     <Route exact path="/category/:category" element={<Category/>}/>
-    <Route exact path="/article/:slug" element={<BlogDetail/>}/>
+    <Route exact path="/article/:slug" element={<BlogDetail Toast={Toast}/>}/>
     <Route exact path="/contact" element={<Contact/>}/>
     <Route exact path="/privacy-policy" element={<PrivacyPolicy/>}/>
     <Route exact path="/terms-conditions" element={<Terms/>}/>
@@ -38,7 +58,7 @@ function App() {
     <Route exact path="/dashboard" element={<Dashboard/>}/>
     <Route exact path="/dashboard/login" element={<Login/>}/>
     <Route exact path="/dashboard/allblogs" element={<AllBlogs/>}/>
-    <Route exact path="/dashboard/subscriber" element={<BlogSubscriber/>}/>
+    <Route exact path="/dashboard/subscriber" element={<BlogSubscriber Toast={Toast}/>}/>
     <Route exact path="/dashboard/addblogs" element={<AddBlogs/>}/>
     <Route exact path="/dashboard/setting" element={<Setting/>}/>
     </Routes>

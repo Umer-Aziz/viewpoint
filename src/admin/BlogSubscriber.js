@@ -1,28 +1,13 @@
 import React, { useState } from 'react'
 import Sidebar from '../components/admin/Sidebar'
-import { ToastContainer, toast , Zoom } from 'react-toastify';
 
-const BlogSubscriber = () => {
+
+const BlogSubscriber = ({Toast}) => {
 
   const [ formstate , setFormstate ] = useState({});
   const [ visible , setVisible ] = useState(false);
 
-  const customId = "custom-id-yes";
-
-
-  const Toast = (text)=>{
-    toast.info(text, {
-        position: "top-right",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        theme:"colored",
-        transition: Zoom , 
-        toastId: customId
-        });
-}
+  
 
 const changeHandler = (event)=>{
   setFormstate({ ...formstate , [event.target.name] : event.target.value })
@@ -35,42 +20,56 @@ const emails = [
 ]
 
 
+
 const handleForm = (e)=>{
   e.preventDefault();
 
-  emails.forEach((email)=>{
+  let config = {};
 
-    let emailsend = "";
-
-  if(visible === true ){
-    emailsend = formstate.emailto
-  }else{
-    emailsend = email
+if(visible === true ){
+ 
+  config = { 
+    SecureToken : process.env.REACT_APP_SecureToken,
+    From : formstate.emailfrom,
+    To : formstate.emailto,
+    Subject : formstate.emailsubject,
+    Body : formstate.msg
   }
-
-
-    const config = { 
-      SecureToken : "2e295e82-452d-4012-912c-b4c2bceecd2a",
-      From : formstate.emailfrom,
-      To : emailsend,
-      Subject : formstate.emailsubject,
-      Body : formstate.msg
-    }
-    if(window.Email){
+  if(window.Email){
       window.Email.send(config).then(()=>{
         Toast("📩 Emails has been send!")
       }).catch((error)=>{
         console.log("error",error)
+        Toast("Something Wrong!")
       })
   
     }
-  }) 
 
+}else{
+  emails.forEach((email)=>{
+   config = { 
+    SecureToken : process.env.REACT_APP_SecureToken,
+    From : formstate.emailfrom,
+    To : email,
+    Subject : formstate.emailsubject,
+    Body : formstate.msg
+  }
+  if(window.Email){
+      window.Email.send(config).then(()=>{
+        Toast("📩 Emails has been send!")
+      }).catch((error)=>{
+        console.log("error",error)
+        Toast("Something Wrong!")
+      })
+  
+    }
+});
+}
+ 
  setFormstate("");
 }
   return (
    <>
-   <ToastContainer toastStyle={{ backgroundColor: "#ea4c13" }}/>
      <main className='container py-10 overflow-x-hidden w-full'>
         <div className='lg:flex '>
         {/* Sidebar  */}
@@ -99,13 +98,13 @@ const handleForm = (e)=>{
            <form action="" className='py-3 grid gap-4' onSubmit={handleForm}>
                 <div className='grid gap-y-1'>
                   <label htmlFor="emailfrom">From</label>
-                  <input placeholder='Email From' value={formstate.emailfrom || ""} onChange={changeHandler} className='outline-none py-2 px-4 rounded text-gray-600' type="email" name="emailfrom" id="emailfrom" />
+                  <input placeholder='Email From' value={formstate.emailfrom || ""} onChange={changeHandler} className='outline-none py-2 px-4 rounded text-gray-600' type="email" name="emailfrom" id="emailfrom" required minLength={5}/>
                 </div>
   
                 <div className='flex gap-3'>
                <div className='flex items-center gap-2'>
                <span className='font-semibold text-orange-600'>Send to One</span>
-                  <input className='accent-orange-600' onClick={()=>{setVisible(true)}} name='sendto' type="radio" value="0" />
+                  <input className='accent-orange-600' onClick={()=>{setVisible(true)}} name='sendto' type="radio" value="0"/>
                </div>
                <div className='flex items-center gap-2'>
                <span className='font-semibold text-orange-600'>Send to All</span>
@@ -115,16 +114,16 @@ const handleForm = (e)=>{
                  {visible && 
                  <div className='grid gap-y-1'>
                   <label htmlFor="emailto">To</label>
-                  <input placeholder='Email to' value={ formstate.emailto || "" } onChange={changeHandler} className='outline-none py-2 px-4 rounded text-gray-600' type="email" name="emailto" id="emailto" />
+                  <input placeholder='Email to' value={ formstate.emailto || "" } onChange={changeHandler} className='outline-none py-2 px-4 rounded text-gray-600' type="email" name="emailto" id="emailto" required minLength={5}/>
                 </div>
                  }
                 <div className='grid gap-y-1'>
                   <label htmlFor="emailsubject">Email Subject</label>
-                  <input placeholder='Subject' value={formstate.emailsubject || ""} onChange={changeHandler} className='outline-none py-2 px-4 rounded text-gray-600' type="text" name="emailsubject" id="emailsubject" />
+                  <input placeholder='Subject' value={formstate.emailsubject || ""} onChange={changeHandler} className='outline-none py-2 px-4 rounded text-gray-600' type="text" name="emailsubject" id="emailsubject" required minLength={4}/>
                   </div>
                 <div className='grid gap-y-1'>
                   <label htmlFor="msg">Message</label>
-                  <textarea placeholder='Message...' value={formstate.msg || "" } onChange={changeHandler} className='lg:min-h-[8rem] outline-none py-2 px-4 rounded text-gray-600' type="text" name="msg" id="msg" ></textarea>
+                  <textarea placeholder='Message...' value={formstate.msg || "" } onChange={changeHandler} className='lg:min-h-[8rem] outline-none py-2 px-4 rounded text-gray-600' type="text" name="msg" id="msg" required minLength={4}></textarea>
                   </div>
                   <div className='mt-4'>
                   <button className='btn'>Send</button>

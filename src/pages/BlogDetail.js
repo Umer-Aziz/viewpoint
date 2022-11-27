@@ -4,26 +4,10 @@ import { WiTime8 } from "react-icons/wi"
 import PostSwitcher from "../components/home/PostSwitcher";
 import hljs from "highlight.js";
 import 'highlight.js/styles/github-dark.css';
-import { ToastContainer, toast , Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const customId = "custom-id-yes";
 
-const BlogDetail = () => {
-
-  const Toast = (text)=>{
-    toast.info(text, {
-        position: "top-right",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        theme:"colored",
-        transition: Zoom , 
-        toastId: customId
-        });
-}
+const BlogDetail = ({Toast}) => {
 
   // first, find all the div.code blocks
    useEffect(() => {
@@ -43,7 +27,6 @@ const BlogDetail = () => {
  
   return (
     <>  
-      <ToastContainer toastStyle={{ backgroundColor: "#ea4c13" }}/>
       <main className="container pt-10 pb-20 text-gray-600 dark:text-gray-300">
         <div className="grid gap-y-12 md:flex md:justify-between md:gap-x-6 lg:gap-x-8 xl:gap-x-12">
         <div>
