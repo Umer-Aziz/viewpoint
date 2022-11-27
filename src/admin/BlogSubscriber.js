@@ -1,10 +1,28 @@
 import React, { useState } from 'react'
 import Sidebar from '../components/admin/Sidebar'
+import { ToastContainer, toast , Zoom } from 'react-toastify';
 
 const BlogSubscriber = () => {
 
   const [ formstate , setFormstate ] = useState({});
   const [ visible , setVisible ] = useState(false);
+
+  const customId = "custom-id-yes";
+
+
+  const Toast = (text)=>{
+    toast.info(text, {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme:"colored",
+        transition: Zoom , 
+        toastId: customId
+        });
+}
 
 const changeHandler = (event)=>{
   setFormstate({ ...formstate , [event.target.name] : event.target.value })
@@ -16,42 +34,43 @@ const emails = [
   "umars25271997@gmail.com"
 ]
 
-let emailsend = "";
-let bccemail = "";
-
-if(visible === true ){
-  emailsend = formstate.emailto
-  bccemail = "jacksparrow434445@gmail.com"
-}else{
-  bccemail = emails
-  emailsend = "jacksparrow434445@gmail.com"
-}
-
 
 const handleForm = (e)=>{
   e.preventDefault();
 
-  const config = { 
-    SecureToken : "2e295e82-452d-4012-912c-b4c2bceecd2a",
-    From : formstate.emailfrom,
-    To : emailsend,
-    Bcc : bccemail,
-    Subject : formstate.emailsubject,
-    Body : formstate.msg
-  }
-  if(window.Email){
-    window.Email.send(config).then(()=>{
-      alert("email Send");
-    }).catch((error)=>{
-      console.log("error",error)
-    })
+  emails.forEach((email)=>{
 
+    let emailsend = "";
+
+  if(visible === true ){
+    emailsend = formstate.emailto
+  }else{
+    emailsend = email
   }
-  console.log("config ",config)
-//  setFormstate("");
+
+
+    const config = { 
+      SecureToken : "2e295e82-452d-4012-912c-b4c2bceecd2a",
+      From : formstate.emailfrom,
+      To : emailsend,
+      Subject : formstate.emailsubject,
+      Body : formstate.msg
+    }
+    if(window.Email){
+      window.Email.send(config).then(()=>{
+        Toast("📩 Emails has been send!")
+      }).catch((error)=>{
+        console.log("error",error)
+      })
+  
+    }
+  }) 
+
+ setFormstate("");
 }
   return (
    <>
+   <ToastContainer toastStyle={{ backgroundColor: "#ea4c13" }}/>
      <main className='container py-10 overflow-x-hidden w-full'>
         <div className='lg:flex '>
         {/* Sidebar  */}

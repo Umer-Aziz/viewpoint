@@ -12,7 +12,7 @@ const AllBlogs = () => {
       {/* All Blogs */}   
 
        <div className='lg:pl-4 overflow-x-scroll md:overflow-x-hidden w-full'>
-            <h4 class="text-2xl text-orange-600 mb-4">All Blogs</h4>
+            <h4 className="text-2xl text-orange-600 mb-4">All Blogs</h4>
          {/* <!-- component --> */}
         
         <table className="border-collapse w-full max-w-full overflow-x-auto min-w-[43rem] md:min-w-full">
