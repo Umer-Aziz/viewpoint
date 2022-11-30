@@ -5,9 +5,12 @@ import PostSwitcher from "../components/home/PostSwitcher";
 import hljs from "highlight.js";
 import 'highlight.js/styles/github-dark.css';
 import 'react-toastify/dist/ReactToastify.css';
-
-
+import { FacebookShareButton , TwitterShareButton , TelegramShareButton , WhatsappShareButton , LinkedinShareButton } from "react-share";
+import { FacebookIcon , TwitterIcon , TelegramIcon , WhatsappIcon , LinkedinIcon } from "react-share";
 const BlogDetail = ({Toast}) => {
+
+  const location = window.location.href;
+  let ShareUrl = location;
 
   // first, find all the div.code blocks
    useEffect(() => {
@@ -44,14 +47,37 @@ const BlogDetail = ({Toast}) => {
             </div>
 
             {/* tags keywords & Social Share  */}
-            <div className="my-2 md:flex md:justify-between items-center">
+            <div className="my-2 grid gap-y-2 lg:flex lg:justify-between items-center">
               <div className="flex gap-x-4 md:gap-x-6 text-sm font-medium capitalize text-orange-600">
                 <p>#Al</p>
                 <p>#technology</p>
                 <p>#productivity</p>
               </div>
 
-              <div>Social Share</div>
+              <div>
+                <div className="flex gap-2 justify-end">
+                     <FacebookShareButton url={ShareUrl} quote="Lorem ipsum dolor sit amet consectetur adipisicing." hashtag=" #Technology ">
+                      <FacebookIcon className="w-10 hover:scale-110 transition-all duration-300" round={true}/>
+                     </FacebookShareButton>
+
+                     <TwitterShareButton url={ShareUrl} quote="Lorem ipsum dolor sit amet consectetur adipisicing." hashtag=" #Technology ">
+                      <TwitterIcon className="w-10 hover:scale-110 transition-all duration-300" round={true}/>
+                     </TwitterShareButton>
+
+                     <WhatsappShareButton url={ShareUrl} quote="Lorem ipsum dolor sit amet consectetur adipisicing." hashtag=" #Technology ">
+                      <WhatsappIcon className="w-10 hover:scale-110 transition-all duration-300" round={true}/>
+                     </WhatsappShareButton>
+
+                     <TelegramShareButton url={ShareUrl} quote="Lorem ipsum dolor sit amet consectetur adipisicing." hashtag=" #Technology ">
+                      <TelegramIcon className="w-10 hover:scale-110 transition-all duration-300" round={true}/>
+                     </TelegramShareButton>
+
+                     <LinkedinShareButton url={ShareUrl} quote="Lorem ipsum dolor sit amet consectetur adipisicing." hashtag=" #Technology ">
+                      <LinkedinIcon className="w-10 hover:scale-110 transition-all duration-300" round={true}/>
+                     </LinkedinShareButton>
+
+                </div>
+              </div>
             </div>
 
             {/* main Content  */}
