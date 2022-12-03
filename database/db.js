@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const mongoUrl = "mongodb://localhost:27017/BlogPost";
+const mongoUrl = "mongodb://localhost:27017/pointview";
 
 const ConnectDB =()=>{
     mongoose.connect(mongoUrl , ()=>{

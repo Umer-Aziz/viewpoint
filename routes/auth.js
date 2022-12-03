@@ -16,7 +16,7 @@ router.post(
         body('name',"name must be atleat 3 characters").isLength({ min:3 }),
         body('email',"Please Enter a valid Email").isEmail(),
         body('password',"password must be atleat 5 characters").isLength({ min:8 }),
-    ],fetchuser,async (req, res) => {
+    ],async (req, res) => {
 
          // if there is any error 
     let success = false;
@@ -122,6 +122,36 @@ router.post("/getuser",fetchuser,async (req,res)=>{
   }
   
       
+  })
+
+
+   // ROUTE 4: Update an existing User
+router.put('/updateuser/:id',fetchuser ,async (req, res) => {
+    const { name  , profilePic , email , phone , password } =req.body;
+    try {
+        // Create a newUser object
+        const newUser = {};
+        if (name) { newUser.name = name };
+        if (profilePic) { newUser.profilePic = profilePic };
+        if (email) { newUser.email = email };
+        if (phone) { newUser.phone = phone };
+
+        if (password) { 
+        const salt = await bcrypt.genSalt(10);
+        const SecPassword = await bcrypt.hash(password,salt);
+            newUser.password = SecPassword
+         };
+  
+        // Find the blogs to be updated and update it
+        let users = await User.findById(req.params.id);
+        if (!users) { return res.status(404).send("Not Found") }
+  
+        users = await User.findByIdAndUpdate(req.params.id, { $set: newUser }, { new: true })
+        res.json({ users });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error");
+    }
   })
 
 module.exports = router;
