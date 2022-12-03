@@ -16,7 +16,7 @@ router.post(
         body('name',"name must be atleat 3 characters").isLength({ min:3 }),
         body('email',"Please Enter a valid Email").isEmail(),
         body('password',"password must be atleat 5 characters").isLength({ min:8 }),
-    ],async (req, res) => {
+    ],fetchuser,async (req, res) => {
 
          // if there is any error 
     let success = false;
