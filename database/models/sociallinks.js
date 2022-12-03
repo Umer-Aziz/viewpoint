@@ -3,25 +3,31 @@ const socialLinkSchema = mongoose.Schema({
    
     facebook:{
         type: String,
+        unique:true
     },
     instagram:{
         type: String,
+        unique:true
     },
     twitter:{
         type: String,
+        unique:true
     },
     linkedin:{
         type: String,
+        unique:true
     },
     github:{
         type: String,
+        unique:true
     },
     stackoverflow:{
         type: String,
+        unique:true
     },
    
 },{timestamps: true});
-    UserSchema.pre("validate",function(next){
+socialLinkSchema.pre("validate",function(next){
     next();
 });
 
