@@ -1,10 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState , useRef } from 'react'
 import Sidebar from '../components/admin/Sidebar'
 import JoditEditor from 'jodit-react';
 import { MdCancel , MdPublic } from "react-icons/md"
 import { VscSaveAs } from "react-icons/vsc"
 const AddBlogs = () => {
   const [ tags , setTags ] = useState([]);
+  const [ formstate , setFormstate ] = useState({});
+  const [content, setContent] = useState('');
+  const editor = useRef('');
+
+const changeHandler = (event)=>{
+  setFormstate({ ...formstate , [event.target.name] : event.target.value})
+ 
+}
+
+const handleCheck = (event)=>{
+  setFormstate({ ...formstate , [event.target.name] : event.target.checked})
+}
 
   // addTags 
   const addTag = (event) =>{
@@ -39,16 +51,16 @@ const AddBlogs = () => {
          <div className='grid lg:grid-cols-2 gap-y-4 gap-x-8'>
           <div className='grid gap-y-1'>
                   <label htmlFor="title" className='text-lg font-medium'>Title</label>
-                  <input required placeholder='Title' className='input-style' type="text" name="title" id="title" />
+                  <input onChange={changeHandler} value={formstate.title || ""} required placeholder='Title' className='input-style' type="text" name="title" id="title" />
                 </div>
           <div className='grid gap-y-1'>
                   <label htmlFor="BImg" className='text-lg font-medium'>Blog Image</label>
-                  <input required placeholder='URL' className='input-style' type="text" name="BImg" id="BImg" />
+                  <input onChange={changeHandler} value={formstate.BImg || ""} required placeholder='URL' className='input-style' type="text" name="BImg" id="BImg" />
                 </div>
           </div>
           <div className='grid gap-y-1'>
                   <label htmlFor="des" className='text-lg font-medium'>Description</label>
-                  <input required placeholder='Description' className='input-style' type="text" name="des" id="des" />
+                  <input onChange={changeHandler} value={formstate.des || ""} required placeholder='Description' className='input-style' type="text" name="des" id="des" />
                 </div>
           <div className='grid gap-y-1'>
                   <label htmlFor="des" className='text-lg font-medium'>Blog Tags</label>
@@ -72,8 +84,8 @@ const AddBlogs = () => {
                   </div>
                 </div>
                 <div className='grid gap-y-1'>
-                  <label htmlFor="des" className='text-lg font-medium'>Categories</label>
-                  <select className='input-style' type="text" name="category" id="category" >
+                  <label htmlFor="category" className='text-lg font-medium'>Categories</label>
+                  <select onChange={changeHandler} value={formstate.category || ""} className='input-style' type="text" name="category" id="category" >
                     <option value="business">Business</option>
                     <option value="technology">Technology</option>
                     <option value="programming">Programming</option>
@@ -87,23 +99,23 @@ const AddBlogs = () => {
                   <div className='mt-2 flex flex-wrap gap-3 md:gap-4 xl:gap-6'>
                   <div className='flex gap-1'>
                   <label htmlFor="latest">Latest Post</label>
-                    <input className='accent-orange-600' type="checkbox" name="latest" id="Latest" />
+                    <input onChange={handleCheck} className='accent-orange-600' type="checkbox" name="latest" id="Latest" />
                   </div>
                   <div className='flex gap-1'>
                   <label htmlFor="trending">Trending Post</label>
-                    <input className='accent-orange-600' type="checkbox" name="trending" id="trending" />
+                    <input onChange={handleCheck} className='accent-orange-600' type="checkbox" name="trending" id="trending" />
                   </div>
                   <div className='flex gap-1'>
                   <label htmlFor="mustread">Must Reads</label>
-                    <input className='accent-orange-600' type="checkbox" name="mustread" id="mustread" />
+                    <input onChange={handleCheck} className='accent-orange-600' type="checkbox" name="mustread" id="mustread" />
                   </div>
                   <div className='flex gap-1'>
                   <label htmlFor="randompost">Random Post</label>
-                    <input className='accent-orange-600' type="checkbox" name="randompost" id="randompost" />
+                    <input onChange={handleCheck} className='accent-orange-600' type="checkbox" name="randompost" id="randompost" />
                   </div>
                   <div className='flex gap-1'>
                   <label htmlFor="toppicks">Top Picks</label>
-                    <input className='accent-orange-600' type="checkbox" name="toppicks" id="toppicks" />
+                    <input onChange={handleCheck} className='accent-orange-600' type="checkbox" name="toppicks" id="toppicks" />
                   </div>
                   </div>
                   
@@ -111,7 +123,7 @@ const AddBlogs = () => {
               </div>
           <div className='grid gap-y-1'>
                   <label htmlFor="content" className='text-lg font-medium'>Content</label>
-                  <JoditEditor placeholder='Description' className='input-style min-h-[10rem]' type="text" name="content" id="content" />
+                  <JoditEditor ref={editor} tabIndex={1} value={content}  onChange={content => setContent(content)} placeholder='Description' className='input-style min-h-[10rem]' type="text" name="content" id="content" />
                 </div>
 
                 <div className='py-4 flex gap-4'>
