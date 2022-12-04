@@ -2,6 +2,7 @@ const express = require("express");
 const BlogPost = require("../database/models/blogs")
 const router = express.Router();
 const fetchuser = require("../middleware/fetchuser");
+const slugify = require("slugify");
 
   // ROUTE 1: Get All Blogs
 router.get("/",async(req,res)=>{
@@ -53,11 +54,10 @@ router.get("/category/:category",async(req,res)=>{
 
 
   // ROUTE 9: Add Blogs
-  router.post(
-    "/addblogs",fetchuser,
+  router.post("/addblogs",fetchuser,
     async (req, res) => {
       try {
-        const { title  , BImg , description , tags, category , latest , trending , mustreads , randomposts , toppicks , content } =req.body;
+        const { title , BImg , description , tags, category , latest , trending , mustreads , randomposts , toppicks , content } =req.body;
         const blogData = new BlogPost({title , BImg , tags, description , category , latest , trending , mustreads , randomposts , toppicks , content });
         const saveBlogs = await blogData.save();
         res.json(saveBlogs);
@@ -74,7 +74,10 @@ router.put('/updateblogs/:id',fetchuser ,async (req, res) => {
     try {
       // Create a newBlogs object
       const newBlogs = {};
-      if (title) { newBlogs.title = title };
+      if (title) {
+         newBlogs.title = title
+         newBlogs.slug = slugify(title, {lower: true ,strict : true});
+         };
       if (BImg) { newBlogs.BImg = BImg };
       if (description) { newBlogs.description = description };
       if (tags) { newBlogs.tags = tags };
