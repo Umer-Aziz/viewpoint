@@ -4,18 +4,23 @@ const router = express.Router();
 const fetchuser = require("../middleware/fetchuser")
 
 
-// Endpoint for creating users 
+// Endpoint for creating links 
 
 router.post(
     "/createlinks",[
     ],fetchuser,async (req, res) => {
-
+        let success = false;
       try {
+        let linksCount = await socialLinks.find();
+
+        if(linksCount.length >= 1 ){
+            return res.status(400).json({success, Error:"links Limit exceeded"});
+        }
 
         const { facebook  , instagram , twitter , github , linkedin , stackoverflow } = req.body;
           let Links = new socialLinks({ facebook , instagram , twitter , github , linkedin , stackoverflow });
             await Links.save();
-             success = true ;
+            success = true ;
             res.status(200).json({success, message:"Links added Successfully"})
 
       } catch (error) {

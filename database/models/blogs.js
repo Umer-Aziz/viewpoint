@@ -15,13 +15,41 @@ const BlogSchema = mongoose.Schema({
         required:true,
         unique: true
     },
+    BImg:{
+        type: String,
+        required:true
+    },
     description:{
         type: String,
+        required:true
+    },
+    tags:{
+        type: Array,
         required:true
     },
     category:{
         type: String,
         required:true
+    },
+    latest:{
+        type: Boolean,
+        default:false
+    },
+    trending:{
+        type: Boolean,
+        default:false
+    },
+    mustreads:{
+        type: Boolean,
+        default:false
+    },
+    randomposts:{
+        type: Boolean,
+        default:false
+    },
+    toppicks:{
+        type: Boolean,
+        default:false
     },
     content:{
         type: String,
