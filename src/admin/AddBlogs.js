@@ -1,13 +1,15 @@
 import React, { useState , useRef } from 'react'
 import Sidebar from '../components/admin/Sidebar'
 import JoditEditor from 'jodit-react';
-import { MdCancel , MdPublic } from "react-icons/md"
+import { MdCancel , MdPublic , MdAddCircleOutline } from "react-icons/md"
 import { VscSaveAs } from "react-icons/vsc"
+import { BiAddToQueue } from "react-icons/bi"
 const AddBlogs = () => {
   const [ tags , setTags ] = useState([]);
   const [ formstate , setFormstate ] = useState({});
   const [content, setContent] = useState('');
   const editor = useRef('');
+  const tagsvalue = useRef(null);
 
 const changeHandler = (event)=>{
   setFormstate({ ...formstate , [event.target.name] : event.target.value})
@@ -18,11 +20,12 @@ const handleCheck = (event)=>{
   setFormstate({ ...formstate , [event.target.name] : event.target.checked})
 }
 
+
   // addTags 
-  const addTag = (event) =>{
-    if(event.target.value !== "" ){
-      setTags([ ...tags , event.target.value ]);
-      event.target.value = "";
+  const addTag = () =>{
+    if(tagsvalue.current.value !== "" ){
+      setTags([ ...tags , tagsvalue.current.value ]);
+      tagsvalue.current.value = "";
     }
   }
 
@@ -77,9 +80,13 @@ const handleCheck = (event)=>{
                       })
                      }
                       
-                      <input required className='lg:w-60 outline-none bg-transparent text-gray-600 dark:text-gray-100' type="text" id='tags' name='tags'
-                        onKeyUp={e => (e.key === "Enter" ? addTag(e) : null)}
+                      <div className='flex items-center'>
+                      <input ref={tagsvalue} value={tags.tags} className='h-full lg:w-60 border border-orange-600 rounded-md outline-none bg-transparent text-gray-600 dark:text-gray-100' type="text" id='tags' name='tags'
                       />
+                      <MdAddCircleOutline className="text-orange-600 text-2xl cursor-pointer hover:text-orange-700"
+                        onClick={()=>{addTag()}}
+                      />
+                      </div>
                     </ul>
                   </div>
                 </div>
@@ -126,9 +133,16 @@ const handleCheck = (event)=>{
                   <JoditEditor ref={editor} tabIndex={1} value={content}  onChange={content => setContent(content)} placeholder='Description' className='input-style min-h-[10rem]' type="text" name="content" id="content" />
                 </div>
 
-                <div className='py-4 flex gap-4'>
-                  <button className='btn'><VscSaveAs/> <span>Save</span></button>
-                  <button className='btn'><MdPublic/><span>Published</span></button>
+                <div className='py-4 flex gap-6'>
+                  <div className='flex items-center gap-2 text-orange-600'>
+                  <input onChange={changeHandler} className='accent-orange-600' type="radio" name="status" value="pending" id="save" required/>
+                   <VscSaveAs/> <span>Save</span></div>
+                  <div className='flex items-center gap-2 text-orange-600'>
+                  <input onChange={changeHandler} className='accent-orange-600' type="radio" name="status" value="published" id="save" required/>
+                  <MdPublic/><span>Publish</span></div>
+                </div>
+                <div className='my-6'>
+                  <button className='btn flex items-center gap-2'><BiAddToQueue/> <span>Post a Blog</span> </button>
                 </div>
          </div>
 

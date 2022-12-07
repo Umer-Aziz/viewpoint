@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState , useRef } from 'react'
 import Sidebar from '../components/admin/Sidebar'
+import JoditEditor from 'jodit-react';
 
 
 const BlogSubscriber = ({Toast}) => {
 
   const [ formstate , setFormstate ] = useState({});
   const [ visible , setVisible ] = useState(false);
+  const [content, setContent] = useState('');
+  const editor = useRef('');
 
   
 
@@ -33,7 +36,7 @@ if(visible === true ){
     From : formstate.emailfrom,
     To : formstate.emailto,
     Subject : formstate.emailsubject,
-    Body : formstate.msg
+    Body : content
   }
   if(window.Email){
       window.Email.send(config).then(()=>{
@@ -67,6 +70,7 @@ if(visible === true ){
 }
  
  setFormstate("");
+ setContent("");
 }
   return (
    <>
@@ -123,7 +127,7 @@ if(visible === true ){
                   </div>
                 <div className='grid gap-y-1'>
                   <label htmlFor="msg">Message</label>
-                  <textarea placeholder='Message...' value={formstate.msg || "" } onChange={changeHandler} className='lg:min-h-[8rem] outline-none py-2 px-4 rounded text-gray-600' type="text" name="msg" id="msg" required minLength={4}></textarea>
+                  <JoditEditor ref={editor} tabIndex={1} value={content}  onChange={content => setContent(content)} placeholder='Message..' className='input-style min-h-[10rem]' type="text" name="content" id="content" />
                   </div>
                   <div className='mt-4'>
                   <button className='btn'>Send</button>
