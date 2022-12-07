@@ -6,7 +6,7 @@ const slugify = require("slugify");
 
   // ROUTE 1: Get All Blogs
 router.get("/",async(req,res)=>{
-    const blogs = await BlogPost.find();
+    const blogs = await BlogPost.find().sort({updatedAt:"desc"});
     res.json(blogs);  
 })
   // ROUTE 2: Get All Latest Blogs
