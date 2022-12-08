@@ -1,15 +1,23 @@
-import React, { useState , useRef } from 'react'
+import React, { useState , useRef , useEffect } from 'react'
 import Sidebar from '../components/admin/Sidebar'
 import JoditEditor from 'jodit-react';
 import { MdCancel , MdPublic , MdAddCircleOutline } from "react-icons/md"
 import { VscSaveAs } from "react-icons/vsc"
 import { BiAddToQueue } from "react-icons/bi"
+import { useNavigate } from 'react-router-dom';
 const AddBlogs = () => {
   const [ tags , setTags ] = useState([]);
   const [ formstate , setFormstate ] = useState({});
   const [content, setContent] = useState('');
   const editor = useRef('');
   const tagsvalue = useRef(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(!localStorage.getItem('token')){
+      navigate("/dashboard/login");
+    }
+  }, []);
 
 const changeHandler = (event)=>{
   setFormstate({ ...formstate , [event.target.name] : event.target.value})
@@ -41,7 +49,7 @@ const handleCheck = (event)=>{
 
   return (
     <>
-      <main className='container py-10 overflow-x-hidden w-full'>
+     { localStorage.getItem('token') && <main className='container py-10 overflow-x-hidden w-full'>
         <div className='lg:flex '>
         {/* Sidebar  */}
          <Sidebar/>
@@ -149,7 +157,7 @@ const handleCheck = (event)=>{
          </form>
           </div>
         </div>
-        </main>
+        </main>}
     </>
   )
 }

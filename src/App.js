@@ -15,7 +15,7 @@ import AllBlogs from "./admin/AllBlogs";
 import BlogSubscriber from "./admin/BlogSubscriber";
 import AddBlogs from "./admin/AddBlogs";
 import Setting from "./admin/Setting";
-import Login from "./components/admin/Login";
+import Login from "./admin/Login";
 
 import { ToastContainer, toast , Zoom } from 'react-toastify';
 
@@ -55,8 +55,8 @@ function App() {
     <Route exact path="/terms-conditions" element={<Terms/>}/>
 
     {/* admin Routes  */}
-    <Route exact path="/dashboard" element={<Dashboard/>}/>
-    <Route exact path="/dashboard/login" element={<Login/>}/>
+    <Route exact path="/dashboard" element={<Dashboard Toast={Toast}/>}/>
+    <Route exact path="/dashboard/login" element={<Login Toast={Toast}/>}/>
     <Route exact path="/dashboard/allblogs" element={<AllBlogs/>}/>
     <Route exact path="/dashboard/subscriber" element={<BlogSubscriber Toast={Toast}/>}/>
     <Route exact path="/dashboard/addblogs" element={<AddBlogs/>}/>

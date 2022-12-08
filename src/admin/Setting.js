@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Sidebar from '../components/admin/Sidebar'
+import { useNavigate } from 'react-router-dom';
 
 const Setting = () => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(!localStorage.getItem('token')){
+      navigate("/dashboard/login");
+    }
+  }, []);
+
   return (
     <>
-      <main className='container py-10 overflow-x-hidden w-full'>
+      {localStorage.getItem("token") && <main className='container py-10 overflow-x-hidden w-full'>
         <div className='lg:flex '>
         {/* Sidebar  */}
          <Sidebar/>
@@ -151,7 +161,7 @@ const Setting = () => {
 
           </div>
         </div>
-        </main>
+        </main>}
     </>
   )
 }

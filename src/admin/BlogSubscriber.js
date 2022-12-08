@@ -1,7 +1,7 @@
-import React, { useState , useRef } from 'react'
+import React, { useState , useRef , useEffect } from 'react'
 import Sidebar from '../components/admin/Sidebar'
 import JoditEditor from 'jodit-react';
-
+import { useNavigate } from 'react-router-dom';
 
 const BlogSubscriber = ({Toast}) => {
 
@@ -10,6 +10,13 @@ const BlogSubscriber = ({Toast}) => {
   const [content, setContent] = useState('');
   const editor = useRef('');
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(!localStorage.getItem('token')){
+      navigate("/dashboard/login");
+    }
+  }, []);
   
 
 const changeHandler = (event)=>{
@@ -74,7 +81,7 @@ if(visible === true ){
 }
   return (
    <>
-     <main className='container py-10 overflow-x-hidden w-full'>
+    { localStorage.getItem("token") && <main className='container py-10 overflow-x-hidden w-full'>
         <div className='lg:flex '>
         {/* Sidebar  */}
          <Sidebar/>
@@ -137,7 +144,7 @@ if(visible === true ){
           </div>
           </div>
         </div>
-        </main>
+        </main>}
    </>
   )
 }

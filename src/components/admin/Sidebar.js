@@ -2,11 +2,37 @@ import React from 'react'
 import { FaHome , FaBlog , FaRegEdit } from "react-icons/fa"
 import { RiUserSettingsLine , RiLogoutCircleRLine } from "react-icons/ri"
 import { MdOutlineAttachEmail } from "react-icons/md";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { toast , Zoom } from 'react-toastify';
+
 const Sidebar = () => {
 
     let path = useLocation().pathname;
+    const navigate = useNavigate();
+
+    const customId = "custom-id-yes";
+
+
+    const Toast = (text)=>{
+      toast.info(text, {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme:"colored",
+          transition: Zoom , 
+          toastId: customId
+          });
+  }
+  
+    const logout = ()=>{
+        localStorage.removeItem('token');
+        navigate("/dashboard/login");
+        Toast("Logout Successfully!")
+    }
 
   return (
     <>
@@ -55,12 +81,12 @@ const Sidebar = () => {
                             
                         </nav>
                         <div className="absolute right-0 lg:left-0 lg:bottom-0 pr-2 md:pr-3 lg:pr-6 text-gray-600 dark:text-gray-300">
-                        <a href="/dashboard" className="sidebar-list mb-0 group">
+                        <button onClick={()=>{logout()}} className="w-full sidebar-list mb-0 group">
                                 <RiLogoutCircleRLine className='text-xl -translate-y-0.5 text-orange-600 group-hover:text-gray-300'/>
                                 <span className="mx-4 md:text-lg font-normal hidden lg:flex">
                                     Logout
                                 </span>
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
