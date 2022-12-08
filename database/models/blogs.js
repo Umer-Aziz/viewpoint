@@ -55,6 +55,10 @@ const BlogSchema = mongoose.Schema({
         type: String,
        required:true
     },
+    status:{
+        type: String,
+       required:true
+    },
 },{timestamps: true});
 
     BlogSchema.pre("validate",function(next){

@@ -93,7 +93,7 @@ router.post("/admin/login",[
         }
     }
     const authtoken = jwt.sign(data, jwtKey , {
-      expiresIn:"1h"
+      expiresIn:"2h"
   });
     success = true;
     res.status(200).json({ success , authtoken});

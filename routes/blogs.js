@@ -57,8 +57,8 @@ router.get("/category/:category",async(req,res)=>{
   router.post("/addblogs",fetchuser,
     async (req, res) => {
       try {
-        const { title , BImg , description , tags, category , latest , trending , mustreads , randomposts , toppicks , content } =req.body;
-        const blogData = new BlogPost({title , BImg , tags, description , category , latest , trending , mustreads , randomposts , toppicks , content });
+        const { title , BImg , description , tags, category , latest , trending , mustreads , randomposts , toppicks , content , status } =req.body;
+        const blogData = new BlogPost({title , BImg , tags, description , category , latest , trending , mustreads , randomposts , toppicks , content , status });
         const saveBlogs = await blogData.save();
         res.json(saveBlogs);
       } catch (error) {
@@ -70,7 +70,7 @@ router.get("/category/:category",async(req,res)=>{
 
   // ROUTE 10: Update an existing Blogs
 router.put('/updateblogs/:id',fetchuser ,async (req, res) => {
-    const { title  , BImg , description , tags, category , latest , trending , mustreads , randomposts , toppicks , content } =req.body;
+    const { title  , BImg , description , tags, category , latest , trending , mustreads , randomposts , toppicks , content ,status } =req.body;
     try {
       // Create a newBlogs object
       const newBlogs = {};
@@ -88,6 +88,7 @@ router.put('/updateblogs/:id',fetchuser ,async (req, res) => {
       if (randomposts) { newBlogs.randomposts = randomposts };
       if (toppicks) { newBlogs.randomposts = toppicks };
       if (content) { newBlogs.content = content };
+      if (status) { newBlogs.status = status };
 
       // Find the blogs to be updated and update it
       let blogs = await BlogPost.findById(req.params.id);
