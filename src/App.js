@@ -62,7 +62,7 @@ function App() {
     <Route exact path="/dashboard/addblogs" element={<AddBlogs/>}/>
     <Route exact path="/dashboard/setting" element={<Setting/>}/>
     </Routes>
-    <Footer/>
+    <Footer Toast={Toast}/>
     </BrowserRouter>
    </>
   );

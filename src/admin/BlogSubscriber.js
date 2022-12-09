@@ -5,30 +5,39 @@ import { useNavigate } from 'react-router-dom';
 
 const BlogSubscriber = ({Toast}) => {
 
-  const [ formstate , setFormstate ] = useState({});
-  const [ visible , setVisible ] = useState(false);
-  const [content, setContent] = useState('');
-  const editor = useRef('');
-
   const navigate = useNavigate();
 
   useEffect(() => {
     if(!localStorage.getItem('token')){
       navigate("/dashboard/login");
     }
+    GetSubscriber();
   }, []);
-  
+
+  const [ formstate , setFormstate ] = useState({});
+  const [ visible , setVisible ] = useState(false);
+  const [content, setContent] = useState('');
+  const [blogSubscriber, setblogSubscriber] = useState({});
+  const editor = useRef('');
+  const {subs} = blogSubscriber;
 
 const changeHandler = (event)=>{
   setFormstate({ ...formstate , [event.target.name] : event.target.value })
 }
 
-const emails = [
-  "umeraziz682@gmail.com",
-  "umeraziz019@gmail.com",
-  "umars25271997@gmail.com"
-]
-
+const GetSubscriber = async()=>{
+    const response = await fetch(`${process.env.REACT_APP_HOST}/subscriber/getsubscriber`, {
+        method: "GET",
+        headers: {
+          'Content-Type': "application/json",
+          "auth-token":localStorage.getItem("token")
+        },
+      });
+      const subscriber = await response.json();
+      setblogSubscriber(subscriber);
+      
+     
+}
 
 
 const handleForm = (e)=>{
@@ -56,13 +65,13 @@ if(visible === true ){
     }
 
 }else{
-  emails.forEach((email)=>{
+  subs.forEach((data)=>{
    config = { 
     SecureToken : process.env.REACT_APP_SecureToken,
     From : formstate.emailfrom,
-    To : email,
+    To : data.email,
     Subject : formstate.emailsubject,
-    Body : formstate.msg
+    Body : content
   }
   if(window.Email){
       window.Email.send(config).then(()=>{
@@ -81,7 +90,7 @@ if(visible === true ){
 }
   return (
    <>
-    { localStorage.getItem("token") && <main className='container py-10 overflow-x-hidden w-full'>
+    { localStorage.getItem("token")  && <main className='container py-10 overflow-x-hidden w-full'>
         <div className='lg:flex '>
         {/* Sidebar  */}
          <Sidebar/>
@@ -90,12 +99,17 @@ if(visible === true ){
 
            {/* email lists  */}
           <div>
-          <div className='bg-light-gray dark:bg-dull-gray py-2 px-4 rounded-md lg:max-w-xs'>
+          <div className='bg-light-gray dark:bg-dull-gray py-2 px-4 rounded-md lg:max-w-sm lg:min-w-[320px]'>
               <h3 className='py-2 border-b text-lg md:text-xl font-medium text-orange-600 border-gray-600 border-opacity-10 dark:border-opacity-30'>Email List</h3>
               <div className='grid py-4'>
                 <ul className='grid gap-3 text-gray-600 dark:text-gray-700'>
-                  <li className='md:text-lg inline-block bg-orange-300 dark:bg-gray-100 px-2 rounded-md'>umeraziz682@gmail.com</li>
-                  <li className='md:text-lg inline-block bg-orange-300 dark:bg-gray-100 px-2 rounded-md'>jacksparrow434445@gmail.com</li>
+                {
+                 subs && subs.map((data)=>{
+                    return(
+                      <li key={data._id} className='md:text-lg inline-block bg-orange-300 dark:bg-gray-100 px-2 rounded-md'>{data.email}</li>
+                    )
+                  })
+                }
                 </ul>
               </div>
             </div>

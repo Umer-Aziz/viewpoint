@@ -1,7 +1,35 @@
-import React from "react";
+import React,{useState} from "react";
 import { FaGithub , FaLinkedin , FaTwitter ,  FaStackOverflow } from "react-icons/fa";
 import { NavLink , Link } from "react-router-dom";
-export const Footer = () => {
+export const Footer = ({Toast}) => {
+  const [ subscriber , setSubscriber ] = useState('');
+
+  const handleChange = (event)=>{
+    setSubscriber({ ...subscriber , [event.target.name] : event.target.value })
+  }
+
+  const Submitform =async (e)=>{
+    e.preventDefault();
+    const { email } = subscriber;
+    const response = await fetch(`${process.env.REACT_APP_HOST}/subscriber`, {
+        method: "POST",
+        headers: {
+          'Content-Type': "application/json",
+        },
+        body: JSON.stringify({ email })
+      });
+      const subs = await response.json();
+      if(subs.success){
+        Toast(subs.message);
+      } 
+      else{
+         Toast(subs.Error)
+      }
+    setSubscriber("");
+    
+    
+  }
+
     return (
       <div className="bg-gray-100 dark:bg-gray-600 dark:bg-opacity-5">
         <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 xl:max-w-7xl 2xl:px-0">
@@ -85,11 +113,14 @@ export const Footer = () => {
               <span className="text-base font-medium tracking-wide dark:text-gray-300 text-gray-600">
                 Subscribe for updates
               </span>
-              <form className="flex flex-col mt-4 md:flex-row">
+              <form onSubmit={Submitform} className="flex flex-col mt-4 md:flex-row">
                 <input
                   placeholder="Email"
                   required
-                  type="text"
+                  type="email"
+                  name="email"
+                  value={subscriber.email || ""}
+                  onChange={handleChange}
                   className="flex-grow w-full h-12 px-4 mb-3 transition duration-200 bg-gray-50 text-gray-600 border border-gray-300 rounded shadow-sm appearance-none md:mr-2 md:mb-0 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
                 <button
