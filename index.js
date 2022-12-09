@@ -3,6 +3,7 @@ const app = express();
 const authRouter = require("./routes/auth");
 const LinksRouter = require("./routes/sociallinks");
 const BlogsRouter = require("./routes/blogs");
+const SubsRouter = require("./routes/subscriber");
 var cors = require('cors');
 
 const ConnectDB = require("./database/db");
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use("/auth",authRouter);
 app.use("/links",LinksRouter);
 app.use("/blogs",BlogsRouter);
+app.use("/subscriber",SubsRouter);
 
 app.listen(PORT,()=>{
     console.log(`App is Running on on http://localhost:${PORT}`)
