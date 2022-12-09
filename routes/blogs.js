@@ -9,33 +9,37 @@ router.get("/",async(req,res)=>{
     const blogs = await BlogPost.find().sort({updatedAt:"desc"});
     res.json(blogs);  
 })
+router.get("/published",async(req,res)=>{
+    const blogs = await BlogPost.find({status:"published"}).sort({updatedAt:"desc"});
+    res.json(blogs);  
+})
   // ROUTE 2: Get All Latest Blogs
 router.get("/latest",async(req,res)=>{
-    const blogs =await BlogPost.find({latest:true}).sort({updatedAt:"desc"}); 
+    const blogs =await BlogPost.find({status:"published",latest:true}).sort({updatedAt:"desc"}); 
     res.json(blogs);  
 })
 
   // ROUTE 3: Get All trending Blogs
 router.get("/trending",async(req,res)=>{
-    const blogs =await BlogPost.find({trending:true}).sort({updatedAt:"desc"}); 
+    const blogs =await BlogPost.find({status:"published",trending:true}).sort({updatedAt:"desc"}); 
     res.json(blogs);  
 })
 
   // ROUTE 4: Get All  must reads Blogs
   router.get("/mustreads",async(req,res)=>{
-    const blogs =await BlogPost.find({mustreads:true}).sort({updatedAt:"desc"}); 
+    const blogs =await BlogPost.find({status:"published",mustreads:true}).sort({updatedAt:"desc"}); 
     res.json(blogs);  
 })
 
   // ROUTE 5: Get All Random Blogs
 router.get("/randomposts",async(req,res)=>{
-    const blogs =await BlogPost.find({randomposts:true}).sort({updatedAt:"desc"}); 
+    const blogs =await BlogPost.find({status:"published",randomposts:true}).sort({updatedAt:"desc"}); 
     res.json(blogs);  
 })
 
   // ROUTE 6: Get All Top picks Blogs
 router.get("/toppicks",async(req,res)=>{
-    const blogs =await BlogPost.find({toppicks:true}).sort({updatedAt:"desc"}); 
+    const blogs =await BlogPost.find({status:"published",toppicks:true}).sort({updatedAt:"desc"}); 
     res.json(blogs);  
 })
 
