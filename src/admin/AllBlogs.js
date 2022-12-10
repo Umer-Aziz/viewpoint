@@ -1,16 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { FaRegEdit } from "react-icons/fa"
 import { MdDeleteForever } from "react-icons/md"
 import Sidebar from '../components/admin/Sidebar'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import ApiContext from '../context/ApiContext';
+import moment from 'moment'
 const AllBlogs = () => {
     
     const navigate = useNavigate();
+    const { GetAllBlogs , Allblogs , deleteBlogs } = useContext(ApiContext);
 
   useEffect(() => {
     if(!localStorage.getItem('token')){
       navigate("/dashboard/login");
     }
+    GetAllBlogs();
   }, []);
 
   return (
@@ -35,106 +39,42 @@ const AllBlogs = () => {
                 </tr>
             </thead>
             <tbody>
-                <tr className="bg-white dark:bg-dull-black text-gray-600 dark:text-gray-300
+            {
+                Allblogs && Allblogs.map((blog)=>{
+                    const {_id , title , slug , updatedAt , status } = blog;
+                    const date = moment(updatedAt).format("MMM Do , YYYY");
+                    return (
+                    <tr key={_id} className="bg-white dark:bg-dull-black text-gray-600 dark:text-gray-300
                  lg:hover:bg-gray-100 lg:dark:hover:bg-dull-gray table-row flex-row flex-wrap flex-no-wrap">
                     <td className="w-full max-w-[26rem] p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell ">
-                        Lorem ipsum dolor sit amet consectetur adipisicing. Lorem ipsum dolor sit.
+                    {title}
                     </td>
-                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell">
-                        10/12/2022
+                    <td className="w-full min-w-[10rem] p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell">
+                        {date}
                     </td>
                     <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell ">
-                        <span className="rounded text-gray-800 bg-yellow-400 py-1 px-3 text-xs font-bold">Draft</span>
-                        {/* <span className="rounded bg-green-400 py-1 px-3 text-xs font-bold">Published</span> */}
+                    <span className={`rounded text-gray-800 ${status ==="published" ? 'bg-green-400': 'bg-yellow-400'} py-1 px-3 text-xs font-bold capitalize`}>{status}</span>
                     </td>
                     <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell ">
                         <div className='flex justify-center gap-x-2'>
-                        <a href="/" className="text-green-600 hover:text-green-700 md:text-xl"><FaRegEdit/></a>
-                        <button className="text-red-600 hover:text-red-700 md:text-xl"><MdDeleteForever/></button>
+                        <NavLink to={`/dashboard/editblogs/${slug}`} className="text-green-600 hover:text-green-700 md:text-xl"><FaRegEdit/></NavLink>
+                        <button onClick={() => {
+                          if (
+                            window.confirm(
+                              "Are you sure you want to Delete this Blog from database?"
+                            )
+                          ) {
+                            // Delete it!
+                            deleteBlogs(_id);
+                          }
+                        }} className="text-red-600 hover:text-red-700 md:text-xl"><MdDeleteForever/></button>
                         </div>
                     </td>
-                </tr>
-
-                <tr className="bg-white dark:bg-dull-black text-gray-600 dark:text-gray-300
-                 lg:hover:bg-gray-100 lg:dark:hover:bg-dull-gray table-row flex-row flex-wrap flex-no-wrap">
-                    <td className="w-full max-w-[26rem] p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell ">
-                        Lorem ipsum dolor sit amet consectetur adipisicing. Lorem ipsum dolor sit.
-                    </td>
-                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell">
-                        10/12/2022
-                    </td>
-                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell ">
-                        {/* <span className="rounded text-gray-800 bg-yellow-400 py-1 px-3 text-xs font-bold">Draft</span> */}
-                        <span className="rounded text-gray-800 bg-green-400 py-1 px-3 text-xs font-bold">Published</span>
-                    </td>
-                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell ">
-                        <div className='flex justify-center gap-x-2'>
-                        <a href="/" className="text-green-600 hover:text-green-700 md:text-xl"><FaRegEdit/></a>
-                        <button className="text-red-600 hover:text-red-700 md:text-xl"><MdDeleteForever/></button>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr className="bg-white dark:bg-dull-black text-gray-600 dark:text-gray-300
-                 lg:hover:bg-gray-100 lg:dark:hover:bg-dull-gray table-row flex-row flex-wrap flex-no-wrap">
-                    <td className="w-full max-w-[26rem] p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell ">
-                        Lorem ipsum dolor sit amet consectetur adipisicing. Lorem ipsum dolor sit.
-                    </td>
-                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell">
-                        10/12/2022
-                    </td>
-                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell ">
-                        <span className="rounded text-gray-800 bg-yellow-400 py-1 px-3 text-xs font-bold">Draft</span>
-                        {/* <span className="rounded bg-green-400 py-1 px-3 text-xs font-bold">Published</span> */}
-                    </td>
-                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell ">
-                        <div className='flex justify-center gap-x-2'>
-                        <a href="/" className="text-green-600 hover:text-green-700 md:text-xl"><FaRegEdit/></a>
-                        <button className="text-red-600 hover:text-red-700 md:text-xl"><MdDeleteForever/></button>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr className="bg-white dark:bg-dull-black text-gray-600 dark:text-gray-300
-                 lg:hover:bg-gray-100 lg:dark:hover:bg-dull-gray table-row flex-row flex-wrap flex-no-wrap">
-                    <td className="w-full max-w-[26rem] p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell ">
-                        Lorem ipsum dolor sit amet consectetur adipisicing. Lorem ipsum dolor sit.
-                    </td>
-                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell">
-                        10/12/2022
-                    </td>
-                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell ">
-                        {/* <span className="rounded text-gray-800 bg-yellow-400 py-1 px-3 text-xs font-bold">Draft</span> */}
-                        <span className="rounded text-gray-800 bg-green-400 py-1 px-3 text-xs font-bold">Published</span>
-                    </td>
-                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell ">
-                        <div className='flex justify-center gap-x-2'>
-                        <a href="/" className="text-green-600 hover:text-green-700 md:text-xl"><FaRegEdit/></a>
-                        <button className="text-red-600 hover:text-red-700 md:text-xl"><MdDeleteForever/></button>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr className="bg-white dark:bg-dull-black text-gray-600 dark:text-gray-300
-                 lg:hover:bg-gray-100 lg:dark:hover:bg-dull-gray table-row flex-row flex-wrap flex-no-wrap">
-                    <td className="w-full max-w-[26rem] p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell ">
-                        Lorem ipsum dolor sit amet consectetur adipisicing. Lorem ipsum dolor sit.
-                    </td>
-                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell">
-                        10/12/2022
-                    </td>
-                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell ">
-                        <span className="rounded text-gray-800 bg-yellow-400 py-1 px-3 text-xs font-bold">Draft</span>
-                        {/* <span className="rounded bg-green-400 py-1 px-3 text-xs font-bold">Published</span> */}
-                    </td>
-                    <td className="w-full p-3 text-center border border-b border-gray-600 border-opacity-10 dark:border-opacity-30 table-cell ">
-                        <div className='flex justify-center gap-x-2'>
-                        <a href="/" className="text-green-600 hover:text-green-700 md:text-xl"><FaRegEdit/></a>
-                        <button className="text-red-600 hover:text-red-700 md:text-xl"><MdDeleteForever/></button>
-                        </div>
-                    </td>
-                </tr>
-               
+                </tr> 
+                    )
+                })
+            }
+                     
             </tbody>
         </table>
 

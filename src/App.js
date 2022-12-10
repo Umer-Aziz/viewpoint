@@ -18,6 +18,7 @@ import Setting from "./admin/Setting";
 import Login from "./admin/Login";
 import ApiState from "./context/ApiState";
 import { ToastContainer, toast , Zoom } from 'react-toastify';
+import EditBlogs from "./admin/EditBlogs";
 
 function App() {
 
@@ -62,6 +63,7 @@ function App() {
     <Route exact path="/dashboard/allblogs" element={<AllBlogs/>}/>
     <Route exact path="/dashboard/subscriber" element={<BlogSubscriber Toast={Toast}/>}/>
     <Route exact path="/dashboard/addblogs" element={<AddBlogs Toast={Toast}/>}/>
+    <Route exact path="/dashboard/editblogs/:slug" element={<EditBlogs Toast={Toast}/>}/>
     <Route exact path="/dashboard/setting" element={<Setting/>}/>
     </Routes>
     <Footer Toast={Toast}/>
