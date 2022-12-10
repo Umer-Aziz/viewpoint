@@ -16,7 +16,7 @@ import BlogSubscriber from "./admin/BlogSubscriber";
 import AddBlogs from "./admin/AddBlogs";
 import Setting from "./admin/Setting";
 import Login from "./admin/Login";
-
+import ApiState from "./context/ApiState";
 import { ToastContainer, toast , Zoom } from 'react-toastify';
 
 function App() {
@@ -40,6 +40,8 @@ function App() {
 
   return (
    <>
+  
+  <ApiState>
     <ToastContainer toastStyle={{ backgroundColor: "#ea4c13" }}/>
    <BrowserRouter>
     <ScrolltoTop/>
@@ -59,11 +61,12 @@ function App() {
     <Route exact path="/dashboard/login" element={<Login Toast={Toast}/>}/>
     <Route exact path="/dashboard/allblogs" element={<AllBlogs/>}/>
     <Route exact path="/dashboard/subscriber" element={<BlogSubscriber Toast={Toast}/>}/>
-    <Route exact path="/dashboard/addblogs" element={<AddBlogs/>}/>
+    <Route exact path="/dashboard/addblogs" element={<AddBlogs Toast={Toast}/>}/>
     <Route exact path="/dashboard/setting" element={<Setting/>}/>
     </Routes>
     <Footer Toast={Toast}/>
     </BrowserRouter>
+    </ApiState>
    </>
   );
 }

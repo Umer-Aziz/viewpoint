@@ -5,7 +5,7 @@ import { MdCancel , MdPublic , MdAddCircleOutline } from "react-icons/md"
 import { VscSaveAs } from "react-icons/vsc"
 import { BiAddToQueue } from "react-icons/bi"
 import { useNavigate } from 'react-router-dom';
-const AddBlogs = () => {
+const AddBlogs = ({Toast}) => {
   const [ tags , setTags ] = useState([]);
   const [ formstate , setFormstate ] = useState({});
   const [content, setContent] = useState('');
@@ -43,8 +43,26 @@ const handleCheck = (event)=>{
 
   }
 
-  const addBlog = (e) =>{
+  const addBlog = async(e) =>{
   e.preventDefault();
+
+  const { title , BImg , description , category , latest , trending , mustreads , randomposts , toppicks , status} = formstate;
+  const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/addblogs`, {
+      method: "POST",
+      headers: {
+        'Content-Type': "application/json", 
+        "auth-token":localStorage.getItem('token')
+      },
+      body: JSON.stringify({ title , BImg , description , tags , category , latest , trending , mustreads , randomposts , toppicks , content , status})
+    });
+    const addblogs = await response.json();
+    if(!addblogs.Error){
+      Toast("Blog has been added Successfully!");
+      navigate("/dashboard/allblogs");
+    }else{
+      Toast(addblogs.Error)
+    }
+    
   }
 
   return (
@@ -70,11 +88,11 @@ const handleCheck = (event)=>{
                 </div>
           </div>
           <div className='grid gap-y-1'>
-                  <label htmlFor="des" className='text-lg font-medium'>Description</label>
-                  <input onChange={changeHandler} value={formstate.des || ""} required placeholder='Description' className='input-style' type="text" name="des" id="des" />
+                  <label htmlFor="description" className='text-lg font-medium'>Description</label>
+                  <input onChange={changeHandler} value={formstate.description || ""} required placeholder='Description' className='input-style' type="text" name="description" id="description" />
                 </div>
           <div className='grid gap-y-1'>
-                  <label htmlFor="des" className='text-lg font-medium'>Blog Tags</label>
+                  <label htmlFor="tags" className='text-lg font-medium'>Blog Tags</label>
                   <div className='py-3 px-4 border border-orange-600 rounded-md text-gray-100'>
                     <ul className='flex gap-2 flex-wrap'>
                      {
@@ -122,11 +140,11 @@ const handleCheck = (event)=>{
                   </div>
                   <div className='flex gap-1'>
                   <label htmlFor="mustread">Must Reads</label>
-                    <input onChange={handleCheck} className='accent-orange-600' type="checkbox" name="mustread" id="mustread" />
+                    <input onChange={handleCheck} className='accent-orange-600' type="checkbox" name="mustreads" id="mustread" />
                   </div>
                   <div className='flex gap-1'>
                   <label htmlFor="randompost">Random Post</label>
-                    <input onChange={handleCheck} className='accent-orange-600' type="checkbox" name="randompost" id="randompost" />
+                    <input onChange={handleCheck} className='accent-orange-600' type="checkbox" name="randomposts" id="randompost" />
                   </div>
                   <div className='flex gap-1'>
                   <label htmlFor="toppicks">Top Picks</label>

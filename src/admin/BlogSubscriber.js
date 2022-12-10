@@ -1,44 +1,29 @@
-import React, { useState , useRef , useEffect } from 'react'
+import React, { useState , useRef , useEffect, useContext } from 'react'
 import Sidebar from '../components/admin/Sidebar'
 import JoditEditor from 'jodit-react';
 import { useNavigate } from 'react-router-dom';
-
+import ApiContext from '../context/ApiContext';
 const BlogSubscriber = ({Toast}) => {
 
   const navigate = useNavigate();
+  const data = useContext(ApiContext);
 
   useEffect(() => {
     if(!localStorage.getItem('token')){
       navigate("/dashboard/login");
     }
-    GetSubscriber();
+    data.GetSubscriber();
   }, []);
 
   const [ formstate , setFormstate ] = useState({});
   const [ visible , setVisible ] = useState(false);
   const [content, setContent] = useState('');
-  const [blogSubscriber, setblogSubscriber] = useState({});
   const editor = useRef('');
-  const {subs} = blogSubscriber;
+  const {subs} = data.blogSubscriber;
 
 const changeHandler = (event)=>{
   setFormstate({ ...formstate , [event.target.name] : event.target.value })
 }
-
-const GetSubscriber = async()=>{
-    const response = await fetch(`${process.env.REACT_APP_HOST}/subscriber/getsubscriber`, {
-        method: "GET",
-        headers: {
-          'Content-Type': "application/json",
-          "auth-token":localStorage.getItem("token")
-        },
-      });
-      const subscriber = await response.json();
-      setblogSubscriber(subscriber);
-      
-     
-}
-
 
 const handleForm = (e)=>{
   e.preventDefault();
