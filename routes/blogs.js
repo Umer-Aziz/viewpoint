@@ -13,6 +13,10 @@ router.get("/published",async(req,res)=>{
     const blogs = await BlogPost.find({status:"published"}).sort({updatedAt:"desc"});
     res.json(blogs);  
 })
+router.get("/pending",async(req,res)=>{
+    const blogs = await BlogPost.find({status:"pending"}).sort({updatedAt:"desc"});
+    res.json(blogs);  
+})
   // ROUTE 2: Get All Latest Blogs
 router.get("/latest",async(req,res)=>{
     const blogs =await BlogPost.find({status:"published",latest:true}).sort({updatedAt:"desc"}); 
