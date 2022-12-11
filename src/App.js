@@ -60,7 +60,7 @@ function App() {
     {/* admin Routes  */}
     <Route exact path="/dashboard" element={<Dashboard Toast={Toast}/>}/>
     <Route exact path="/dashboard/login" element={<Login Toast={Toast}/>}/>
-    <Route exact path="/dashboard/allblogs" element={<AllBlogs/>}/>
+    <Route exact path="/dashboard/allblogs" element={<AllBlogs Toast={Toast}/>}/>
     <Route exact path="/dashboard/subscriber" element={<BlogSubscriber Toast={Toast}/>}/>
     <Route exact path="/dashboard/addblogs" element={<AddBlogs Toast={Toast}/>}/>
     <Route exact path="/dashboard/editblogs/:slug" element={<EditBlogs Toast={Toast}/>}/>

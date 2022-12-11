@@ -5,7 +5,7 @@ import Sidebar from '../components/admin/Sidebar'
 import { NavLink, useNavigate } from 'react-router-dom'
 import ApiContext from '../context/ApiContext';
 import moment from 'moment'
-const AllBlogs = () => {
+const AllBlogs = ({Toast}) => {
     
     const navigate = useNavigate();
     const { GetAllBlogs , Allblogs , deleteBlogs } = useContext(ApiContext);
@@ -66,6 +66,7 @@ const AllBlogs = () => {
                           ) {
                             // Delete it!
                             deleteBlogs(_id);
+                            Toast("Blog has been Deleted!")
                           }
                         }} className="text-red-600 hover:text-red-700 md:text-xl"><MdDeleteForever/></button>
                         </div>

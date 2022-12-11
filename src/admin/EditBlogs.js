@@ -1,11 +1,19 @@
-import React, { useState , useRef , useEffect } from 'react'
+import React, { useState , useRef , useEffect , useContext } from 'react'
 import Sidebar from '../components/admin/Sidebar'
 import JoditEditor from 'jodit-react';
 import { MdCancel , MdPublic , MdAddCircleOutline } from "react-icons/md"
 import { VscSaveAs } from "react-icons/vsc"
 import { BiAddToQueue } from "react-icons/bi"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , useLocation } from 'react-router-dom';
+import ApiContext from '../context/ApiContext';
+
 const EditBlogs = ({Toast}) => {
+
+  const location = useLocation();
+  const url = location.pathname.replace("/dashboard/editblogs/", "") ;
+
+  const { getBlogsEdit , blogsEdit  } = useContext(ApiContext);
+
   const [ tags , setTags ] = useState([]);
   const [ formstate , setFormstate ] = useState({});
   const [content, setContent] = useState('');
@@ -17,8 +25,8 @@ const EditBlogs = ({Toast}) => {
     if(!localStorage.getItem('token')){
       navigate("/dashboard/login");
     }
+    getBlogsEdit(url);
   }, []);
-
 const changeHandler = (event)=>{
   setFormstate({ ...formstate , [event.target.name] : event.target.value})
  
@@ -27,7 +35,6 @@ const changeHandler = (event)=>{
 const handleCheck = (event)=>{
   setFormstate({ ...formstate , [event.target.name] : event.target.checked})
 }
-
 
   // addTags 
   const addTag = () =>{
@@ -47,21 +54,24 @@ const handleCheck = (event)=>{
   e.preventDefault();
 
   const { title , BImg , description , category , latest , trending , mustreads , randomposts , toppicks , status} = formstate;
-  const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/addblogs`, {
-      method: "POST",
-      headers: {
-        'Content-Type': "application/json", 
-        "auth-token":localStorage.getItem('token')
-      },
-      body: JSON.stringify({ title , BImg , description , tags , category , latest , trending , mustreads , randomposts , toppicks , content , status})
-    });
-    const addblogs = await response.json();
-    if(!addblogs.Error){
-      Toast("Blog has been added Successfully!");
-      navigate("/dashboard/allblogs");
-    }else{
-      Toast(addblogs.Error)
-    }
+  // const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/addblogs`, {
+  //     method: "POST",
+  //     headers: {
+  //       'Content-Type': "application/json", 
+  //       "auth-token":localStorage.getItem('token')
+  //     },
+  //     body: JSON.stringify({ title , BImg , description , tags , category , latest , trending , mustreads , randomposts , toppicks , content , status})
+  //   });
+  //   const addblogs = await response.json();
+  //   if(!addblogs.Error){
+  //     Toast("Blog has been added Successfully!");
+  //     navigate("/dashboard/allblogs");
+  //   }else{
+  //     Toast(addblogs.Error)
+  //   }
+
+  console.log("form ", formstate)
+  console.log("content ", content)
     
   }
 
@@ -80,16 +90,16 @@ const handleCheck = (event)=>{
          <div className='grid lg:grid-cols-2 gap-y-4 gap-x-8'>
           <div className='grid gap-y-1'>
                   <label htmlFor="title" className='text-lg font-medium'>Title</label>
-                  <input onChange={changeHandler} value={formstate.title || ""} required placeholder='Title' className='input-style' type="text" name="title" id="title" />
+                  <input onChange={changeHandler} value={formstate.title || blogsEdit.title } required placeholder='Title' className='input-style' type="text" name="title" id="title" />
                 </div>
           <div className='grid gap-y-1'>
                   <label htmlFor="BImg" className='text-lg font-medium'>Blog Image</label>
-                  <input onChange={changeHandler} value={formstate.BImg || ""} required placeholder='URL' className='input-style' type="text" name="BImg" id="BImg" />
+                  <input onChange={changeHandler} value={formstate.BImg || blogsEdit.BImg } required placeholder='URL' className='input-style' type="text" name="BImg" id="BImg" />
                 </div>
           </div>
           <div className='grid gap-y-1'>
                   <label htmlFor="description" className='text-lg font-medium'>Description</label>
-                  <input onChange={changeHandler} value={formstate.description || ""} required placeholder='Description' className='input-style' type="text" name="description" id="description" />
+                  <input onChange={changeHandler} value={formstate.description || blogsEdit.description} required placeholder='Description' className='input-style' type="text" name="description" id="description" />
                 </div>
           <div className='grid gap-y-1'>
                   <label htmlFor="tags" className='text-lg font-medium'>Blog Tags</label>
@@ -103,7 +113,7 @@ const handleCheck = (event)=>{
                         <MdCancel onClick={()=>{removeTags(index)}} className='cursor-pointer'/>
                       </li>
                         )
-                      })
+                      })                                       
                      }
                       
                       <div className='flex items-center'>
@@ -118,7 +128,7 @@ const handleCheck = (event)=>{
                 </div>
                 <div className='grid gap-y-1'>
                   <label htmlFor="category" className='text-lg font-medium'>Categories</label>
-                  <select onChange={changeHandler} value={formstate.category || ""} className='input-style' type="text" name="category" id="category" >
+                  <select onChange={changeHandler} value={formstate.category || blogsEdit.category } className='input-style' type="text" name="category" id="category" >
                     <option value="business">Business</option>
                     <option value="technology">Technology</option>
                     <option value="programming">Programming</option>
@@ -156,7 +166,7 @@ const handleCheck = (event)=>{
               </div>
           <div className='grid gap-y-1'>
                   <label htmlFor="content" className='text-lg font-medium'>Content</label>
-                  <JoditEditor ref={editor} tabIndex={1} value={content}  onChange={content => setContent(content)} placeholder='Description' className='input-style min-h-[10rem]' type="text" name="content" id="content" />
+                  <JoditEditor ref={editor} tabIndex={1} value={blogsEdit.content}  onChange={content => setContent(content)} placeholder='Description' className='input-style min-h-[10rem]' type="text" name="content" id="content" />
                 </div>
 
                 <div className='py-4 flex gap-6'>

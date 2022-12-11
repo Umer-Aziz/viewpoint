@@ -7,7 +7,7 @@ import { Link, NavLink } from 'react-router-dom';
 import ApiContext from "../../context/ApiContext"
 import moment from 'moment'
 
-const Overview = () => {
+const Overview = ({Toast}) => {
     const { GetAllBlogs , GetAllPendingBlogs , GetSubscriber, deleteBlogs, Allblogs , pending , blogSubscriber} = useContext(ApiContext);
     useEffect(()=>{
         GetAllBlogs();
@@ -78,7 +78,7 @@ const Overview = () => {
             </thead>
             <tbody>
             {
-                Allblogs && Allblogs.map((blog)=>{
+                Allblogs && Allblogs.slice(0,11).map((blog)=>{
                     const {_id , title , slug , updatedAt , status } = blog;
                     const date = moment(updatedAt).format("MMM Do , YYYY");
                     return (
@@ -104,6 +104,7 @@ const Overview = () => {
                           ) {
                             // Delete it!
                             deleteBlogs(_id);
+                            Toast("Blog has been deleted!")
                           }
                         }} className="text-red-600 hover:text-red-700 md:text-xl"><MdDeleteForever/></button>
                         </div>

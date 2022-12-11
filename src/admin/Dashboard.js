@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Overview from '../components/admin/Overview'
 import Sidebar from '../components/admin/Sidebar'
 
-const Dashboard = () => {
+const Dashboard = ({Toast}) => {
 
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ const Dashboard = () => {
         {/* Sidebar  */}
          <Sidebar/>
           {/* overview */}      
-          <Overview/>
+          <Overview Toast={Toast}/>
         </div>
         </main>}
     </>

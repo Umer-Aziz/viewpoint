@@ -6,7 +6,7 @@ import ApiContext from "../../context/ApiContext"
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieChart = () => {
-  const { GetAllBlogs , GetAllPendingBlogs , GetSubscriber , Allblogs , pending , blogSubscriber} = useContext(ApiContext);
+  const { GetAllBlogs , GetAllPendingBlogs , GetSubscriber, Allblogs , pending , blogSubscriber} = useContext(ApiContext);
   useEffect(()=>{
     GetAllBlogs();
     GetAllPendingBlogs();
@@ -25,7 +25,7 @@ const data = {
   datasets: [
     {
       label: 'No of Blogs',
-      data: [Bloglength,pendinglength,Subscriberlength],
+      data: [Bloglength || 0,pendinglength || 0,Subscriberlength || 0],
       backgroundColor: [
         'rgba(255, 159, 64, 0.2)',
         'rgba(255, 206, 86, 0.2)',
