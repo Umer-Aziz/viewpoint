@@ -12,7 +12,8 @@ const EditBlogs = ({Toast}) => {
   const location = useLocation();
   const url = location.pathname.replace("/dashboard/editblogs/", "") ;
 
-  const { getBlogsEdit , blogsEdit  } = useContext(ApiContext);
+  const { getBlogsEdit , blogsEdit , setBlogsEdit } = useContext(ApiContext);
+  const { _id } = blogsEdit;
 
   const [ tags , setTags ] = useState([]);
   const [ formstate , setFormstate ] = useState({});
@@ -54,24 +55,38 @@ const handleCheck = (event)=>{
   e.preventDefault();
 
   const { title , BImg , description , category , latest , trending , mustreads , randomposts , toppicks , status} = formstate;
-  // const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/addblogs`, {
-  //     method: "POST",
-  //     headers: {
-  //       'Content-Type': "application/json", 
-  //       "auth-token":localStorage.getItem('token')
-  //     },
-  //     body: JSON.stringify({ title , BImg , description , tags , category , latest , trending , mustreads , randomposts , toppicks , content , status})
-  //   });
-  //   const addblogs = await response.json();
-  //   if(!addblogs.Error){
-  //     Toast("Blog has been added Successfully!");
-  //     navigate("/dashboard/allblogs");
-  //   }else{
-  //     Toast(addblogs.Error)
-  //   }
+   // API Call 
+   const response = await fetch(`http://localhost:1000/blogs/updateblogs/${_id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      "auth-token":localStorage.getItem('token'),
+    },
+    body: JSON.stringify({title , BImg , description , category , latest , trending , mustreads , randomposts , toppicks , content , status})
+  });
+  const json = await response.json(); 
 
-  console.log("form ", formstate)
-  console.log("content ", content)
+   let newBlogs = JSON.parse(JSON.stringify(json))
+  // Logic to edit in client
+  for (let index = 0; index < newBlogs.length; index++) {
+    const element = newBlogs[index];
+    if (element._id === _id) {
+      newBlogs[index].title = title;
+      newBlogs[index].BImg = BImg;
+      newBlogs[index].description = description;
+      newBlogs[index].category = category;
+      newBlogs[index].latest = latest;
+      newBlogs[index].trending = trending;
+      newBlogs[index].mustreads = mustreads;
+      newBlogs[index].randomposts = randomposts;
+      newBlogs[index].toppicks = toppicks;
+      newBlogs[index].content = content;
+      newBlogs[index].status = status;
+      break; 
+    }
+  }  
+  navigate(`/article/${blogsEdit.slug}`)
+  Toast("Blog has been updated!");
     
   }
 
