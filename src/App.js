@@ -64,7 +64,7 @@ function App() {
     <Route exact path="/dashboard/subscriber" element={<BlogSubscriber Toast={Toast}/>}/>
     <Route exact path="/dashboard/addblogs" element={<AddBlogs Toast={Toast}/>}/>
     <Route exact path="/dashboard/editblogs/:slug" element={<EditBlogs Toast={Toast}/>}/>
-    <Route exact path="/dashboard/setting" element={<Setting/>}/>
+    <Route exact path="/dashboard/setting" element={<Setting Toast={Toast}/>}/>
     </Routes>
     <Footer Toast={Toast}/>
     </BrowserRouter>

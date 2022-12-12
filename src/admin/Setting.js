@@ -1,16 +1,56 @@
-import React, { useEffect } from 'react'
+import React, { useEffect , useContext , useState } from 'react'
 import Sidebar from '../components/admin/Sidebar'
 import { useNavigate } from 'react-router-dom';
+import ApiContext from '../context/ApiContext';
 
-const Setting = () => {
+const Setting = ({Toast}) => {
 
+  const [ formstate , setFormstate ] = useState({});
+  const { getUserDetail , userDetail } = useContext(ApiContext);
+  const { _id } = userDetail;
   const navigate = useNavigate();
 
   useEffect(() => {
     if(!localStorage.getItem('token')){
       navigate("/dashboard/login");
     }
+    getUserDetail();
   }, []);
+
+  const changeHandler = (event)=>{
+    setFormstate({ ...formstate , [event.target.name] : event.target.value}) 
+  }
+
+  const handleSubmit = async(e)=>{
+    e.preventDefault();
+    const { name , profilePic , phone , Bio } = formstate;
+
+      // API Call 
+   const response = await fetch(`${process.env.REACT_APP_HOST}/auth/updateuser/${_id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      "auth-token":localStorage.getItem('token'),
+    },
+    body: JSON.stringify({ name , profilePic , phone , Bio })
+  });
+  const json = await response.json(); 
+
+   let newBlogs = JSON.parse(JSON.stringify(json))
+  // Logic to edit in client
+  for (let index = 0; index < newBlogs.length; index++) {
+    const element = newBlogs[index];
+    if (element._id === _id) {
+      newBlogs[index].name = name;
+      newBlogs[index].profilePic = profilePic;
+      newBlogs[index].phone = phone;
+      newBlogs[index].Bio = Bio;
+      break; 
+    }
+  }  
+  window.location.reload()
+  Toast("Profile Setting has been updated!");
+  }
 
   return (
     <>
@@ -27,34 +67,30 @@ const Setting = () => {
           <div className='grid gap-8 w-full'>
           <div>
             <div className='w-80 h-80 rounded-full overflow-hidden shadow-xl mx-auto'>
-              <img className='bg-cover bg-center object-cover' src="https://user-images.githubusercontent.com/62507205/183687106-3d0979dd-9e78-49e9-86e4-0cb127a713d0.png" alt="profile-pic" />
+              <img className='bg-cover bg-center object-cover' src={userDetail.profilePic} alt="profile-pic" />
             </div>
            </div>
 
             <div className='bg-light-gray dark:bg-dull-gray py-2 px-4 rounded-md'>
               <h3 className='py-2 border-b text-lg font-medium text-orange-600 border-gray-600 border-opacity-10 dark:border-opacity-30'>User Profile Settings</h3>
-              <form action="" className='py-3 grid gap-4'>
+              <form className='py-3 grid gap-4' onSubmit={handleSubmit}>
               <div className='grid md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4'>
                 <div className='grid gap-y-1'>
                   <label htmlFor="name">Name</label>
-                  <input placeholder='name' className='outline-none py-2 px-4 rounded text-gray-600' type="text" name="name" id="name" />
+                  <input placeholder='name' onChange={changeHandler} value={formstate.name || userDetail.name } className='outline-none py-2 px-4 rounded text-gray-600' type="text" name="name" id="name" />
                 </div>
                 <div className='grid gap-y-1'>
                   <label htmlFor="pic">Profile Pic</label>
-                  <input placeholder='image url' className='outline-none py-2 px-4 rounded text-gray-600' type="url" name="pic" id="pic" />
+                  <input placeholder='image url' onChange={changeHandler} value={formstate.profilePic || userDetail.profilePic } className='outline-none py-2 px-4 rounded text-gray-600' type="url" name="profilePic" id="pic" />
                   </div>
                 </div>
                 <div className='grid gap-y-1'>
                   <label htmlFor="phone">Contact Phone</label>
-                  <input placeholder='Phone' className='outline-none py-2 px-4 rounded text-gray-600' type="tel" name="phone" id="phone" />
+                  <input placeholder='Phone' onChange={changeHandler} value={formstate.phone || userDetail.phone } className='outline-none py-2 px-4 rounded text-gray-600' type="tel" name="phone" id="phone" />
                   </div>
                 <div className='grid gap-y-1'>
-                  <label htmlFor="cemail">Contact Email</label>
-                  <input placeholder='Email' className='outline-none py-2 px-4 rounded text-gray-600' type="email" name="cemail" id="cemail" />
-                  </div>
-                <div className='grid gap-y-1'>
-                  <label htmlFor="name">Bio</label>
-                  <textarea placeholder='Write about yourself...' className='lg:min-h-[8rem] outline-none py-2 px-4 rounded text-gray-600' type="text" name="name" id="name" ></textarea>
+                  <label htmlFor="Bio">Bio</label>
+                  <textarea onChange={changeHandler} placeholder='Write about yourself...' value={formstate.Bio || userDetail.Bio } className='lg:min-h-[8rem] outline-none py-2 px-4 rounded text-gray-600' type="text" name="Bio" id="Bio"></textarea>
                   </div>
                   <div>
                   <button className='py-2 px-4 border text-orange-600 border-orange-600 rounded inline-block float-right hover:text-gray-100 hover:bg-orange-600'>Update</button>

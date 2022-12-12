@@ -56,7 +56,7 @@ const handleCheck = (event)=>{
 
   const { title , BImg , description , category , latest , trending , mustreads , randomposts , toppicks , status} = formstate;
    // API Call 
-   const response = await fetch(`http://localhost:1000/blogs/updateblogs/${_id}`, {
+   const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/updateblogs/${_id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
