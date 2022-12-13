@@ -23,7 +23,7 @@ const Setting = ({Toast}) => {
 
   const handleSubmit = async(e)=>{
     e.preventDefault();
-    const { name , profilePic , phone , Bio } = formstate;
+    const { name , profilePic , phone , Bio , email , password } = formstate;
 
       // API Call 
    const response = await fetch(`${process.env.REACT_APP_HOST}/auth/updateuser/${_id}`, {
@@ -32,7 +32,7 @@ const Setting = ({Toast}) => {
       'Content-Type': 'application/json',
       "auth-token":localStorage.getItem('token'),
     },
-    body: JSON.stringify({ name , profilePic , phone , Bio })
+    body: JSON.stringify({ name , profilePic , phone , Bio , email , password })
   });
   const json = await response.json(); 
 
@@ -48,6 +48,9 @@ const Setting = ({Toast}) => {
       break; 
     }
   }  
+  if(!password == "" || !email == ""){
+    localStorage.removeItem("token");
+  }
   window.location.reload()
   Toast("Profile Setting has been updated!");
   }
@@ -103,21 +106,15 @@ const Setting = ({Toast}) => {
           <div className='grid gap-8'>
             <div className='bg-light-gray dark:bg-dull-gray py-2 px-4 rounded-md'>
               <h3 className='py-2 border-b text-lg font-medium text-orange-600 border-gray-600 border-opacity-10 dark:border-opacity-30'>Account Settings</h3>
-              <form action="" className='py-3 grid gap-4'>
+              <form className='py-3 grid gap-4' onSubmit={handleSubmit}>
                 <div className='grid gap-y-1'>
                   <label htmlFor="email">Email</label>
-                  <input placeholder='Email' className='outline-none py-2 px-4 rounded text-gray-600' type="email" name="email" id="email" />
+                  <input placeholder='New Email' onChange={changeHandler} value={ formstate.email || userDetail.email  } className='outline-none py-2 px-4 rounded text-gray-600' type="email" name="email" id="email" />
                   </div>
-                  <div className='grid md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4'>
                 <div className='grid gap-y-1'>
-                  <label htmlFor="password">Password</label>
-                  <input placeholder='password' className='outline-none py-2 px-4 rounded text-gray-600' type="password" name="password" id="password" />
-                </div>
-                <div className='grid gap-y-1'>
-                  <label htmlFor="newpass">New Password</label>
-                  <input placeholder='New Password' className='outline-none py-2 px-4 rounded text-gray-600' type="password" name="newpass" id="newpass" />
+                  <label htmlFor="password">New Password</label>
+                  <input placeholder='New Password' onChange={changeHandler} value ={ formstate.password || "" } className='outline-none py-2 px-4 rounded text-gray-600' type="password" name="password" id="password" />
                   </div>
-                </div>
                   <div>
                   <button className='py-2 px-4 border text-orange-600 border-orange-600 rounded inline-block float-right hover:text-gray-100 hover:bg-orange-600'>Update</button>
                   </div>
