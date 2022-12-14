@@ -1,8 +1,22 @@
-import React,{useState} from "react";
-import { FaGithub , FaLinkedin , FaTwitter ,  FaStackOverflow } from "react-icons/fa";
+import React,{useState , useEffect , useContext } from "react";
+import { FaGithub , FaLinkedin , FaTwitter ,  FaStackOverflow , FaInstagram ,FaFacebook } from "react-icons/fa";
 import { NavLink , Link } from "react-router-dom";
+import ApiContext from '../context/ApiContext';
+
 export const Footer = ({Toast}) => {
+
+  const { getSocialLinks , SocialLinks} = useContext(ApiContext);
   const [ subscriber , setSubscriber ] = useState('');
+
+    useEffect(() => {
+      getSocialLinks();
+    }, []);
+
+    if(SocialLinks.links){
+      var { facebook  , instagram , twitter , github , linkedin , stackoverflow  } = SocialLinks.links[0]
+    }
+    
+
 
   const handleChange = (event)=>{
     setSubscriber({ ...subscriber , [event.target.name] : event.target.value })
@@ -140,10 +154,13 @@ export const Footer = ({Toast}) => {
               © Copyright 2023 Viewpoint Inc. All rights reserved.
             </p>
             <div className="flex items-center justify-center md:justify-end mt-4 space-x-4 sm:mt-0 text-md md:text-lg text-gray-500 dark:text-gray-300">
-                    <FaLinkedin className='cursor-pointer hover:text-blue-500'/>
-                    <FaGithub className='cursor-pointer hover:text-gray-700 dark:hover:text-gray-400'/>
-                    <FaStackOverflow className='cursor-pointer hover:text-orange-600'/>
-                    <FaTwitter className='cursor-pointer hover:text-blue-500'/>
+                   
+                  {linkedin && <a href={linkedin} target="_blank" rel='noreferrer'><FaLinkedin className='cursor-pointer text-md hover:text-blue-500'/></a>}
+                    {github &&  <a href={github} target="_blank" rel='noreferrer'><FaGithub className='cursor-pointer text-md hover:text-gray-700 dark:hover:text-gray-400'/></a>}
+                    {stackoverflow && <a to={stackoverflow} target="_blank" rel='noreferrer'><FaStackOverflow className='cursor-pointer text-md hover:text-orange-600'/></a>}
+                    {twitter && <a href={twitter} target="_blank" rel='noreferrer'><FaTwitter className='cursor-pointer text-md hover:text-blue-500'/></a>}
+                    {facebook && <a href={facebook} target="_blank" rel='noreferrer'><FaFacebook className='cursor-pointer text-md hover:text-blue-500'/></a>}
+                    {instagram && <a href={instagram} target="_blank" rel='noreferrer'><FaInstagram className='cursor-pointer text-md hover:text-orange-500'/></a>}
             </div>
           </div>
         </div>

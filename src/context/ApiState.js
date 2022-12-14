@@ -6,6 +6,7 @@ const ApiState = (props)=>{
     const [pending, setPendingBlogs] = useState([]);
     const [ blogsEdit , setBlogsEdit ] = useState({});
     const [ userDetail , setUserDetail ] = useState({});
+    const [ SocialLinks , setSocialLinks ] = useState({});
     // GET subscriber 
     const GetSubscriber = async()=>{
         const response = await fetch(`${process.env.REACT_APP_HOST}/subscriber/getsubscriber`, {
@@ -70,6 +71,18 @@ const ApiState = (props)=>{
       setUserDetail(detail);
     }
 
+    //GET Links 
+    const getSocialLinks = async()=>{
+      const response = await fetch(`${process.env.REACT_APP_HOST}/links/getlinks`, {
+        method: "GET",
+        headers: {
+          'Content-Type': "application/json",
+        },
+      });
+      const links = await response.json();
+      setSocialLinks(links);
+    }
+
       // DELETE BLOG API 
   const deleteBlogs = async (id) => {
     // API Call
@@ -85,8 +98,8 @@ const ApiState = (props)=>{
   }
  
     return(
-        <ApiContext.Provider value={{blogSubscriber,Allblogs,pending, blogsEdit ,userDetail,
-        GetSubscriber,GetAllBlogs , deleteBlogs, GetAllPendingBlogs,getBlogsEdit, setBlogsEdit, getUserDetail}}>
+        <ApiContext.Provider value={{blogSubscriber,Allblogs,pending, blogsEdit ,userDetail,SocialLinks,
+        GetSubscriber,GetAllBlogs , deleteBlogs, GetAllPendingBlogs,getBlogsEdit, setBlogsEdit, getUserDetail, getSocialLinks}}>
             {props.children}
         </ApiContext.Provider>
     )

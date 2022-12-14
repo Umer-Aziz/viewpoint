@@ -4,23 +4,34 @@ import { useNavigate } from 'react-router-dom';
 import ApiContext from '../context/ApiContext';
 
 const Setting = ({Toast}) => {
-
-  const [ formstate , setFormstate ] = useState({});
-  const { getUserDetail , userDetail } = useContext(ApiContext);
-  const { _id } = userDetail;
+  
   const navigate = useNavigate();
-
+  const { getUserDetail , getSocialLinks , userDetail , SocialLinks} = useContext(ApiContext);
   useEffect(() => {
     if(!localStorage.getItem('token')){
       navigate("/dashboard/login");
     }
     getUserDetail();
+    getSocialLinks();
   }, []);
 
+  const [ formstate , setFormstate ] = useState({});
+  const [ linksstate , setLinkstate ] = useState({});
+  const { _id } = userDetail;
+  if(SocialLinks.links){
+    var { facebook  , instagram , twitter , github , linkedin , stackoverflow  } = SocialLinks.links[0]
+  }
+  
   const changeHandler = (event)=>{
     setFormstate({ ...formstate , [event.target.name] : event.target.value}) 
   }
 
+  // links handler 
+  const LinksHandler = (event)=>{
+    setLinkstate({ ...linksstate , [event.target.name] : event.target.value}) 
+  }
+ 
+  // update user 
   const handleSubmit = async(e)=>{
     e.preventDefault();
     const { name , profilePic , phone , Bio , email , password } = formstate;
@@ -54,6 +65,43 @@ const Setting = ({Toast}) => {
   window.location.reload()
   Toast("Profile Setting has been updated!");
   }
+
+  // update sociallinks 
+
+  const handleLinkSubmit = async(e)=>{
+    e.preventDefault();
+    let { _id } =  SocialLinks.links[0]
+    const { facebook  , instagram , twitter , github , linkedin , stackoverflow  } = linksstate
+
+      // API Call 
+   const response = await fetch(`${process.env.REACT_APP_HOST}/links/updatelinks/${_id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      "auth-token":localStorage.getItem('token'),
+    },
+    body: JSON.stringify({ facebook  , instagram , twitter , github , linkedin , stackoverflow  })
+  });
+  const json = await response.json(); 
+
+   let updateLinks = JSON.parse(JSON.stringify(json))
+  // Logic to edit in client
+  for (let index = 0; index < updateLinks.length; index++) {
+    const element = updateLinks[index];
+    if (element._id === _id) {
+      updateLinks[index].facebook = facebook;
+      updateLinks[index].instagram = instagram;
+      updateLinks[index].twitter = twitter;
+      updateLinks[index].github = github;
+      updateLinks[index].linkedin = linkedin;
+      updateLinks[index].stackoverflow = stackoverflow;
+      break; 
+    }
+  }  
+  Toast("Links has been updated!");
+  }
+
+
 
   return (
     <>
@@ -122,72 +170,80 @@ const Setting = ({Toast}) => {
             </div>
             <div className='bg-light-gray dark:bg-dull-gray py-2 px-4 rounded-md'>
               <h3 className='py-2 border-b text-lg font-medium text-orange-600 border-gray-600 border-opacity-10 dark:border-opacity-30'>Social Links</h3>
-              <form action="" className='py-3 grid gap-4'>
+              <div className='py-3 grid gap-4'>
 
-              <div className='flex gap-x-4 items-end'>
+              <form className='flex gap-x-4 items-end' onSubmit={handleLinkSubmit}>
                 <div className='grid gap-y-1 w-full'>
                   <label htmlFor="facebook">Facebook URL:</label>
                   <input placeholder='Paste your link here' className='outline-none py-2 px-4 rounded text-gray-600'
-                   type="url" name="facebook" id="facebook" />
+                   type="url" name="facebook" id="facebook" onChange={LinksHandler} value={ linksstate.facebook || ( facebook || "" ) }/>
                 </div>
                 <div>
                 <button className='py-2 px-4 border text-orange-600 border-orange-600 rounded inline-block float-right hover:text-gray-100 hover:bg-orange-600'>Edit</button>
                 </div>
-               </div>
+               </form>
 
-               <div className='flex gap-x-4 items-end'>
+               <form className='flex gap-x-4 items-end' onSubmit={handleLinkSubmit}>
                 <div className='grid gap-y-1 w-full'>
                   <label htmlFor="instagram">Instagram URL:</label>
-                  <input placeholder='Paste your link here' className='outline-none py-2 px-4 rounded text-gray-600' type="url" name="instagram" id="instagram" />
+                  <input placeholder='Paste your link here' 
+                  className='outline-none py-2 px-4 rounded text-gray-600' type="text" name="instagram" 
+                  id="instagram" onChange={LinksHandler} value={ linksstate.instagram || ( instagram || "") }/>
                 </div>
                 <div>
                 <button className='py-2 px-4 border text-orange-600 border-orange-600 rounded inline-block float-right hover:text-gray-100 hover:bg-orange-600'>Edit</button>
                 </div>
-               </div>
+               </form>
 
-               <div className='flex gap-x-4 items-end'>
+               <form className='flex gap-x-4 items-end' onSubmit={handleLinkSubmit}>
                 <div className='grid gap-y-1 w-full'>
                   <label htmlFor="twitter">Twitter URL:</label>
-                  <input placeholder='Paste your link here' className='outline-none py-2 px-4 rounded text-gray-600' type="url" name="twitter" id="twitter" />
+                  <input placeholder='Paste your link here' 
+                  className='outline-none py-2 px-4 rounded text-gray-600' type="url" name="twitter" 
+                  id="twitter" onChange={LinksHandler} value={ linksstate.twitter || ( twitter || "")  }/>
                 </div>
                 <div>
                 <button className='py-2 px-4 border text-orange-600 border-orange-600 rounded inline-block float-right hover:text-gray-100 hover:bg-orange-600'>Edit</button>
                 </div>
-               </div>
+               </form>
 
-               <div className='flex gap-x-4 items-end'>
+               <form className='flex gap-x-4 items-end' onSubmit={handleLinkSubmit}>
                 <div className='grid gap-y-1 w-full'>
                   <label htmlFor="linkedin">LinkedIn URL:</label>
-                  <input placeholder='Paste your link here' className='outline-none py-2 px-4 rounded text-gray-600' type="url" name="linkedin" id="linkedin" />
+                  <input placeholder='Paste your link here' 
+                  className='outline-none py-2 px-4 rounded text-gray-600' type="url"
+                   name="linkedin" id="linkedin" onChange={LinksHandler} value={linksstate.linkedin || ( linkedin || "" ) }/>
                 </div>
                 <div>
                 <button className='py-2 px-4 border text-orange-600 border-orange-600 rounded inline-block float-right hover:text-gray-100 hover:bg-orange-600'>Edit</button>
                 </div>
-               </div>
+               </form>
 
-              <div className='flex gap-x-4 items-end'>
+              <form className='flex gap-x-4 items-end' onSubmit={handleLinkSubmit}>
                 <div className='grid gap-y-1 w-full'>
                   <label htmlFor="github">Github URL:</label>
-                  <input placeholder='Paste your link here' className='outline-none py-2 px-4 rounded text-gray-600' type="url" name="github" id="github" />
+                  <input placeholder='Paste your link here' 
+                  className='outline-none py-2 px-4 rounded text-gray-600' type="url" 
+                  name="github" id="github" onChange={LinksHandler} value={ linksstate.github || (github || "") }/>
                 </div>
                 <div>
                 <button className='py-2 px-4 border text-orange-600 border-orange-600 rounded inline-block float-right hover:text-gray-100 hover:bg-orange-600'>Edit</button>
                 </div>
-               </div>
+               </form>
 
-
-               <div className='flex gap-x-4 items-end'>
+               <form className='flex gap-x-4 items-end' onSubmit={handleLinkSubmit}>
                 <div className='grid gap-y-1 w-full'>
                   <label htmlFor="stack">Stackoverflow URL:</label>
-                  <input placeholder='Paste your link here' className='outline-none py-2 px-4 rounded text-gray-600' type="url" name="stack" id="stack" />
+                  <input placeholder='Paste your link here' 
+                  className='outline-none py-2 px-4 rounded text-gray-600' type="url" 
+                  name="stackoverflow" id="stack" onChange={LinksHandler} value={ linksstate.stackoverflow || (stackoverflow || "") } />
                 </div>
                 <div>
                 <button className='py-2 px-4 border text-orange-600 border-orange-600 rounded inline-block float-right hover:text-gray-100 hover:bg-orange-600'>Edit</button>
                 </div>
-               </div>
+               </form>
 
-
-              </form>
+              </div>
             </div>
           </div>
           </div>

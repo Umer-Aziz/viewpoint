@@ -1,15 +1,25 @@
-import React, { useState , useEffect } from 'react'
-import { FaGithub , FaLinkedin , FaTwitter ,  FaStackOverflow } from "react-icons/fa";
+import React, { useState , useEffect , useContext } from 'react'
+import { FaGithub , FaLinkedin , FaTwitter ,  FaStackOverflow , FaInstagram ,FaFacebook } from "react-icons/fa";
 import { BsMoonStarsFill } from "react-icons/bs";
 import { ImSun } from "react-icons/im";
 import { GrFormSearch } from "react-icons/gr";
 import moment from "moment";
 import { Link , NavLink , useLocation } from 'react-router-dom';
-
+import ApiContext from '../context/ApiContext';
 const Navbar = () => {
 
     const [ theme , setTheme ] = useState("dark");
     let path = useLocation().pathname;
+    const { getSocialLinks , SocialLinks} = useContext(ApiContext);
+
+    useEffect(() => {
+      getSocialLinks();
+    }, []);
+
+    if(SocialLinks.links){
+      var { facebook  , instagram , twitter , github , linkedin , stackoverflow  } = SocialLinks.links[0]
+    }
+    
 
     // checking default browser theme 
     useEffect(() => {
@@ -21,7 +31,6 @@ const Navbar = () => {
       }
     }, [])
     
-
 
     // set theme mode 
     useEffect(() => {
@@ -46,10 +55,14 @@ const Navbar = () => {
             <div className='container py-3 flex justify-between text-gray-500 dark:text-gray-100'>
                 
                 <div className="flex items-center gap-x-4">
-                    <FaLinkedin className='cursor-pointer text-md hover:text-blue-500'/>
-                    <FaGithub className='cursor-pointer text-md hover:text-gray-700 dark:hover:text-gray-400'/>
-                    <FaStackOverflow className='cursor-pointer text-md hover:text-orange-600'/>
-                    <FaTwitter className='cursor-pointer text-md hover:text-blue-500'/>
+                
+                    {linkedin && <a href={linkedin} target="_blank" rel='noreferrer'><FaLinkedin className='cursor-pointer text-md hover:text-blue-500'/></a>}
+                    {github &&  <a href={github} target="_blank" rel='noreferrer'><FaGithub className='cursor-pointer text-md hover:text-gray-700 dark:hover:text-gray-400'/></a>}
+                    {stackoverflow && <a to={stackoverflow} target="_blank" rel='noreferrer'><FaStackOverflow className='cursor-pointer text-md hover:text-orange-600'/></a>}
+                    {twitter && <a href={twitter} target="_blank" rel='noreferrer'><FaTwitter className='cursor-pointer text-md hover:text-blue-500'/></a>}
+                    {facebook && <a href={facebook} target="_blank" rel='noreferrer'><FaFacebook className='cursor-pointer text-md hover:text-blue-500'/></a>}
+                    {instagram && <a href={instagram} target="_blank" rel='noreferrer'><FaInstagram className='cursor-pointer text-md hover:text-orange-500'/></a>}
+                    
                 </div>
 
                 <div className='flex items-center gap-x-6 sm:gap-x-8'>

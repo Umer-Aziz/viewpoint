@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useEffect , useContext } from 'react'
 import { SlLocationPin } from "react-icons/sl";
 import { BsTelephonePlus } from "react-icons/bs";
 import { FiMail } from "react-icons/fi";
-import { FaGithub , FaLinkedin , FaTwitter ,  FaStackOverflow } from "react-icons/fa";
+import { FaGithub , FaLinkedin , FaTwitter ,  FaStackOverflow , FaInstagram ,FaFacebook } from "react-icons/fa";
+import ApiContext from '../context/ApiContext';
 
 const Contact = () => {
+
+    const { getSocialLinks , SocialLinks} = useContext(ApiContext);
+
+    useEffect(() => {
+      getSocialLinks();
+    }, []);
+
+    if(SocialLinks.links){
+      var { facebook  , instagram , twitter , github , linkedin , stackoverflow  } = SocialLinks.links[0]
+    }
+
   return (
     <>
         <section className="container min-h-screen py-10 grid gap-y-8 md:gap-y-0 lg:flex ">
@@ -42,10 +54,12 @@ const Contact = () => {
             <h3 className="font-medium text-gray-600 dark:text-gray-300 ">Follow us</h3>
 
             <div className="flex mt-4 gap-x-4 text-xl">
-                    <FaLinkedin className='cursor-pointer hover:text-blue-500'/>
-                    <FaGithub className='cursor-pointer hover:text-gray-700 dark:hover:text-gray-400'/>
-                    <FaStackOverflow className='cursor-pointer hover:text-orange-600'/>
-                    <FaTwitter className='cursor-pointer hover:text-blue-500'/>
+                    {linkedin && <a href={linkedin} target="_blank" rel='noreferrer'><FaLinkedin className='cursor-pointer text-md hover:text-blue-500'/></a>}
+                    {github &&  <a href={github} target="_blank" rel='noreferrer'><FaGithub className='cursor-pointer text-md hover:text-gray-700 dark:hover:text-gray-400'/></a>}
+                    {stackoverflow && <a to={stackoverflow} target="_blank" rel='noreferrer'><FaStackOverflow className='cursor-pointer text-md hover:text-orange-600'/></a>}
+                    {twitter && <a href={twitter} target="_blank" rel='noreferrer'><FaTwitter className='cursor-pointer text-md hover:text-blue-500'/></a>}
+                    {facebook && <a href={facebook} target="_blank" rel='noreferrer'><FaFacebook className='cursor-pointer text-md hover:text-blue-500'/></a>}
+                    {instagram && <a href={instagram} target="_blank" rel='noreferrer'><FaInstagram className='cursor-pointer text-md hover:text-orange-500'/></a>}
             </div>
         </div>
 
