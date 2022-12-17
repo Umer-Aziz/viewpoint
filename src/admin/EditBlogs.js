@@ -12,7 +12,7 @@ const EditBlogs = ({Toast}) => {
   const location = useLocation();
   const url = location.pathname.replace("/dashboard/editblogs/", "") ;
 
-  const { getBlogsEdit , blogsEdit , setBlogsEdit } = useContext(ApiContext);
+  const { getBlogsEdit , blogsEdit } = useContext(ApiContext);
   const { _id } = blogsEdit;
 
   const [ tags , setTags ] = useState([]);
