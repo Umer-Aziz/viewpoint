@@ -62,7 +62,7 @@ const handleCheck = (event)=>{
       'Content-Type': 'application/json',
       "auth-token":localStorage.getItem('token'),
     },
-    body: JSON.stringify({title , BImg , description , category , latest , trending , mustreads , randomposts , toppicks , content , status})
+    body: JSON.stringify({title , BImg , description , tags , category , latest , trending , mustreads , randomposts , toppicks , content , status})
   });
   const json = await response.json(); 
 
@@ -74,6 +74,7 @@ const handleCheck = (event)=>{
       newBlogs[index].title = title;
       newBlogs[index].BImg = BImg;
       newBlogs[index].description = description;
+      newBlogs[index].tags = tags;
       newBlogs[index].category = category;
       newBlogs[index].latest = latest;
       newBlogs[index].trending = trending;
