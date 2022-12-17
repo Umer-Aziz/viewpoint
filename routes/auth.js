@@ -36,10 +36,10 @@ router.post(
         if (user) {
         return res.status(400).json({success, Error:"Email is already Registered"});
         }
-            const { name  , profilePic , email , phone , password } = req.body;
+            const { name  , profilePic , email , phone, Bio , password } = req.body;
             const salt = await bcrypt.genSalt(10);
             const SecPassword = await bcrypt.hash(password,salt);
-            user = new User({ name , profilePic , email , phone , password: SecPassword });
+            user = new User({ name , profilePic , email , phone ,Bio , password: SecPassword });
             await user.save();
 
             const data = {
@@ -127,7 +127,7 @@ router.post("/getuser",fetchuser,async (req,res)=>{
 
    // ROUTE 4: Update an existing User
 router.put('/updateuser/:id',fetchuser ,async (req, res) => {
-    const { name  , profilePic , email , phone , password } =req.body;
+    const { name  , profilePic , email , phone , Bio , password } =req.body;
     try {
         // Create a newUser object
         const newUser = {};
@@ -135,6 +135,7 @@ router.put('/updateuser/:id',fetchuser ,async (req, res) => {
         if (profilePic) { newUser.profilePic = profilePic };
         if (email) { newUser.email = email };
         if (phone) { newUser.phone = phone };
+        if (Bio) { newUser.Bio = Bio };
 
         if (password) { 
         const salt = await bcrypt.genSalt(10);

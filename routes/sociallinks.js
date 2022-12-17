@@ -32,7 +32,7 @@ router.post(
 
   //Route:2 get Links detail --- login required
 
-router.get("/getlinks",fetchuser,async (req,res)=>{
+router.get("/getlinks",async (req,res)=>{
  let success = false;
     try {
         const links = await socialLinks.find();

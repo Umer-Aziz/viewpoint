@@ -22,6 +22,9 @@ const UserSchema = mongoose.Schema({
         type: String,
         required:true
     },
+    Bio:{
+        type: String,
+    },
 },{timestamps: true});
     UserSchema.pre("validate",function(next){
     next();
