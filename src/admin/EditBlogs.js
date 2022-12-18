@@ -158,23 +158,23 @@ const handleCheck = (event)=>{
                   <div className='mt-2 flex flex-wrap gap-3 md:gap-4 xl:gap-6'>
                   <div className='flex gap-1'>
                   <label htmlFor="latest">Latest Post</label>
-                    <input onChange={handleCheck} className='accent-orange-600' type="checkbox" name="latest" id="Latest" />
+                    <input onChange={handleCheck} value={formstate.latest} className='accent-orange-600' type="checkbox" name="latest" id="latest" />
                   </div>
                   <div className='flex gap-1'>
                   <label htmlFor="trending">Trending Post</label>
-                    <input onChange={handleCheck} className='accent-orange-600' type="checkbox" name="trending" id="trending" />
+                    <input onChange={handleCheck} value={formstate.trending} className='accent-orange-600' type="checkbox" name="trending" id="trending" />
                   </div>
                   <div className='flex gap-1'>
-                  <label htmlFor="mustread">Must Reads</label>
-                    <input onChange={handleCheck} className='accent-orange-600' type="checkbox" name="mustreads" id="mustread" />
+                  <label htmlFor="mustreads">Must Reads</label>
+                    <input onChange={handleCheck} value={formstate.mustreads} className='accent-orange-600' type="checkbox" name="mustreads" id="mustreads" />
                   </div>
                   <div className='flex gap-1'>
-                  <label htmlFor="randompost">Random Post</label>
-                    <input onChange={handleCheck} className='accent-orange-600' type="checkbox" name="randomposts" id="randompost" />
+                  <label htmlFor="randomposts">Random Post</label>
+                    <input onChange={handleCheck} value={formstate.randomposts} className='accent-orange-600' type="checkbox" name="randomposts" id="randomposts" />
                   </div>
                   <div className='flex gap-1'>
                   <label htmlFor="toppicks">Top Picks</label>
-                    <input onChange={handleCheck} className='accent-orange-600' type="checkbox" name="toppicks" id="toppicks" />
+                    <input onChange={handleCheck} value={formstate.toppicks} className='accent-orange-600' type="checkbox" name="toppicks" id="toppicks" />
                   </div>
                   </div>
                   
