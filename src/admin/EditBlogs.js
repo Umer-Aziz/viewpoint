@@ -34,9 +34,8 @@ const changeHandler = (event)=>{
 }
 
 const handleCheck = (event)=>{
-  setFormstate({ ...formstate , [event.target.name] : event.target.checked})
+  setFormstate({ ...formstate , [event.target.name] : event.target.checked == true ? "true" : "false"})
 }
-
   // addTags 
   const addTag = () =>{
     if(tagsvalue.current.value !== "" ){
@@ -54,7 +53,9 @@ const handleCheck = (event)=>{
   const addBlog = async(e) =>{
   e.preventDefault();
 
-  const { title , BImg , description , category , latest , trending , mustreads , randomposts , toppicks , status} = formstate;
+  const { title , BImg , description , category , status} = formstate;
+  let { latest , trending , mustreads , randomposts , toppicks } = formstate;
+  
    // API Call 
    const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/updateblogs/${_id}`, {
     method: 'PUT',
@@ -87,8 +88,7 @@ const handleCheck = (event)=>{
     }
   }  
   navigate(`/article/${blogsEdit.slug}`)
-  Toast("Blog has been updated!");
-    
+  Toast("Blog has been updated!"); 
   }
 
   return (
@@ -158,7 +158,7 @@ const handleCheck = (event)=>{
                   <div className='mt-2 flex flex-wrap gap-3 md:gap-4 xl:gap-6'>
                   <div className='flex gap-1'>
                   <label htmlFor="latest">Latest Post</label>
-                    <input onChange={handleCheck} value={formstate.latest} className='accent-orange-600' type="checkbox" name="latest" id="latest" />
+                    <input onClick={handleCheck} value={formstate.latest}  className='accent-orange-600' type="checkbox" name="latest" id="latest" />
                   </div>
                   <div className='flex gap-1'>
                   <label htmlFor="trending">Trending Post</label>
