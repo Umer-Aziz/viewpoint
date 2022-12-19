@@ -1,6 +1,8 @@
+import React , { useState } from "react";
 import { Footer } from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import LoadingBar from 'react-top-loading-bar' ;
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
@@ -30,17 +32,19 @@ import Other from "./pages/Category/Other";
 
 function App() {
 
+  const [progress, setProgress] = useState(0)
   const customId = "custom-id-yes";
 
-  // function checkURLchange(){
-//   if(window.location.href != oldURL){
-//     window.location.reload()
-//       oldURL = window.location.href;
-//   }
-// }
+  function checkURLchange(){
+  if(window.location.href != oldURL){
+     setProgress(44);
+     oldURL = window.location.href;
+     setProgress(100);
+  }
+}
 
-// var oldURL = window.location.href;
-// setInterval(checkURLchange, 1000);
+var oldURL = window.location.href;
+setInterval(checkURLchange, 1000);
 
   const Toast = (text)=>{
     toast.info(text, {
@@ -61,6 +65,12 @@ function App() {
   
   <ApiState>
     <ToastContainer toastStyle={{ backgroundColor: "#ea4c13" }}/>
+    <LoadingBar
+        color='#ea4c13'
+        progress={progress}
+        waitingTime ={500}
+        onLoaderFinished={() => setProgress(0)}
+      />
    <BrowserRouter>
     <ScrolltoTop/>
     <Navbar/>
