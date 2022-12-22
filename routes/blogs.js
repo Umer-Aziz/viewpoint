@@ -54,7 +54,10 @@ router.get("/toppicks",async(req,res)=>{
     try{
       let curId = req.params.id
       const blogs = await BlogPost.findOne({status:"published", _id: {$gt: curId}}).sort({_id: 1}); 
-      if (!blogs) { return res.status(404).send("Not Found") }
+       if (!blogs) {
+        success = false
+         return res.status(404).json({success ,message:"Not Found"}) 
+        }
       success = true;
       res.json({success,blogs});
   } catch (error) {
@@ -70,7 +73,10 @@ router.get("/toppicks",async(req,res)=>{
     try{
       let curId = req.params.id
       const blogs = await BlogPost.findOne({status:"published", _id: {$lt: curId}}).sort({_id: -1}); 
-      if (!blogs) { return res.status(404).send("Not Found") }
+      if (!blogs) {
+        success = false
+         return res.status(404).json({success ,message:"Not Found"}) 
+        }
       success = true;
       res.json({success,blogs});
   } catch (error) {
