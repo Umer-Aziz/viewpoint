@@ -33,23 +33,23 @@ const BlogSchema = mongoose.Schema({
     },
     latest:{
         type: Boolean,
-        default:false
+        default: false
     },
     trending:{
         type: Boolean,
-        default:false
+        default: false
     },
     mustreads:{
         type: Boolean,
-        default:false
+        default: false
     },
     randomposts:{
         type: Boolean,
-        default:false
+        default: false
     },
     toppicks:{
         type: Boolean,
-        default:false
+        default: false
     },
     content:{
         type: String,

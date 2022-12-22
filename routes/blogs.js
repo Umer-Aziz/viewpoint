@@ -9,6 +9,7 @@ router.get("/",async(req,res)=>{
     const blogs = await BlogPost.find().sort({updatedAt:"desc"});
     res.json(blogs);  
 })
+
 router.get("/published",async(req,res)=>{
     const blogs = await BlogPost.find({status:"published"}).sort({updatedAt:"desc"});
     res.json(blogs);  
@@ -45,6 +46,37 @@ router.get("/randomposts",async(req,res)=>{
 router.get("/toppicks",async(req,res)=>{
     const blogs =await BlogPost.find({status:"published",toppicks:true}).sort({updatedAt:"desc"}); 
     res.json(blogs);  
+})
+
+  // ROUTE : Filter Next Post
+  router.get("/next/:id",async(req,res)=>{
+    let success = false
+    try{
+      let curId = req.params.id
+      const blogs = await BlogPost.findOne({status:"published", _id: {$gt: curId}}).sort({_id: 1}); 
+      if (!blogs) { return res.status(404).send("Not Found") }
+      success = true;
+      res.json({success,blogs});
+  } catch (error) {
+   console.log(error.message);
+   res.status(500).send("Internal Server Error!");
+  }
+    
+})
+
+  // ROUTE : Filter Previous Post
+  router.get("/previous/:id",async(req,res)=>{
+    let success = false
+    try{
+      let curId = req.params.id
+      const blogs = await BlogPost.findOne({status:"published", _id: {$lt: curId}}).sort({_id: -1}); 
+      if (!blogs) { return res.status(404).send("Not Found") }
+      success = true;
+      res.json({success,blogs});
+  } catch (error) {
+   console.log(error.message);
+   res.status(500).send("Internal Server Error!");
+  } 
 })
 
 
@@ -94,7 +126,7 @@ router.put('/updateblogs/:id',fetchuser ,async (req, res) => {
       if (trending) { newBlogs.trending = trending };
       if (mustreads) { newBlogs.mustreads = mustreads };
       if (randomposts) { newBlogs.randomposts = randomposts };
-      if (toppicks) { newBlogs.randomposts = toppicks };
+      if (toppicks) { newBlogs.toppicks = toppicks };
       if (content) { newBlogs.content = content };
       if (status) { newBlogs.status = status };
 
