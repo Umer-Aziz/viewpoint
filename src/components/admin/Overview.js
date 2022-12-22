@@ -16,7 +16,7 @@ const Overview = ({Toast}) => {
     },[]);
     
     let Bloglength , pendinglength , Subscriberlength;
-    if(Allblogs.length && pending.length && blogSubscriber.subs.length ){
+    if(Allblogs.length || pending.length || blogSubscriber.subs.length ){
          Bloglength = Allblogs.length;
          pendinglength = pending.length;
          Subscriberlength = blogSubscriber.subs.length;

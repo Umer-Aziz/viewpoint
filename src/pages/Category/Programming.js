@@ -1,6 +1,6 @@
 import React , { useEffect ,useContext } from 'react'
 import { WiTime8 } from "react-icons/wi"
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import ApiContext from '../../context/ApiContext';
 import moment from 'moment';
 const Programming = () => {
@@ -28,9 +28,10 @@ const Programming = () => {
 
           {
            CategoryBlog && CategoryBlog.map  &&  CategoryBlog.map((blog)=>{
-              const { _id , title , BImg , category , description , updatedAt } = blog;
+              const { _id , slug , title , BImg , category , description , updatedAt } = blog;
               const date = moment(updatedAt).format("Do MMMM , YYYY")
                return (
+                <Link to={`/article/${slug}`}>
                 <div key={_id} className='py-3 shadow rounded group cursor-pointer'>
             <div className='overflow-hidden w-full rounded md:rounded-md'>
             <img className='bg-cover md:h-56 xl:h-64 object-fill rounded lg:rounded-md w-full group-hover:scale-105 transition-all 
@@ -49,6 +50,7 @@ const Programming = () => {
             </p>
             </div>
             </div>
+                </Link>
                )
             })
           }
