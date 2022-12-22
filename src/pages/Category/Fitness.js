@@ -31,7 +31,7 @@ const Fitness = () => {
               const { _id , slug , title , BImg , category , description , updatedAt } = blog;
               const date = moment(updatedAt).format("Do MMMM , YYYY")
                return (
-                <Link to={`/article/${slug}`}>
+                <Link to={`/article/${slug}`} key={_id}>
                 <div key={_id} className='py-3 shadow rounded group cursor-pointer'>
             <div className='overflow-hidden w-full rounded md:rounded-md'>
             <img className='bg-cover md:h-56 xl:h-64 object-fill rounded lg:rounded-md w-full group-hover:scale-105 transition-all 

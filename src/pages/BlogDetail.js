@@ -1,4 +1,4 @@
-import React,{ useEffect, useState} from "react";
+import React,{ useEffect, useState , useContext } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { WiTime8 } from "react-icons/wi"
 import PostSwitcher from "../components/home/PostSwitcher";
@@ -7,12 +7,16 @@ import 'highlight.js/styles/github-dark.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { FacebookShareButton , TwitterShareButton , TelegramShareButton , WhatsappShareButton , LinkedinShareButton } from "react-share";
 import { FacebookIcon , TwitterIcon , TelegramIcon , WhatsappIcon , LinkedinIcon } from "react-share";
-import { useLocation } from "react-router-dom";
+import { useLocation , useNavigate } from "react-router-dom";
 import moment from "moment";
 import { Parser } from 'html-to-react';
+import ApiContext from "../context/ApiContext";
 const BlogDetail = ({Toast}) => {
 
+  const navigate = useNavigate();
   const [ blogs , setBlogs ] = useState({});
+
+  const { GetNextBlogs , GetPreviousBlogs , nextBlog , previousBlog } = useContext(ApiContext);
 
   const location = window.location.href;
   let ShareUrl = location;
@@ -20,10 +24,12 @@ const BlogDetail = ({Toast}) => {
   // get blogs url 
   const path = useLocation();
   const url = path.pathname.replace("/article/", "") ;
+  const Id = blogs._id;
 
   useEffect(()=>{
     getBlogSlug();
   },[])
+
 
   // first, find all the div.code blocks
    useEffect(() => {
@@ -54,6 +60,44 @@ const BlogDetail = ({Toast}) => {
 
   const { title , category , updatedAt , BImg, content , tags} = blogs;
   const date = moment(updatedAt).format('Do MMMM , YYYY');
+
+
+
+  let previousslug ;
+  let nextslug ;
+  let preSuccess ;
+  let NextSuccess ;
+
+  useEffect(()=>{
+    if(Id){
+      GetNextBlogs(Id);
+      GetPreviousBlogs(Id);
+    } 
+  },[Id])
+
+  if(previousBlog.blogs){
+  previousslug = previousBlog.blogs.slug;
+  preSuccess = false;
+  }
+  if(nextBlog.blogs){
+    nextslug = nextBlog.blogs.slug;
+    NextSuccess = false;
+  }
+if(!previousBlog.blogs){
+    preSuccess = true;
+}
+if(!nextBlog.blogs){
+  NextSuccess = true;
+}
+
+  const previousPost = ()=>{
+    navigate(`/article/${previousslug}`);
+    window.location.reload();
+  }
+  const NextPost = ()=>{
+    navigate(`/article/${nextslug}`);
+    window.location.reload();
+  }
 
 
   return (
@@ -131,8 +175,8 @@ const BlogDetail = ({Toast}) => {
           
           {/* previous / Next Post  */}
           <div className="md:px-8 flex justify-between pt-6 pb-10 border-b border-gray-600 border-opacity-10 dark:border-opacity-30">
-            <button className="flex items-center gap-x-0.5 font-semibold text-orange-600 hover:text-orange-700"><IoIosArrowBack/> Previous</button>
-            <button className="flex items-center gap-x-0.5 font-semibold text-orange-600 hover:text-orange-700"><span>Next</span><IoIosArrowForward/></button>
+          <button disabled={preSuccess} onClick={()=>{previousPost()}} className={`flex items-center gap-x-0.5 font-semibold ${preSuccess == false ? "text-orange-600 hover:text-orange-700" : "text-orange-900 cursor-not-allowed"}`}><IoIosArrowBack/> Previous</button>
+            <button disabled={NextSuccess} onClick={()=>{NextPost()}} className={`flex items-center gap-x-0.5 font-semibold ${NextSuccess == false ? "text-orange-600 hover:text-orange-700" : "text-orange-900 cursor-not-allowed"}`}><span>Next</span><IoIosArrowForward/></button>
           </div>
 
           {/* Similar posts  */}

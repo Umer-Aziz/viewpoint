@@ -10,6 +10,8 @@ const ApiState = (props)=>{
     const [ latestBlog , setLatestBlog ] = useState({});
     const [ trendingBlog , settrendingBlog ] = useState({});
     const [ CategoryBlog , setCategoryBlog ] = useState({});
+    const [ nextBlog , setNextBlog ] = useState({});
+    const [ previousBlog , setPreviousBlog ] = useState({});
     // GET subscriber 
     const GetSubscriber = async()=>{
         const response = await fetch(`${process.env.REACT_APP_HOST}/subscriber/getsubscriber`, {
@@ -119,8 +121,34 @@ const ApiState = (props)=>{
       });
       const categoryBlog = await response.json();
       setCategoryBlog(categoryBlog);
-      console.log("blogs ", categoryBlog)
     } 
+
+        // Next BLOG API 
+  const GetNextBlogs = async (id) => {
+    // API Call
+   const response =  await fetch(`${process.env.REACT_APP_HOST}/blogs/next/${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    const nextBlogs = await response.json();
+    setNextBlog(nextBlogs);
+  }
+
+  // Previous BLOG API 
+  const GetPreviousBlogs = async (id) => {
+  // API Call
+   const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/previous/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
+
+  const previousBlogs = await response.json();
+  setPreviousBlog(previousBlogs);
+}
 
 
       // DELETE BLOG API 
@@ -138,8 +166,8 @@ const ApiState = (props)=>{
   }
  
     return(
-        <ApiContext.Provider value={{blogSubscriber,Allblogs,pending, blogsEdit ,userDetail,SocialLinks, latestBlog , trendingBlog , CategoryBlog ,
-        GetSubscriber,GetAllBlogs , deleteBlogs, GetAllPendingBlogs,getBlogsEdit, setBlogsEdit, getUserDetail, getSocialLinks , getLatestBlogs , getTrendingBlogs, getCategoryBlogs}}>
+        <ApiContext.Provider value={{blogSubscriber,Allblogs,pending, blogsEdit ,userDetail,SocialLinks, latestBlog , trendingBlog , CategoryBlog , nextBlog , previousBlog ,
+        GetSubscriber,GetAllBlogs , deleteBlogs, GetAllPendingBlogs,getBlogsEdit, setBlogsEdit, getUserDetail, getSocialLinks , getLatestBlogs , getTrendingBlogs, getCategoryBlogs , GetNextBlogs , GetPreviousBlogs}}>
             {props.children}
         </ApiContext.Provider>
     )
