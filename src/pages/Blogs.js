@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useContext , useEffect } from 'react'
 import { WiTime8 } from "react-icons/wi";
 import { IoIosArrowForward , IoIosArrowBack } from "react-icons/io";
-
+import ApiContext from '../context/ApiContext';
 const Blogs = () => {
+
+  const { publishedBlogs , GetAllPublishedBlogs } = useContext(ApiContext);
+
+  useEffect(() => {
+    GetAllPublishedBlogs();
+  }, [])
+  console.log("blogs ==> ", publishedBlogs)
   return (
     <>
         <section className='text-gray-700 dark:text-gray-300'>

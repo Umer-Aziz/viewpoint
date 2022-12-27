@@ -45,7 +45,7 @@ const BlogDetail = ({Toast}) => {
     hljs.safeMode();
 
     
-   }, [])
+   })
  
    const getBlogSlug = async()=>{
     const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/${url}`, {
