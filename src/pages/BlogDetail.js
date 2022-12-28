@@ -99,6 +99,16 @@ if(!nextBlog.blogs){
     window.location.reload();
   }
 
+  function checkURLchange(){
+    if(window.location.href != oldURL){
+       window.location.reload()
+       oldURL = window.location.href;
+    }
+  }
+  
+  var oldURL = window.location.href;
+  setInterval(checkURLchange, 1000);
+
 
   return (
     <>  

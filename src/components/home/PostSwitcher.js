@@ -2,6 +2,7 @@ import React,{useEffect, useState , useContext } from 'react'
 import { WiTime8 } from "react-icons/wi";
 import ApiContext from '../../context/ApiContext';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 const PostSwitcher = () => {
     const [show, setShow] = useState(true);
     const { getLatestBlogs , getTrendingBlogs , latestBlog , trendingBlog } = useContext(ApiContext);
@@ -53,9 +54,10 @@ const PostSwitcher = () => {
 
               <ul className='my-8 grid gap-y-4'>
               {
-                trendingBlog.length >= 0 ? trendingBlog.slice(0,6).map((post)=>{
+                trendingBlog.length >= 0 ? trendingBlog.slice(0,5).map((post)=>{
                   return (
-                    <li key={post._id} className="flex gap-x-3 group cursor-pointer">
+                    <Link key={post._id} to={`/article/${post.slug}`}>
+                    <li className="flex gap-x-3 group cursor-pointer">
                   <div className="h-22 max-w-[8rem] md:w-24 md:w-22 xl:w-28 xl:h-22 rounded-md overflow-hidden">
                     <img
                       className="bg-cover h-full object-cover w-full group-hover:scale-105 transition-all duration-500"
@@ -76,6 +78,7 @@ const PostSwitcher = () => {
                     </p>
                   </div>
                 </li>
+                </Link>
                   )
                 })
                 : <p className='text-center text-sm'>Nothing to Show</p>
@@ -87,9 +90,10 @@ const PostSwitcher = () => {
 
               <ul className='my-8 grid gap-y-4'>
               {
-                latestBlog.length > 0 ? latestBlog.slice(0,6).map((post)=>{
+                latestBlog.length > 0 ? latestBlog.slice(0,5).map((post)=>{
                   return (
-                    <li key={post._id} className="flex gap-x-3 group cursor-pointer">
+                    <Link key={post._id} to={`/article/${post.slug}`}>
+                    <li className="flex gap-x-3 group cursor-pointer">
                   <div className="h-22 max-w-[8rem] md:w-24 md:w-22 xl:w-28 xl:h-22 rounded-md overflow-hidden">
                     <img
                       className="bg-cover h-full object-cover w-full group-hover:scale-105 transition-all duration-500"
@@ -110,6 +114,7 @@ const PostSwitcher = () => {
                     </p>
                   </div>
                 </li>
+                </Link>
                   )
                 })
                 : <p className='text-center text-sm'>Nothing to Show</p>

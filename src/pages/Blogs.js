@@ -11,7 +11,6 @@ const Blogs = () => {
   useEffect(() => {
     GetAllPublishedBlogs();
   }, [])
-  console.log("blogs ==> ", publishedBlogs)
   return (
     <>
         <section className='text-gray-700 dark:text-gray-300'>
