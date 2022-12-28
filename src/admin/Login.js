@@ -25,7 +25,7 @@ const handleSubmit =async (e)=>{
     const login = await response.json();
     if(login.success){
       localStorage.setItem("token",login.authtoken);
-      navigate("/dashboard");
+      navigate("/dashboard/setting");
       Toast("You are login successfully!")
     } 
     else{

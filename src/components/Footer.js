@@ -63,13 +63,13 @@ export const Footer = ({Toast}) => {
                     <NavLink to="/category/programming">Programming</NavLink>
                   </li>
                   <li className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200">
-                    <NavLink to="/category/programming">CyberSecurity</NavLink>
+                    <NavLink to="/category/cybersecurity">CyberSecurity</NavLink>
                   </li>
                   <li className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200">
-                    <NavLink to="/category/programming">LifeStyle</NavLink>
+                    <NavLink to="/category/lifestyle">LifeStyle</NavLink>
                   </li>
                   <li className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200">
-                    <NavLink to="/category/programming">Scamming</NavLink>
+                    <NavLink to="/category/scamming">Scamming</NavLink>
                   </li>
                   
                 </ul>

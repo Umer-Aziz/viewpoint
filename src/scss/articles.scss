@@ -1,5 +1,6 @@
 .article-content{
     @apply py-6 md:px-8 dark:text-gray-300 overflow-x-hidden;
+    
     h1 , h2, h3 , h4 {
         @apply pt-4 text-2xl font-semibold;
     }
@@ -10,7 +11,7 @@
         @apply pt-2 text-lg font-semibold;
     }
     p{
-        @apply pt-4 ;
+        @apply pt-4;
     }
 
         li:before {

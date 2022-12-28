@@ -41,7 +41,7 @@ const Scamming = () => {
             <div className='px-3 lg:px-4'>
             <p className="mt-2 lg:mt-3 text-sm text-orange-600 font-semibold">{category}</p>
             <h3 className="my-2 text-xl font-semibold blog-title">{title}</h3>
-            <p className='hidden xl:block my-1'>{description}</p>
+            <p className='hidden xl:block my-1 blog-description'>{description}</p>
             <p className="lg:mt-2 flex items-center gap-x-1 text-gray-500">
                 <WiTime8 className="text-sm" />
                 <span className="text-sm font-semibold">

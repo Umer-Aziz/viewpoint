@@ -53,7 +53,7 @@ const PostSwitcher = () => {
 
               <ul className='my-8 grid gap-y-4'>
               {
-                trendingBlog.length >= 0 ? trendingBlog.map((post)=>{
+                trendingBlog.length >= 0 ? trendingBlog.slice(0,6).map((post)=>{
                   return (
                     <li key={post._id} className="flex gap-x-3 group cursor-pointer">
                   <div className="h-22 max-w-[8rem] md:w-24 md:w-22 xl:w-28 xl:h-22 rounded-md overflow-hidden">
@@ -87,7 +87,7 @@ const PostSwitcher = () => {
 
               <ul className='my-8 grid gap-y-4'>
               {
-                latestBlog.length > 0 ? latestBlog.map((post)=>{
+                latestBlog.length > 0 ? latestBlog.slice(0,6).map((post)=>{
                   return (
                     <li key={post._id} className="flex gap-x-3 group cursor-pointer">
                   <div className="h-22 max-w-[8rem] md:w-24 md:w-22 xl:w-28 xl:h-22 rounded-md overflow-hidden">
