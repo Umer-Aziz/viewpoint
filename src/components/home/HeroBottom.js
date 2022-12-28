@@ -1,6 +1,14 @@
-import React from 'react'
-
+import React, { useContext , useEffect } from 'react'
+import ApiContext from '../../context/ApiContext';
+import { Link } from "react-router-dom"
 const HeroBottom = () => {
+
+    const { mustreadBlogs , getMustreads } = useContext(ApiContext);
+
+    useEffect(() => {
+        getMustreads();
+    }, [])
+    
   return (
    <>
     <div className='container text-gray-700 dark:text-gray-300'>
@@ -9,43 +17,26 @@ const HeroBottom = () => {
             <h3 className='px-3 py-1 text-gray-400 text-lg font-semibold border-l-2 border-orange-700 uppercase'>must read</h3>
             <div className='my-3 grid gap-y-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-4 md:gap-x-6'>
 
-            <div className='flex gap-x-4 p-3 shadow-md rounded group cursor-pointer'>
-            <div className='w-40 overflow-hidden'>
-                <img className='h-28 bg-cover object-fill rounded-md group-hover:scale-105 transition-all duration-300' src="https://media.istockphoto.com/id/1366475343/es/foto/c%C3%B3digo-de-programa-abstracto-en-la-pantalla-digital.jpg?s=612x612&w=0&k=20&c=e2YG0TGxvGiM2TKIJXC6OePeQ20tFDI81mW18Wz7BVQ=" alt="programming-post" />
-            </div>
-                <div>
-                    <p className='mt-2 text-sm text-orange-600 font-semibold'>Programming</p>
-                    <h4 className='mt-1 text-lg font-semibold blog-title'>Lorem ipsum dolor sit amet consectetur.</h4>
-                    <a href="/" className='text-xs font-semibold text-orange-700 group-hover:text-orange-800'>Read More</a>
+            {
+                mustreadBlogs && mustreadBlogs.map && mustreadBlogs.slice(0,3).map((post)=>{
+                    const { _id , title , slug ,  BImg , category } = post;
+
+                    return (
+               <Link key={_id} to={`/article/${slug}`}>
+                <div className='flex gap-x-4 p-3 shadow-md rounded group cursor-pointer'>
+                    <img className='!h-24 !w-32 md:!h-28 md:!w-36 lg:!h-24 lg:!w-32 xl:!h-28 xl:!w-36 bg-cover object-fill rounded-md group-hover:scale-105
+                     transition-all duration-300' 
+                     src={ BImg } alt="programming-post" />
+                    <div>
+                        <p className='mt-2 text-sm text-orange-600 font-semibold'>{category}</p>
+                        <h4 className='mt-1 text-md md:text-lg lg:!text-md xl:!text-lg font-semibold blog-title'>{title}</h4>
+                        <p className='text-xs font-semibold text-orange-700 group-hover:text-orange-800'>Read More</p>
+                    </div>
                 </div>
-            </div>
-
-            <div className='flex gap-x-4 p-3 shadow-md rounded group cursor-pointer'>
-            <div className='w-40 overflow-hidden'>
-                <img className='h-28 bg-cover object-fill rounded-md
-                 group-hover:scale-105 transition-all duration-300' 
-                 src="https://media.istockphoto.com/id/1363276509/es/foto/maestra-dando-conferencias-de-ciencias-de-la-computaci%C3%B3n-a-diversos-grupos-multi%C3%A9tnicos-de.jpg?s=612x612&w=0&k=20&c=c8yFDf_yUJiC_qsRNBAo_kppLhY9RT5nXpcpcnhHGlM=" alt="programming-post" />
-            </div>
-                <div>
-                    <p className='mt-2 text-sm text-orange-600 font-semibold'>Programming</p>
-                    <h4 className='mt-1 text-lg font-semibold blog-title'>Lorem ipsum dolor sit amet consectetur.</h4>
-                    <a href="/" className='text-xs font-semibold text-orange-700 group-hover:text-orange-800'>Read More</a>
-                </div>
-            </div>
-
-            <div className='flex gap-x-4 p-3 shadow-md rounded group cursor-pointer'>
-            <div className='w-40 overflow-hidden'>
-                <img className='h-28 bg-cover object-fill rounded-md group-hover:scale-105 transition-all duration-300'
-                 src="https://media.istockphoto.com/id/1147195672/es/foto/codificaci%C3%B3n-de-desarrolladores-enfocada-en-monitores-de-computadora-que-trabajan-hasta-tarde.jpg?s=612x612&w=0&k=20&c=amtjVgPNE62qfL3_EMFGCgmoiGJRO8D0tRLrv9zXSVo=" alt="programming-post" />
-            </div>
-                <div>
-                    <p className='mt-2 text-sm text-orange-600 font-semibold'>Programming</p>
-                    <h4 className='mt-1 text-lg font-semibold blog-title'>Lorem ipsum dolor sit amet consectetur.</h4>
-                    <a href="/" className='text-xs font-semibold text-orange-700 group-hover:text-orange-800'>Read More</a>
-                </div>
-            </div>
-
-
+            </Link>
+                    )
+                })
+            }
             </div>
         </div>
     </div>

@@ -9,6 +9,7 @@ const ApiState = (props)=>{
     const [ userDetail , setUserDetail ] = useState({});
     const [ SocialLinks , setSocialLinks ] = useState({});
     const [ latestBlog , setLatestBlog ] = useState({});
+    const [ mustreadBlogs , setmustReads ] = useState({});
     const [ trendingBlog , settrendingBlog ] = useState({});
     const [ CategoryBlog , setCategoryBlog ] = useState({});
     const [ nextBlog , setNextBlog ] = useState({});
@@ -123,6 +124,20 @@ const ApiState = (props)=>{
       settrendingBlog(trending);
     } 
 
+    // GET mustreads blogs 
+
+    const getMustreads = async()=>{
+      const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/mustreads`, {
+        method: "GET",
+        headers: {
+          'Content-Type': "application/json",
+        },
+      });
+      const mustreads = await response.json();
+
+      setmustReads(mustreads);
+    } 
+
      //GET Category  Blogs
      const getCategoryBlogs = async(category)=>{
       const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/category/${category}`, {
@@ -179,9 +194,9 @@ const ApiState = (props)=>{
  
     return(
         <ApiContext.Provider value={{blogSubscriber,Allblogs,pending, blogsEdit ,userDetail,SocialLinks,
-         latestBlog , trendingBlog , CategoryBlog , nextBlog , previousBlog , publishedBlogs , 
+         latestBlog , trendingBlog , CategoryBlog , nextBlog , previousBlog , publishedBlogs , mustreadBlogs ,
         GetSubscriber,GetAllBlogs , deleteBlogs, GetAllPendingBlogs,getBlogsEdit, setBlogsEdit, getUserDetail, getSocialLinks , getLatestBlogs
-         , getTrendingBlogs, getCategoryBlogs , GetNextBlogs , GetPreviousBlogs , GetAllPublishedBlogs}}>
+         , getTrendingBlogs, getCategoryBlogs , GetNextBlogs , GetPreviousBlogs , GetAllPublishedBlogs, getMustreads}}>
             {props.children}
         </ApiContext.Provider>
     )

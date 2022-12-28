@@ -16,7 +16,7 @@ const Homehero = () => {
     <>
       <section className="container mx-auto py-10 text-gray-700 dark:text-gray-300">
         <div className="grid gap-y-6 sm:flex sm:gap-x-6">
-          <div className="grid gap-y-6 lg:flex sm:gap-x-6 lg:gap-x-6">
+          <div className="grid gap-y-6 lg:flex sm:gap-x-6 lg:gap-x-6 xl:min-w-[60rem]">
             {/* main div */}
             <div className="sm:max-w-xl xl:min-w-[38rem] shadow rounded group cursor-pointer">
             {
@@ -97,7 +97,9 @@ const Homehero = () => {
            }
           </div>
 
-<PostSwitcher/>
+         <div className="float-right">
+         <PostSwitcher/>
+         </div>
           
         </div>
       </section>
