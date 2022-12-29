@@ -7,7 +7,7 @@ import 'highlight.js/styles/github-dark.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { FacebookShareButton , TwitterShareButton , TelegramShareButton , WhatsappShareButton , LinkedinShareButton } from "react-share";
 import { FacebookIcon , TwitterIcon , TelegramIcon , WhatsappIcon , LinkedinIcon } from "react-share";
-import { useLocation , useNavigate } from "react-router-dom";
+import { useLocation , useNavigate , Link } from "react-router-dom";
 import moment from "moment";
 import { Parser } from 'html-to-react';
 import ApiContext from "../context/ApiContext";
@@ -16,7 +16,7 @@ const BlogDetail = ({Toast}) => {
   const navigate = useNavigate();
   const [ blogs , setBlogs ] = useState({});
 
-  const { GetNextBlogs , GetPreviousBlogs , nextBlog , previousBlog } = useContext(ApiContext);
+  const { GetNextBlogs , GetPreviousBlogs , nextBlog , previousBlog , mustreadBlogs , getMustreads } = useContext(ApiContext);
 
   const location = window.location.href;
   let ShareUrl = location;
@@ -28,6 +28,7 @@ const BlogDetail = ({Toast}) => {
 
   useEffect(()=>{
     getBlogSlug();
+    getMustreads();
   },[])
 
 
@@ -195,69 +196,45 @@ if(!nextBlog.blogs){
           {/* Similar posts  */}
 
            <div className="my-10">
-           <h3 className="px-3 py-1 text-gray-400 text-lg font-semibold border-l-2 border-orange-700 uppercase">Similar Posts</h3>
+           <h3 className="px-3 py-1 text-gray-400 text-lg font-semibold border-l-2 border-orange-700 uppercase">Author Choice</h3>
+
           <div className='py-6 grid gap-y-6 md:grid-cols-2 xl:grid-cols-3 gap-x-6'>
-
-            <div className='py-3 shadow rounded group cursor-pointer'>
-            <div className='overflow-hidden w-full rounded md:rounded-md'>
-            <img className='bg-cover md:h-40 xl:h-52 object-fill rounded lg:rounded-md w-full group-hover:scale-105 transition-all 
-            duration-500' 
-            src="https://media.istockphoto.com/id/1402667894/es/foto/pantalla-de-conferencia-de-energ%C3%ADa.jpg?s=612x612&w=0&k=20&c=if8B0E4TJ1ohnU-yZKGXosQfx2ctOh7JTWllo6VxWkc=" alt="blog-posts" />
-            </div>
-            <div className='px-2 lg:px-3'>
-            <p className="mt-2 lg:mt-3 text-sm text-orange-600 font-semibold">Technology</p>
-            <h3 className="my-2 text-xl font-semibold blog-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>
-            <p className='hidden xl:block my-1'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus fuga unde neque nihil ratione cumque eveniet distinctio nulla</p>
-            <p className="lg:mt-2 flex items-center gap-x-1 text-gray-500">
-                <WiTime8 className="text-sm" />
-                <span className="text-sm font-semibold">
-                12 November, 2022
-                </span>
-            </p>
-            </div>
-            </div>
-
-            <div className='py-3 shadow rounded group cursor-pointer'>
-            <div className='overflow-hidden w-full rounded md:rounded-md'>
-            <img className='bg-cover md:h-40 xl:h-52 object-fill rounded lg:rounded-md w-full group-hover:scale-105 transition-all 
-            duration-500' 
-            src="https://media.istockphoto.com/id/854321536/es/foto/mira-este-vestido-magn%C3%ADfico.jpg?s=612x612&w=0&k=20&c=6Nh1enezE-wNc-GXA3ADbKHH7AiVSYZFmCjXu84q_tw=" alt="blog-posts" />
-            </div>
-            <div className='px-2 lg:px-3'>
-            <p className="mt-2 lg:mt-3 text-sm text-orange-600 font-semibold">LifeStyle</p>
-            <h3 className="my-2 text-xl font-semibold blog-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>
-            <p className='hidden xl:block my-1'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus fuga unde neque nihil ratione cumque eveniet distinctio nulla</p>
-            <p className="lg:mt-2 flex items-center gap-x-1 text-gray-500">
-                <WiTime8 className="text-sm" />
-                <span className="text-sm font-semibold">
-                12 November, 2022
-                </span>
-            </p>
-            </div>
-            </div>
-
-            <div className='py-3 shadow rounded group cursor-pointer'>
-            <div className='overflow-hidden w-full rounded md:rounded-md'>
-            <img className='md:h-40 xl:h-52 bg-cover object-fill rounded lg:rounded-md w-full group-hover:scale-105 transition-all 
-            duration-500' 
-            src="https://media.istockphoto.com/id/155596905/es/foto/mujer-ropa-de-alta-categor%C3%ADa.jpg?s=612x612&w=0&k=20&c=AOusb6rXetcs-beZ9IK70-cCOUQccT-rupOqFhjlCTg=" alt="blog-posts" />
-            </div>
-            <div className='px-2 lg:px-3'>
-            <p className="mt-2 lg:mt-3 text-sm text-orange-600 font-semibold">LifeStyle</p>
-            <h3 className="my-2 text-xl font-semibold blog-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>
-            <p className='hidden xl:block my-1'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus fuga unde neque nihil ratione cumque eveniet distinctio nulla</p>
-            <p className="lg:mt-2 flex items-center gap-x-1 text-gray-500">
-                <WiTime8 className="text-sm" />
-                <span className="text-sm font-semibold">
-                12 November, 2022
-                </span>
-            </p>
-            </div>
-            </div>
+          {
+            mustreadBlogs && mustreadBlogs.map && mustreadBlogs.slice(1,4).map((post)=>{
+              const { _id , slug , title , BImg , description , category , updatedAt } = post ;
+              const date = moment(updatedAt).format('D MMMM , YYYY')
+              return (
+               <Link key={_id} to={`/article/${slug}`}>
+               <div className='py-3 shadow rounded group cursor-pointer'>
+                <div className='overflow-hidden w-full rounded md:rounded-md'>
+                <img className='bg-cover md:h-40 xl:h-52 object-fill rounded lg:rounded-md w-full group-hover:scale-105 transition-all 
+                duration-500' 
+                src={BImg} alt="blog-posts" />
+                </div>
+                <div className='px-2 lg:px-3'>
+                <p className="mt-2 lg:mt-3 text-sm text-orange-600 font-semibold">{category}</p>
+                <h3 className="my-2 text-xl font-semibold blog-title">{title}</h3>
+                <p className='hidden xl:block my-1 blog-description'>{description}</p>
+                <p className="lg:mt-2 flex items-center gap-x-1 text-gray-500">
+                    <WiTime8 className="text-sm" />
+                    <span className="text-sm font-semibold">
+                    {date}
+                    </span>
+                </p>
+                </div>
+                </div>
+               </Link>
+              )
+            })
+          }
 
           </div>
+
         </div>
+
           </div>
+
+
           <div className="w-auto sm:w-72 md:w-80 xl:w-88">
             <PostSwitcher />
           </div>
