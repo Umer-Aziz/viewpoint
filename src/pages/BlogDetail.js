@@ -100,13 +100,16 @@ if(!nextBlog.blogs){
   }
 
   function checkURLchange(){
-    if(window.location.href != oldURL){
+    if(window.location.href != oldURL && window.location.href != host){
        window.location.reload()
        oldURL = window.location.href;
+       host = "http://localhost:3000/"
+       window.scrollTo(0,0)
     }
   }
   
   var oldURL = window.location.href;
+  var host = "http://localhost:3000/";
   setInterval(checkURLchange, 1000);
 
 

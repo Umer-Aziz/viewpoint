@@ -10,10 +10,14 @@ const ApiState = (props)=>{
     const [ SocialLinks , setSocialLinks ] = useState({});
     const [ latestBlog , setLatestBlog ] = useState({});
     const [ mustreadBlogs , setmustReads ] = useState({});
+    const [ RandomBlogs , setrandomPosts ] = useState({});
+    const [ toppicksBlogs , setToppicksPosts ] = useState({});
     const [ trendingBlog , settrendingBlog ] = useState({});
     const [ CategoryBlog , setCategoryBlog ] = useState({});
     const [ nextBlog , setNextBlog ] = useState({});
     const [ previousBlog , setPreviousBlog ] = useState({});
+
+
     // GET subscriber 
     const GetSubscriber = async()=>{
         const response = await fetch(`${process.env.REACT_APP_HOST}/subscriber/getsubscriber`, {
@@ -138,6 +142,34 @@ const ApiState = (props)=>{
       setmustReads(mustreads);
     } 
 
+     // GET randomposts blogs 
+
+     const getRandomPosts = async()=>{
+      const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/randomposts`, {
+        method: "GET",
+        headers: {
+          'Content-Type': "application/json",
+        },
+      });
+      const randomposts = await response.json();
+
+      setrandomPosts(randomposts);
+    } 
+
+     // GET toppicks blogs 
+
+     const gettopPicksPosts = async()=>{
+      const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/toppicks`, {
+        method: "GET",
+        headers: {
+          'Content-Type': "application/json",
+        },
+      });
+      const toppicks = await response.json();
+
+      setToppicksPosts(toppicks);
+    } 
+
      //GET Category  Blogs
      const getCategoryBlogs = async(category)=>{
       const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/category/${category}`, {
@@ -195,8 +227,10 @@ const ApiState = (props)=>{
     return(
         <ApiContext.Provider value={{blogSubscriber,Allblogs,pending, blogsEdit ,userDetail,SocialLinks,
          latestBlog , trendingBlog , CategoryBlog , nextBlog , previousBlog , publishedBlogs , mustreadBlogs ,
-        GetSubscriber,GetAllBlogs , deleteBlogs, GetAllPendingBlogs,getBlogsEdit, setBlogsEdit, getUserDetail, getSocialLinks , getLatestBlogs
-         , getTrendingBlogs, getCategoryBlogs , GetNextBlogs , GetPreviousBlogs , GetAllPublishedBlogs, getMustreads}}>
+         RandomBlogs, toppicksBlogs , 
+        GetSubscriber,GetAllBlogs , deleteBlogs, GetAllPendingBlogs,getBlogsEdit, setBlogsEdit, getUserDetail, 
+        getSocialLinks , getLatestBlogs, getTrendingBlogs, getCategoryBlogs , GetNextBlogs , GetPreviousBlogs ,
+         GetAllPublishedBlogs, getMustreads , getRandomPosts , gettopPicksPosts }}>
             {props.children}
         </ApiContext.Provider>
     )

@@ -40,11 +40,12 @@ function App() {
      setProgress(44);
      oldURL = window.location.href;
      setProgress(100);
+     window.scrollTo(0,0);
   }
 }
-
 var oldURL = window.location.href;
 setInterval(checkURLchange, 1000);
+
 
   const Toast = (text)=>{
     toast.info(text, {

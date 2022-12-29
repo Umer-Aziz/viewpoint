@@ -58,13 +58,11 @@ const PostSwitcher = () => {
                   return (
                     <Link key={post._id} to={`/article/${post.slug}`}>
                     <li className="flex gap-x-3 group cursor-pointer">
-                  <div className="h-22 max-w-[8rem] md:w-24 md:w-22 xl:w-28 xl:h-22 rounded-md overflow-hidden">
                     <img
-                      className="bg-cover h-full object-cover w-full group-hover:scale-105 transition-all duration-500"
+                      className="bg-cover rounded h-22 max-w-[8rem] md:w-24 md:w-22 xl:w-28 xl:h-22 object-cover w-full group-hover:scale-105 transition-all duration-500"
                       src={post.BImg}
                       alt="trending-post"
                     />
-                  </div>
                   <div className="w-full min-w-[11rem] md:w-44 lg:w-52 -translate-y-1 lg:-translate-y-0.5">
                     <h4 className="text-md font-semibold blog-title">
                       {post.title}
@@ -94,13 +92,11 @@ const PostSwitcher = () => {
                   return (
                     <Link key={post._id} to={`/article/${post.slug}`}>
                     <li className="flex gap-x-3 group cursor-pointer">
-                  <div className="h-22 max-w-[8rem] md:w-24 md:w-22 xl:w-28 xl:h-22 rounded-md overflow-hidden">
                     <img
-                      className="bg-cover h-full object-cover w-full group-hover:scale-105 transition-all duration-500"
+                      className="bg-cover rounded h-22 max-w-[8rem] md:w-24 md:w-22 xl:w-28 xl:h-22 object-cover w-full group-hover:scale-105 transition-all duration-500"
                       src={post.BImg}
                       alt="trending-post"
                     />
-                  </div>
                   <div className="w-full min-w-[11rem] md:w-44 lg:w-52 -translate-y-1 lg:-translate-y-0.5">
                     <h4 className="text-md font-semibold blog-title">
                       {post.title}
