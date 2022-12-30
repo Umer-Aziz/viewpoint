@@ -50,7 +50,8 @@ const Searchbar = () => {
                 return(
                     <li key={_id} className="p-2 group text-sm font-medium hover:text-orange-600 
                     flex items-start gap-x-2 border border-dark dark:!border-opacity-10">
-                    <img loading="lazy" className="w-10 h-10 rounded bg-center object-cover group-hover:scale-105 transition-all duration-300" src={BImg} alt="search-img" />
+                    <img className="w-10 h-10 rounded bg-center object-cover group-hover:scale-105
+                     transition-all duration-300" src={BImg} alt="search-img" />
                    <a href={`/article/${slug}`} className="blog-title">{title}</a>
                    </li>
                 )
