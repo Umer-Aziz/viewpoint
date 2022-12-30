@@ -49,7 +49,7 @@ const BlogDetail = ({Toast}) => {
    })
  
    const getBlogSlug = async()=>{
-    const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/${url}`, {
+    const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/slug/${url}`, {
       method: "GET",
       headers: {
         'Content-Type': "application/json",
@@ -102,7 +102,6 @@ if(!nextBlog.blogs){
 
   function checkURLchange(){
     if(window.location.href != oldURL && window.location.href != host){
-       window.location.reload()
        oldURL = window.location.href;
        host = "http://localhost:3000/"
        window.scrollTo(0,0)
@@ -204,7 +203,7 @@ if(!nextBlog.blogs){
               const { _id , slug , title , BImg , description , category , updatedAt } = post ;
               const date = moment(updatedAt).format('D MMMM , YYYY')
               return (
-               <Link key={_id} to={`/article/${slug}`}>
+               <a key={_id} href={`/article/${slug}`}>
                <div className='py-3 shadow rounded group cursor-pointer'>
                 <div className='overflow-hidden w-full rounded md:rounded-md'>
                 <img className='bg-cover md:h-40 xl:h-52 object-fill rounded lg:rounded-md w-full group-hover:scale-105 transition-all 
@@ -223,7 +222,7 @@ if(!nextBlog.blogs){
                 </p>
                 </div>
                 </div>
-               </Link>
+               </a>
               )
             })
           }

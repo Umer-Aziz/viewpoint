@@ -2,7 +2,6 @@ import React,{useEffect, useState , useContext } from 'react'
 import { WiTime8 } from "react-icons/wi";
 import ApiContext from '../../context/ApiContext';
 import moment from 'moment';
-import { Link } from 'react-router-dom';
 const PostSwitcher = () => {
     const [show, setShow] = useState(true);
     const { getLatestBlogs , getTrendingBlogs , latestBlog , trendingBlog } = useContext(ApiContext);
@@ -56,7 +55,7 @@ const PostSwitcher = () => {
               {
                 trendingBlog.length >= 0 ? trendingBlog.slice(0,5).map((post)=>{
                   return (
-                    <Link key={post._id} to={`/article/${post.slug}`}>
+                    <a key={post._id} href={`/article/${post.slug}`}>
                     <li className="flex gap-x-3 group cursor-pointer">
                     <img
                       className="bg-cover rounded h-22 max-w-[8rem] md:w-24 md:w-22 xl:w-28 xl:h-22 object-cover w-full group-hover:scale-105 transition-all duration-500"
@@ -76,7 +75,7 @@ const PostSwitcher = () => {
                     </p>
                   </div>
                 </li>
-                </Link>
+                </a>
                   )
                 })
                 : <p className='text-center text-sm'>Nothing to Show</p>
@@ -90,7 +89,7 @@ const PostSwitcher = () => {
               {
                 latestBlog.length > 0 ? latestBlog.slice(0,5).map((post)=>{
                   return (
-                    <Link key={post._id} to={`/article/${post.slug}`}>
+                    <a key={post._id} href={`/article/${post.slug}`}>
                     <li className="flex gap-x-3 group cursor-pointer">
                     <img
                       className="bg-cover rounded h-22 max-w-[8rem] md:w-24 md:w-22 xl:w-28 xl:h-22 object-cover w-full group-hover:scale-105 transition-all duration-500"
@@ -110,7 +109,7 @@ const PostSwitcher = () => {
                     </p>
                   </div>
                 </li>
-                </Link>
+                </a>
                   )
                 })
                 : <p className='text-center text-sm'>Nothing to Show</p>

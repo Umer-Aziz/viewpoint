@@ -2,10 +2,10 @@ import React, { useState , useEffect , useContext } from 'react'
 import { FaGithub , FaLinkedin , FaTwitter ,  FaStackOverflow , FaInstagram ,FaFacebook } from "react-icons/fa";
 import { BsMoonStarsFill } from "react-icons/bs";
 import { ImSun } from "react-icons/im";
-import { GrFormSearch } from "react-icons/gr";
 import moment from "moment";
 import { Link , NavLink , useLocation } from 'react-router-dom';
 import ApiContext from '../context/ApiContext';
+import Searchbar from './Searchbar';
 const Navbar = () => {
 
     const [ theme , setTheme ] = useState("dark");
@@ -87,12 +87,7 @@ const Navbar = () => {
             <nav className='container pt-6'>
               <div className='flex justify-between gap-x-6'>
               <NavLink to="/"><img className='w-24 md:32 lg:w-40' src="../img/dark-logo.png" alt="logo" /></NavLink> 
-                <form className='px-3 sm:px-4 py-2 bg-white flex items-center rounded border border-gray-300 dark:border-dull-black shadow-sm'>
-                <input className='outline-none bg-transparent text-gray-700 max-w-[150px] sm:max-w-max' type="search" name="search" id="search" placeholder='Search..'/>
-                <button>
-                <GrFormSearch className='text-2xl'/>
-                </button>
-                </form>
+                <Searchbar/>
               </div>
               <ul className='navbar-ul mt-5 flex gap-x-8 !gap-y-0 font-semibold border-b border-gray-500 border-opacity-30
                text-gray-600 dark:text-gray-100 overflow-x-scroll xl:overflow-x-hidden'>
