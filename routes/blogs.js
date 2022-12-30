@@ -87,7 +87,7 @@ router.get("/toppicks",async(req,res)=>{
 
 
   // ROUTE 7: filter Blogs by slug
-router.get("/:slug",async(req,res)=>{
+router.get("/slug/:slug",async(req,res)=>{
     const blogs = await BlogPost.findOne({ slug : req.params.slug });
     res.json(blogs)
 });
@@ -161,6 +161,25 @@ router.delete("/delete/:id",fetchuser,async(req,res)=>{
      res.status(500).send("Internal Server Error!");
     }
  });
+
+
+ //Route:12 SEARCH filter ROUTE 
+
+router.get("/search",async(req,res)=>{
+     try {
+         const searchField = req.query.title;
+         let filterBlogs = await BlogPost.find({title:{$regex: searchField , $options:"i"}});
+         if(!filterBlogs) { return res.status(400).send("No Result Found")};
+         let success = true;
+         res.status(200).json({success,filterBlogs});
+
+     } catch (error) {
+      console.log("Error in Filter blogs  ",error.message);
+     res.status(500).send("Internal Server Error!");
+     }
+    
+})
+
  
   
 module.exports = router;
