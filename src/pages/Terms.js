@@ -1,8 +1,12 @@
 import React from 'react'
-
+import { Helmet } from 'react-helmet'
 const Terms = () => {
   return (
     <>
+    <Helmet>
+            <title>Terms & conditions</title>
+            <link rel="canonical" href="https://pointview.tech/terms-conditions" />
+        </Helmet>
         <main className="container py-14 md:py-20">
         <div className="max-w-5xl mx-auto">
           <div>

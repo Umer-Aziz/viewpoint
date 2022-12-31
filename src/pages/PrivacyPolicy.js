@@ -1,8 +1,12 @@
 import React from "react";
-
+import { Helmet } from "react-helmet";
 const PrivacyPolicy = () => {
   return (
     <>
+    <Helmet>
+            <title>Privacy & Policies</title>
+            <link rel="canonical" href="https://pointview.tech/privacy-policy" />
+        </Helmet>
       <main className="container py-14 md:py-20">
         <div className="max-w-5xl mx-auto">
           <div>

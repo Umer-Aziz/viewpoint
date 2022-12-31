@@ -4,7 +4,7 @@ import { BsTelephonePlus } from "react-icons/bs";
 import { FiMail } from "react-icons/fi";
 import { FaGithub , FaLinkedin , FaTwitter ,  FaStackOverflow , FaInstagram ,FaFacebook } from "react-icons/fa";
 import ApiContext from '../context/ApiContext';
-
+import { Helmet } from "react-helmet"
 const Contact = () => {
 
     const { getSocialLinks , SocialLinks} = useContext(ApiContext);
@@ -19,6 +19,10 @@ const Contact = () => {
 
   return (
     <>
+        <Helmet>
+            <title>Contact us</title>
+            <link rel="canonical" href="https://pointview.tech/contact" />
+        </Helmet>
         <section className="container min-h-screen py-10 grid gap-y-8 md:gap-y-0 lg:flex ">
     <div className="flex flex-col justify-center w-full lg:w-1/2">
         <h1 className="text-3xl font-semibold text-gray-800 capitalize dark:text-white lg:text-5xl">hire us.</h1>

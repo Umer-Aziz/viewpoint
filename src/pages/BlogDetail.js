@@ -11,6 +11,7 @@ import { useLocation , useNavigate , Link } from "react-router-dom";
 import moment from "moment";
 import { Parser } from 'html-to-react';
 import ApiContext from "../context/ApiContext";
+import { Helmet } from "react-helmet";
 const BlogDetail = ({Toast}) => {
 
   const navigate = useNavigate();
@@ -59,7 +60,7 @@ const BlogDetail = ({Toast}) => {
     setBlogs(slug);
   }
 
-  const { title , category , updatedAt , BImg, content , tags} = blogs;
+  const { title , slug , description , category , updatedAt , BImg, content , tags} = blogs;
   const date = moment(updatedAt).format('Do MMMM , YYYY');
 
 
@@ -115,6 +116,29 @@ if(!nextBlog.blogs){
 
   return (
     <>  
+    <Helmet>
+            <title>{title}</title>
+            <meta name="keywords" content={ tags && tags.map && tags.map((tag)=>{ return tag })}/>
+            <meta name="description" content={title} />
+            <link rel="canonical" href={`https://pointview.tech/blogs/${slug}`} />
+
+            {/* og meta tag  */}
+
+            <meta property="og:url" content={`https://pointview.tech/blogs/${slug}`}/>
+            <meta property="og:type" content="article" />
+            <meta property="og:title" content={title} />
+            <meta property="og:description" content={description}/>
+            <meta property="og:image" content={BImg}/>
+
+            {/* Twitter card tag */}
+
+            <meta name="twitter:card" content="summary" />
+            <meta name="twitter:site" content="@umeraziz_00" />
+            <meta name="twitter:title" content={title} />
+            <meta name="twitter:description"  content={description}/>
+            <meta name="twitter:image" content={BImg} />
+
+    </Helmet>
       <main className="container pt-10 pb-20 text-gray-600 dark:text-gray-300">
         <div className="grid gap-y-12 md:flex md:justify-between md:gap-x-6 lg:gap-x-8 xl:gap-x-12">
         <div>
@@ -147,23 +171,23 @@ if(!nextBlog.blogs){
 
               <div>
                 <div className="flex gap-2 justify-end">
-                     <FacebookShareButton url={ShareUrl} quote="Lorem ipsum dolor sit amet consectetur adipisicing." hashtag=" #Technology ">
+                     <FacebookShareButton url={ShareUrl} quote="Lorem ipsum dolor sit amet consectetur adipisicing." hashtag={tags && tags.map && tags.map((tag)=>{ return tag })}>
                       <FacebookIcon className="w-10 hover:scale-110 transition-all duration-300" round={true}/>
                      </FacebookShareButton>
 
-                     <TwitterShareButton url={ShareUrl} quote="Lorem ipsum dolor sit amet consectetur adipisicing." hashtag=" #Technology ">
+                     <TwitterShareButton url={ShareUrl} quote="Lorem ipsum dolor sit amet consectetur adipisicing." hashtag={tags && tags.map && tags.map((tag)=>{ return tag })}>
                       <TwitterIcon className="w-10 hover:scale-110 transition-all duration-300" round={true}/>
                      </TwitterShareButton>
 
-                     <WhatsappShareButton url={ShareUrl} quote="Lorem ipsum dolor sit amet consectetur adipisicing." hashtag=" #Technology ">
+                     <WhatsappShareButton url={ShareUrl} quote="Lorem ipsum dolor sit amet consectetur adipisicing." hashtag={tags && tags.map && tags.map((tag)=>{ return tag })}>
                       <WhatsappIcon className="w-10 hover:scale-110 transition-all duration-300" round={true}/>
                      </WhatsappShareButton>
 
-                     <TelegramShareButton url={ShareUrl} quote="Lorem ipsum dolor sit amet consectetur adipisicing." hashtag=" #Technology ">
+                     <TelegramShareButton url={ShareUrl} quote="Lorem ipsum dolor sit amet consectetur adipisicing." hashtag={tags && tags.map && tags.map((tag)=>{ return tag })}>
                       <TelegramIcon className="w-10 hover:scale-110 transition-all duration-300" round={true}/>
                      </TelegramShareButton>
 
-                     <LinkedinShareButton url={ShareUrl} quote="Lorem ipsum dolor sit amet consectetur adipisicing." hashtag=" #Technology ">
+                     <LinkedinShareButton url={ShareUrl} quote="Lorem ipsum dolor sit amet consectetur adipisicing." hashtag={tags && tags.map && tags.map((tag)=>{ return tag })}>
                       <LinkedinIcon className="w-10 hover:scale-110 transition-all duration-300" round={true}/>
                      </LinkedinShareButton>
 

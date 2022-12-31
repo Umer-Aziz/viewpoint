@@ -4,6 +4,7 @@ import { IoIosArrowForward , IoIosArrowBack } from "react-icons/io";
 import ApiContext from '../context/ApiContext';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import { Helmet } from 'react-helmet';
 const Blogs = () => {
 
   const { publishedBlogs , GetAllPublishedBlogs } = useContext(ApiContext);
@@ -13,6 +14,11 @@ const Blogs = () => {
   }, [])
   return (
     <>
+    <Helmet>
+            <meta name="keywords" content="pointview blogs ,  programming blogs , cybersecurity , pointview.tech"/>
+            <title>pointview - Blogs</title>
+            <link rel="canonical" href="https://pointview.tech/blogs" />
+        </Helmet>
         <section className='text-gray-700 dark:text-gray-300'>
         <div className='container pt-10 pb-20'>
 <div className='my-6 grid gap-y-6 lg:grid-cols-2 lg:gap-x-6 xl:gap-x-8'>

@@ -85,8 +85,8 @@ const Navbar = () => {
             </div>
             </header>
             <nav className='container pt-6'>
-              <div className='flex justify-between gap-x-6'>
-              <NavLink to="/"><img className='w-24 md:32 lg:w-40' src="../img/dark-logo.png" alt="logo" /></NavLink> 
+              <div className='flex justify-between items-center gap-x-6'>
+              <NavLink to="/"><img className='w-28 md:w-32 lg:w-40 -ml-1' src="../img/logo.png" alt="logo" /></NavLink> 
                 <Searchbar/>
               </div>
               <ul className='navbar-ul mt-5 flex gap-x-8 !gap-y-0 font-semibold border-b border-gray-500 border-opacity-30
