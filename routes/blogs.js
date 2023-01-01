@@ -180,6 +180,28 @@ router.get("/search",async(req,res)=>{
     
 })
 
+
+// Route:13 Pagination Api 
+
+router.get("/pagination",async(req,res)=>{
+ try {
+
+  let { page , limit } = req.query ;
+  if(!page) { page = 1 };
+  if(!limit) { limit = 9 };
+
+  const skip = ( page - 1 ) * 9 ;
+  const blogs = await BlogPost.find().sort({updatedAt : "desc"}).skip(skip).limit(limit);
+  res.send({page:page , limit:limit ,blogs:blogs})
+  
+ }catch (error) {
+  console.log("Error in pagination blogs  ",error.message);
+ res.status(500).send("Internal Server Error!");
+ }
+})
+
+
+
  
   
 module.exports = router;
