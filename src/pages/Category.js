@@ -3,6 +3,8 @@ import { WiTime8 } from "react-icons/wi"
 import { Link, useLocation } from 'react-router-dom';
 import ApiContext from '../context/ApiContext';
 import moment from 'moment';
+import { Helmet } from 'react-helmet';
+
 const Category = () => {
 
   const { getCategoryBlogs , CategoryBlog} = useContext(ApiContext);
@@ -11,7 +13,7 @@ const Category = () => {
   // get category url 
   const path = useLocation();
   const url = path.pathname.replace("/category/", "") ;
-
+  let title = url.charAt(0).toUpperCase() + url.slice(1);
   
   useEffect(()=>{
     getCategoryBlogs(url);
@@ -20,6 +22,10 @@ const Category = () => {
 
   return (
     <>
+    <Helmet>
+          <title>Category - {title}</title>
+          <link rel="canonical" href={`https://pointview.tech/category/${url}`} />
+    </Helmet>
         <main className='container'>
             <div className='pt-8 pb-20'>
             

@@ -28,6 +28,16 @@ border-radius: 24px;
    @apply px-4 sm:px-6 lg:px-8 2xl:px-0 max-w-7xl mx-auto;
 }
 
+.pagination {
+  @apply flex justify-center mt-12 md:mt-16;
+}
+.page-item {
+  @apply flex items-center justify-center mx-1 text-gray-700 transition-colors duration-300 transform bg-gray-100 rounded-md dark:bg-gray-600 dark:bg-opacity-5 dark:text-gray-200 hover:bg-orange-600 dark:hover:bg-orange-600 hover:text-gray-50 dark:hover:text-gray-100;
+}
+.page-link {
+  @apply px-4 py-2;
+}
+
 body {
     @apply font-black-ops overflow-x-hidden;
       .btn {
