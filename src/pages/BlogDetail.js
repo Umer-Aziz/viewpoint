@@ -95,25 +95,16 @@ if(!nextBlog.blogs){
   const previousPost = ()=>{
     navigate(`/article/${previousslug}`);
     window.location.reload();
+    window.scrollTo(0,0)
+
   }
   const NextPost = ()=>{
     navigate(`/article/${nextslug}`);
     window.location.reload();
-  }
+    window.scrollTo(0,0)
 
-  function checkURLchange(){
-    if(window.location.href != oldURL && window.location.href != host){
-       oldURL = window.location.href;
-       host = "http://localhost:3000/"
-       window.scrollTo(0,0)
-    }
   }
   
-  var oldURL = window.location.href;
-  var host = "http://localhost:3000/";
-  setInterval(checkURLchange, 1000);
-
-
   return (
     <>  
     <Helmet>
