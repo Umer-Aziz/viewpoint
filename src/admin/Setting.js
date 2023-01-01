@@ -2,6 +2,7 @@ import React, { useEffect , useContext , useState } from 'react'
 import Sidebar from '../components/admin/Sidebar'
 import { useNavigate } from 'react-router-dom';
 import ApiContext from '../context/ApiContext';
+import { Helmet } from "react-helmet";
 
 const Setting = ({Toast}) => {
   
@@ -105,6 +106,9 @@ const Setting = ({Toast}) => {
 
   return (
     <>
+    <Helmet>
+            <title>Account Settings</title>
+      </Helmet>
       {localStorage.getItem("token") && <main className='container py-10 overflow-x-hidden w-full'>
         <div className='lg:flex '>
         {/* Sidebar  */}

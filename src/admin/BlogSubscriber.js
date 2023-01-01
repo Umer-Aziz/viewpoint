@@ -3,6 +3,7 @@ import Sidebar from '../components/admin/Sidebar'
 import JoditEditor from 'jodit-react';
 import { useNavigate } from 'react-router-dom';
 import ApiContext from '../context/ApiContext';
+import { Helmet } from 'react-helmet'
 const BlogSubscriber = ({Toast}) => {
 
   const navigate = useNavigate();
@@ -75,6 +76,9 @@ if(visible === true ){
 }
   return (
    <>
+   <Helmet>
+            <title>Blog Subscriber</title>
+      </Helmet>
     { localStorage.getItem("token")  && <main className='container py-10 overflow-x-hidden w-full'>
         <div className='lg:flex '>
         {/* Sidebar  */}

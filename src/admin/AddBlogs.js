@@ -5,6 +5,7 @@ import { MdCancel , MdPublic , MdAddCircleOutline } from "react-icons/md"
 import { VscSaveAs } from "react-icons/vsc"
 import { BiAddToQueue } from "react-icons/bi"
 import { useNavigate } from 'react-router-dom';
+import  { Helmet } from "react-helmet"
 const AddBlogs = ({Toast}) => {
   const [ tags , setTags ] = useState([]);
   const [ formstate , setFormstate ] = useState({});
@@ -67,6 +68,9 @@ const handleCheck = (event)=>{
 
   return (
     <>
+    <Helmet>
+            <title>Add Blog</title>
+      </Helmet>
      { localStorage.getItem('token') && <main className='container py-10 overflow-x-hidden w-full'>
         <div className='lg:flex '>
         {/* Sidebar  */}

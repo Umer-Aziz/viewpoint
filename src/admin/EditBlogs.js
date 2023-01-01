@@ -6,7 +6,7 @@ import { VscSaveAs } from "react-icons/vsc"
 import { BiAddToQueue } from "react-icons/bi"
 import { useNavigate , useLocation } from 'react-router-dom';
 import ApiContext from '../context/ApiContext';
-
+import { Helmet } from "react-helmet"
 const EditBlogs = ({Toast}) => {
 
   const location = useLocation();
@@ -93,6 +93,9 @@ const handleCheck = (event)=>{
 
   return (
     <>
+    <Helmet>
+            <title>Edit Blog</title>
+      </Helmet>
      { localStorage.getItem('token') && <main className='container py-10 overflow-x-hidden w-full'>
         <div className='lg:flex '>
         {/* Sidebar  */}

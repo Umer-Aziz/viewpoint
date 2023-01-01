@@ -8,7 +8,7 @@ import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 import ScrolltoTop from "./components/ScrolltoTop";
 import Error from "./pages/404";
-import Business from "./pages/Category/Business";
+import Category from "./pages/Category";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
 import BlogDetail from "./pages/BlogDetail";
@@ -21,14 +21,7 @@ import Login from "./admin/Login";
 import ApiState from "./context/ApiState";
 import { ToastContainer, toast , Zoom } from 'react-toastify';
 import EditBlogs from "./admin/EditBlogs";
-import Technology from "./pages/Category/Technology";
-import Programming from "./pages/Category/Programming";
-import Cybersecurity from "./pages/Category/Cybersecurity";
-import Scamming from "./pages/Category/Scamming";
-import Fitness from "./pages/Category/Fitness";
-import LifeStyle from "./pages/Category/LifeStyle";
-import Sports from "./pages/Category/Sports";
-import Other from "./pages/Category/Other";
+
 
 function App() {
 
@@ -81,15 +74,7 @@ setInterval(checkURLchange, 1000);
     <Route exact path="/blogs" element={<Blogs/>}/>
      
      {/* Category pages  */}
-    <Route exact path="/category/Business" element={<Business/>}/>
-    <Route exact path="/category/technology" element={<Technology/>}/>
-    <Route exact path="/category/programming" element={<Programming/>}/>
-    <Route exact path="/category/cybersecurity" element={<Cybersecurity/>}/>
-    <Route exact path="/category/scamming" element={<Scamming/>}/>
-    <Route exact path="/category/fitness" element={<Fitness/>}/>
-    <Route exact path="/category/lifestyle" element={<LifeStyle/>}/>
-    <Route exact path="/category/sports" element={<Sports/>}/>
-    <Route exact path="/category/others" element={<Other/>}/>
+    <Route exact path="/category/:category" element={<Category/>}/>
 
     <Route exact path="/article/:slug" element={<BlogDetail Toast={Toast}/>}/>
     <Route exact path="/contact" element={<Contact/>}/>

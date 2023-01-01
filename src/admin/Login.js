@@ -3,6 +3,8 @@ import { FaUserLock } from "react-icons/fa"
 import { MdAlternateEmail } from "react-icons/md"
 import { RiLoginCircleLine } from "react-icons/ri"
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from "react-helmet";
+
 const Login = ({Toast}) => {
 
   const navigate = useNavigate();
@@ -35,6 +37,9 @@ const handleSubmit =async (e)=>{
 
   return (
     <>
+    <Helmet>
+            <title>Login</title>
+      </Helmet>
          <main className='container py-10 overflow-x-hidden w-full'>
            <div className='min-h-[60vh] mt-20'>
            <form method='POST' onSubmit={handleSubmit}

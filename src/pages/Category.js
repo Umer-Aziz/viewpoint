@@ -1,9 +1,9 @@
 import React , { useEffect ,useContext } from 'react'
 import { WiTime8 } from "react-icons/wi"
 import { Link, useLocation } from 'react-router-dom';
-import ApiContext from '../../context/ApiContext';
+import ApiContext from '../context/ApiContext';
 import moment from 'moment';
-const Programming = () => {
+const Category = () => {
 
   const { getCategoryBlogs , CategoryBlog} = useContext(ApiContext);
 
@@ -32,7 +32,7 @@ const Programming = () => {
               const date = moment(updatedAt).format("Do MMMM , YYYY")
                return (
                 <Link to={`/article/${slug}`} key={_id}>
-                <div className='py-3 shadow rounded group cursor-pointer'>
+                <div key={_id} className='py-3 shadow rounded group cursor-pointer'>
             <div className='overflow-hidden w-full rounded md:rounded-md'>
             <img className='bg-cover md:h-56 xl:h-64 object-fill rounded lg:rounded-md w-full group-hover:scale-105 transition-all 
             duration-500' 
@@ -65,4 +65,4 @@ const Programming = () => {
   )
 }
 
-export default Programming
+export default Category
