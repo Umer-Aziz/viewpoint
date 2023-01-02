@@ -1,19 +1,64 @@
-import React, { useContext , useEffect } from 'react'
+import React, { useEffect , useContext } from 'react'
 import { WiTime8 } from "react-icons/wi";
-import { IoIosArrowForward , IoIosArrowBack } from "react-icons/io";
-import ApiContext from '../context/ApiContext';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { Helmet } from 'react-helmet';
-import Pagination from '../components/Pagination';
-
+import { useState } from 'react';
+import ReactPaginate from 'react-paginate'
+import { IoIosArrowForward , IoIosArrowBack } from "react-icons/io";
+import ApiContext from '../context/ApiContext';
 const Blogs = () => {
 
-  const { publishedBlogs , GetAllPublishedBlogs } = useContext(ApiContext);
+  const [ paginateBlogs , setPaginateBlogs ] = useState({});
+  const publishedBlogs = paginateBlogs.blogs;
+  const data = useContext(ApiContext);
+  let totalBlogs = data.publishedBlogs.length;
+  let totalPage ;
+  let limit = 14;
+if(totalBlogs){
+  totalPage = Math.ceil(totalBlogs / limit );
+}
+  
 
   useEffect(() => {
-    GetAllPublishedBlogs();
+    data.GetAllPublishedBlogs();
+     getPaginateBlogs();
   }, [])
+
+  // get paginateBlogs 
+
+  const getPaginateBlogs = async()=>{
+    const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/pagination/?page=1&limit=${limit}`, {
+      method: "GET",
+      headers: {
+        'Content-Type': "application/json",
+      },
+    });
+    const paginateBlogs = await response.json();
+    setPaginateBlogs(paginateBlogs);
+  }
+
+
+  // change paginateBlogs page 
+
+  const fetchPaginateBlogs = async(currentPage)=>{
+    const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/pagination/?page=${currentPage}&limit=${limit}`, {
+        method: "GET",
+        headers: {
+          'Content-Type': "application/json",
+        },
+      });
+      const paginateBlogs = await response.json();
+      return paginateBlogs;
+}
+
+const handlePageClick = async(data)=>{
+    let currentPage = data.selected + 1 ;
+    const pageChangeBlogs = await fetchPaginateBlogs(currentPage);
+    setPaginateBlogs(pageChangeBlogs);
+
+}
+
   return (
     <>
     <Helmet>
@@ -89,7 +134,7 @@ const Blogs = () => {
   <div className='grid gap-y-6 md:grid-cols-2 lg:grid-cols-3 gap-x-6'>
 
   {
-    publishedBlogs && publishedBlogs.map && publishedBlogs.slice(6).map((post)=>{
+    publishedBlogs && publishedBlogs.map && publishedBlogs.slice(5).map((post)=>{
       const { _id , slug , title , BImg , category , updatedAt } = post;
       const date = moment(updatedAt).format("D MMMM , YYYY")
       return (
@@ -121,9 +166,27 @@ const Blogs = () => {
   </div>
 
  {/* pagination  */}
- 
+
   <div>
-  <Pagination/>
+  <ReactPaginate
+    breakLabel={`...`}
+    nextLabel={<IoIosArrowForward/>}
+    previousLabel={<IoIosArrowBack/>}
+    pageCount={totalPage}
+    pageRangeDisplayed={2}
+    marginPagesDisplayed={2}
+    onPageChange={handlePageClick}
+    containerClassName={`pagination`}
+    pageClassName={`page-item`}
+    pageLinkClassName={`page-link`}
+    previousClassName={`page-item`}
+    previousLinkClassName={`page-link`}
+    nextClassName={`page-item`}
+    nextLinkClassName={`page-link`}
+    breakClassName={`page-item`}
+    breakLinkClassName={`page-link`}
+    activeClassName={`!bg-orange-600`}
+  />
   </div>
 
 </div>
