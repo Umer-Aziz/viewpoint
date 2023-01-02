@@ -188,10 +188,10 @@ router.get("/pagination",async(req,res)=>{
 
   let { page , limit } = req.query ;
   if(!page) { page = 1 };
-  if(!limit) { limit = 9 };
+  if(!limit) { limit = 14 };
 
-  const skip = ( page - 1 ) * 9 ;
-  const blogs = await BlogPost.find().sort({updatedAt : "desc"}).skip(skip).limit(limit);
+  const skip = ( page - 1 ) * 14 ;
+  const blogs = await BlogPost.find({status:"published"}).sort({updatedAt : "desc"}).skip(skip).limit(limit);
   res.send({page:page , limit:limit ,blogs:blogs})
   
  }catch (error) {
