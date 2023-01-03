@@ -70,7 +70,7 @@ const ApiState = (props)=>{
 
     //GET EDIT BLOG
     const getBlogsEdit = async(url)=>{
-      const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/${url}`, {
+      const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/slug/${url}`, {
         method: "GET",
         headers: {
           'Content-Type': "application/json",
@@ -223,12 +223,26 @@ const ApiState = (props)=>{
     const newBlogs = Allblogs.filter((blog) => { return blog._id !== id })
     setAllBlogs(newBlogs);
   }
+
+  // DELETE Subscriber API 
+     const deleteSubscriber = async (id) => {
+        // API Call
+         await fetch(`${process.env.REACT_APP_HOST}/subscriber/delete/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            "auth-token":localStorage.getItem('token'),
+          }
+        });
+        const deleteSubs = blogSubscriber.filter((blogsub) => { return blogsub._id !== id })
+        setblogSubscriber(deleteSubs);
+      }
  
     return(
         <ApiContext.Provider value={{blogSubscriber,Allblogs,pending, blogsEdit ,userDetail,SocialLinks,
          latestBlog , trendingBlog , CategoryBlog , nextBlog , previousBlog , publishedBlogs , mustreadBlogs ,
          RandomBlogs, toppicksBlogs , 
-        GetSubscriber,GetAllBlogs , deleteBlogs, GetAllPendingBlogs,getBlogsEdit, setBlogsEdit, getUserDetail, 
+        GetSubscriber , deleteSubscriber ,GetAllBlogs , deleteBlogs, GetAllPendingBlogs,getBlogsEdit, setBlogsEdit, getUserDetail, 
         getSocialLinks , getLatestBlogs, getTrendingBlogs, getCategoryBlogs , GetNextBlogs , GetPreviousBlogs ,
          GetAllPublishedBlogs, getMustreads , getRandomPosts , gettopPicksPosts }}>
             {props.children}

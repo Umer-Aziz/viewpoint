@@ -4,10 +4,12 @@ import JoditEditor from 'jodit-react';
 import { useNavigate } from 'react-router-dom';
 import ApiContext from '../context/ApiContext';
 import { Helmet } from 'react-helmet'
+import { MdDeleteForever } from 'react-icons/md';
 const BlogSubscriber = ({Toast}) => {
 
   const navigate = useNavigate();
   const data = useContext(ApiContext);
+  const { deleteSubscriber } = useContext(ApiContext);
 
   useEffect(() => {
     if(!localStorage.getItem('token')){
@@ -94,8 +96,21 @@ if(visible === true ){
                 <ul className='grid gap-3 text-gray-600 dark:text-gray-700'>
                 {
                  subs && subs.map((data)=>{
+                  const { _id , email } = data ;
                     return(
-                      <li key={data._id} className='md:text-lg inline-block bg-orange-300 dark:bg-gray-100 px-2 rounded-md'>{data.email}</li>
+                      <li key={_id} className='flex justify-between md:text-lg bg-orange-300 dark:bg-gray-100 px-2 rounded-md'><span>{email}</span>
+                      <button onClick={() => {
+                          if (
+                            window.confirm(
+                              "Are you sure you want to Delete this Blog from database?"
+                            )
+                          ) {
+                            // Delete it!
+                            deleteSubscriber(_id);
+                            Toast("Subscriber has been Removed!");
+                          }
+                        }} className="text-red-600 hover:text-red-700 md:text-xl"><MdDeleteForever/></button></li>
+                      
                     )
                   })
                 }
