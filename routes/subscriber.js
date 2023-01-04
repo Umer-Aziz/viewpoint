@@ -42,4 +42,18 @@ router.get("/getsubscriber",fetchuser,async (req,res)=>{
         
     })
 
+//Route:11 DELETE ROUTE 
+router.delete("/delete/:id",fetchuser,async(req,res)=>{
+  try {
+   let subs = await subscriber.findById(req.params.id);
+   if(!subs) { return res.status(400).send("Not Found")};
+
+   subs = await subscriber.findByIdAndDelete(req.params.id);
+   res.json({success:"Blog has been deleted successfully!"});
+  } catch (error) {
+   console.log("Error in Deleting Blog post ",error.message);
+   res.status(500).send("Internal Server Error!");
+  }
+});
+
 module.exports = router;
