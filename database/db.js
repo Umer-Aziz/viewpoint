@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 require('dotenv').config()
-const mongoUrl = "mongodb+srv://pointview:TGc7J2VqxlgABDnw@cluster0.ckgrkia.mongodb.net/pointview?retryWrites=true&w=majority";
 
 const ConnectDB =()=>{
-    mongoose.connect(mongoUrl , ()=>{
+    mongoose.connect("mongodb+srv://pointview:TGc7J2VqxlgABDnw@cluster0.ckgrkia.mongodb.net/pointview?retryWrites=true&w=majority" , ()=>{
         console.log("Connection Successful")
     })
 }
