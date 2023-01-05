@@ -1,0 +1,37 @@
+.article-content{
+    @apply py-6 md:px-8 dark:text-gray-300 overflow-x-hidden;
+    
+    h1 , h2, h3 , h4 {
+        @apply pt-4 text-2xl font-semibold;
+    }
+    h5{
+        @apply pt-2 text-xl font-semibold;
+    }
+    h6{
+        @apply pt-2 text-lg font-semibold;
+    }
+    p{
+        @apply pt-4;
+    }
+
+        li:before {
+            @apply text-orange-600 relative -left-2 top-1 -ml-2 text-4xl;
+            content: "•";
+        }
+        a{
+            @apply text-blue-800 dark:text-blue-500 hover:underline;
+        }
+        pre{
+            @apply relative;
+            code::after {
+                content: "Copy";
+                @apply absolute top-2 right-3 hover:text-orange-600 font-semibold;
+            } 
+            code:hover::after{
+             @apply text-orange-600;
+            }
+            code {
+                @apply block mt-4 bg-[#282828]  whitespace-pre-wrap cursor-pointer;   
+            }
+        }
+}

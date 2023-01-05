@@ -1,0 +1,20 @@
+.privacy , .terms {
+    @apply py-6 text-gray-600 dark:text-gray-300;
+    h2 ,h3 {
+        @apply py-2 text-2xl text-orange-600;
+    }
+    p{
+        @apply py-2 text-lg
+    }
+    a{
+        @apply text-blue-600;
+    }
+    ul {
+        @apply pl-3.5;
+        li:before {
+            @apply text-orange-600 relative -left-2 top-1 -ml-2 text-4xl;
+            content: "•";
+        }
+    }
+    
+}
