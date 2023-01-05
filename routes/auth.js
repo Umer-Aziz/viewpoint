@@ -4,9 +4,9 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
 const { body, validationResult } = require("express-validator");
-const jwtKey = "umer123";
+const jwtKey = process.env.JWT_key;
+require('dotenv').config();
 const fetchuser = require("../middleware/fetchuser")
-
 
 // Endpoint for creating users 
 

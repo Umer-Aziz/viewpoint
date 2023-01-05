@@ -5,7 +5,7 @@ const LinksRouter = require("./routes/sociallinks");
 const BlogsRouter = require("./routes/blogs");
 const SubsRouter = require("./routes/subscriber");
 var cors = require('cors');
-require('dotenv').config()
+require('dotenv').config();
 
 const ConnectDB = require("./database/db");
 const PORT = process.env.PORT || 1000;

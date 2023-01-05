@@ -1,5 +1,7 @@
 var jwt = require('jsonwebtoken');
-const jwtKey = "umer123";
+require('dotenv').config();
+
+const jwtKey = process.env.JWT_key;
 const fetchuser = ( req,res,next )=>{
 
     // get user token from jwt 
