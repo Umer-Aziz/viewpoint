@@ -38,7 +38,7 @@ const Setting = ({Toast}) => {
     const { name , profilePic , phone , Bio , email , password } = formstate;
 
       // API Call 
-   const response = await fetch(`${process.env.REACT_APP_HOST}/auth/updateuser/${_id}`, {
+   const response = await fetch(`/auth/updateuser/${_id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ const Setting = ({Toast}) => {
     const { facebook  , instagram , twitter , github , linkedin , stackoverflow  } = linksstate
 
       // API Call 
-   const response = await fetch(`${process.env.REACT_APP_HOST}/links/updatelinks/${_id}`, {
+   const response = await fetch(`/links/updatelinks/${_id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

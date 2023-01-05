@@ -29,7 +29,7 @@ const Categories = () => {
 
       //GET Business  Blogs
       const getBusinessBlogs = async()=>{
-        const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/category/business`, {
+        const response = await fetch(`/blogs/category/business`, {
           method: "GET",
           headers: {
             'Content-Type': "application/json",
@@ -41,7 +41,7 @@ const Categories = () => {
 
       //GET technology  Blogs
       const getTechnoBlogs = async()=>{
-        const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/category/technology`, {
+        const response = await fetch(`/blogs/category/technology`, {
           method: "GET",
           headers: {
             'Content-Type': "application/json",
@@ -53,7 +53,7 @@ const Categories = () => {
 
       //GET programming  Blogs
       const getProgrammingBlogs = async()=>{
-        const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/category/programming`, {
+        const response = await fetch(`/blogs/category/programming`, {
           method: "GET",
           headers: {
             'Content-Type': "application/json",
@@ -65,7 +65,7 @@ const Categories = () => {
 
       //GET CyberSecurity  Blogs
       const getCyberBlogs = async()=>{
-        const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/category/cybersecurity`, {
+        const response = await fetch(`/blogs/category/cybersecurity`, {
           method: "GET",
           headers: {
             'Content-Type': "application/json",
@@ -77,7 +77,7 @@ const Categories = () => {
 
       //GET Scamming  Blogs
       const getScammingBlogs = async()=>{
-        const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/category/scamming`, {
+        const response = await fetch(`/blogs/category/scamming`, {
           method: "GET",
           headers: {
             'Content-Type': "application/json",
@@ -89,7 +89,7 @@ const Categories = () => {
 
        //GET Fitness  Blogs
        const getFitnessBlogs = async()=>{
-        const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/category/fitness`, {
+        const response = await fetch(`/blogs/category/fitness`, {
           method: "GET",
           headers: {
             'Content-Type': "application/json",
@@ -101,7 +101,7 @@ const Categories = () => {
 
       //GET Lifestyle  Blogs
       const getLSBlogs = async()=>{
-        const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/category/lifestyle`, {
+        const response = await fetch(`/blogs/category/lifestyle`, {
           method: "GET",
           headers: {
             'Content-Type': "application/json",
@@ -113,7 +113,7 @@ const Categories = () => {
 
       //GET Lifestyle  Blogs
       const getSportsBlogs = async()=>{
-        const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/category/sports`, {
+        const response = await fetch(`/blogs/category/sports`, {
           method: "GET",
           headers: {
             'Content-Type': "application/json",
@@ -125,7 +125,7 @@ const Categories = () => {
 
        //GET Lifestyle  Blogs
        const getOthersBlogs = async()=>{
-        const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/category/others`, {
+        const response = await fetch(`/blogs/category/others`, {
           method: "GET",
           headers: {
             'Content-Type': "application/json",

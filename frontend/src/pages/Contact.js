@@ -72,7 +72,7 @@ const Contact = () => {
     </div>
 
     <div className="flex flex-col justify-center w-full lg:w-1/2">
-        <form action={process.env.REACT_APP_contact_form} method='POST'>
+        <form action="https://getform.io/f/36e6d4e9-ec4f-4624-8dc3-37172e20655e" method='POST'>
             <div className="-mx-2 md:items-center md:flex">
                 <div className="flex-1 px-2">
                     <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Full Name</label>

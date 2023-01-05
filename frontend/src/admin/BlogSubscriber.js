@@ -36,7 +36,7 @@ const handleForm = (e)=>{
 if(visible === true ){
  
   config = { 
-    SecureToken : process.env.REACT_APP_SecureToken,
+    SecureToken : "2e295e82-452d-4012-912c-b4c2bceecd2a",
     From : formstate.emailfrom,
     To : formstate.emailto,
     Subject : formstate.emailsubject,
@@ -55,7 +55,7 @@ if(visible === true ){
 }else{
   subs.forEach((data)=>{
    config = { 
-    SecureToken : process.env.REACT_APP_SecureToken,
+    SecureToken :"2e295e82-452d-4012-912c-b4c2bceecd2a",
     From : formstate.emailfrom,
     To : data.email,
     Subject : formstate.emailsubject,

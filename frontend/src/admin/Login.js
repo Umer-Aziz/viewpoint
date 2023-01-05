@@ -17,7 +17,7 @@ const Login = ({Toast}) => {
 const handleSubmit =async (e)=>{
   e.preventDefault();
   const { email , password } = credentials;
-  const response = await fetch(`${process.env.REACT_APP_HOST}/auth/admin/login`, {
+  const response = await fetch(`/auth/admin/login`, {
       method: "POST",
       headers: {
         'Content-Type': "application/json",

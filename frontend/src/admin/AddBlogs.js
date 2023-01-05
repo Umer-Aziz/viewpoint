@@ -48,7 +48,7 @@ const handleCheck = (event)=>{
   e.preventDefault();
 
   const { title , BImg , description , category , latest , trending , mustreads , randomposts , toppicks , status} = formstate;
-  const response = await fetch(`${process.env.REACT_APP_HOST}/blogs/addblogs`, {
+  const response = await fetch(`/blogs/addblogs`, {
       method: "POST",
       headers: {
         'Content-Type': "application/json", 

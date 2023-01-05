@@ -25,7 +25,7 @@ export const Footer = ({Toast}) => {
   const Submitform =async (e)=>{
     e.preventDefault();
     const { email } = subscriber;
-    const response = await fetch(`${process.env.REACT_APP_HOST}/subscriber`, {
+    const response = await fetch(`/subscriber`, {
         method: "POST",
         headers: {
           'Content-Type': "application/json",
