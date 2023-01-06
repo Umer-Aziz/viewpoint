@@ -65,7 +65,7 @@ setInterval(checkURLchange, 1000);
         waitingTime ={500}
         onLoaderFinished={() => setProgress(0)}
       />
-   <BrowserRouter basename="/index.html">
+   <HashRouter>
     <ScrolltoTop/>
     <Navbar/>
     <Routes>
@@ -89,7 +89,7 @@ setInterval(checkURLchange, 1000);
     <Route exact path="/dashboard/setting" element={<Setting Toast={Toast}/>}/>
     </Routes>
     <Footer Toast={Toast}/>
-    </BrowserRouter>
+    </HashRouter>
     </ApiState>
    </>
   );
