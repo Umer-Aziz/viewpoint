@@ -104,6 +104,16 @@ if(!nextBlog.blogs){
     window.scrollTo(0,0)
 
   }
+
+  function checkURLchange(){
+    if(window.location.href != oldURL){
+       oldURL = window.location.href;
+       window.location.reload();
+       window.scrollTo(0,0);
+    }
+  }
+  var oldURL = window.location.href;
+  setInterval(checkURLchange, 1000);
   
   return (
     <>  

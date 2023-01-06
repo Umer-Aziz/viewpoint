@@ -98,7 +98,7 @@ const Navbar = () => {
                         <a href="#/category/business">Business</a>
                     </li>
                     <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 ${path === "/category/technology" && "border-b-2 border-orange-600"}`}>
-                        <a href="#/category/technology">Technology</a>
+                        <a href="/#/category/technology">Technology</a>
                     </li>
                     <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 ${path === "/category/programming" && "border-b-2 border-orange-600"}`}>
                         <a href="/#/category/programming">Programming</a>

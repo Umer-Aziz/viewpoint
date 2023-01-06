@@ -32,6 +32,7 @@ function App() {
   if(window.location.href != oldURL){
      setProgress(44);
      oldURL = window.location.href;
+     window.location.reload();
      setProgress(100);
      window.scrollTo(0,0);
   }
