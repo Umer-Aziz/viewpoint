@@ -228,7 +228,7 @@ if(!nextBlog.blogs){
               const { _id , slug , title , BImg , description , category , updatedAt } = post ;
               const date = moment(updatedAt).format('D MMMM , YYYY')
               return (
-               <a key={_id} href={`/article/${slug}`}>
+               <a key={_id} href={`/#/article/${slug}`}>
                <div className='py-3 shadow rounded group cursor-pointer'>
                 <div className='overflow-hidden w-full rounded md:rounded-md'>
                 <img className='bg-cover md:h-40 xl:h-52 object-fill rounded lg:rounded-md w-full group-hover:scale-105 transition-all 
