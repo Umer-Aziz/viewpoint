@@ -3,7 +3,7 @@ import { Footer } from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import LoadingBar from 'react-top-loading-bar' ;
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter ,  BrowserRouter, Route, Routes } from "react-router-dom";
 import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 import ScrolltoTop from "./components/ScrolltoTop";
@@ -65,7 +65,7 @@ setInterval(checkURLchange, 1000);
         waitingTime ={500}
         onLoaderFinished={() => setProgress(0)}
       />
-   <BrowserRouter>
+   <BrowserRouter basename="/">
     <ScrolltoTop/>
     <Navbar/>
     <Routes>
