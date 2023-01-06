@@ -72,10 +72,8 @@ setInterval(checkURLchange, 1000);
     <Route path="*" element={<Error/>}/>
     <Route exact path="/" element={<Home/>}/>
     <Route exact path="/blogs" element={<Blogs/>}/>
-     
-     {/* Category pages  */}
+     {/* Category page  */}
     <Route exact path="/category/:category" element={<Category/>}/>
-
     <Route exact path="/article/:slug" element={<BlogDetail Toast={Toast}/>}/>
     <Route exact path="/contact" element={<Contact/>}/>
     <Route exact path="/privacy-policy" element={<PrivacyPolicy/>}/>
