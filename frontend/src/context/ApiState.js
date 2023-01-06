@@ -35,7 +35,7 @@ const ApiState = (props)=>{
 
 //    GET All Blogs 
     const GetAllBlogs = async()=>{
-        const response = await fetch(`/blogs`, {
+        const response = await fetch(`/api/blogs`, {
             method: "GET",
             headers: {
               'Content-Type': "application/json",
