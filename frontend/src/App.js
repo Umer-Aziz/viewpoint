@@ -65,7 +65,7 @@ setInterval(checkURLchange, 1000);
         waitingTime ={500}
         onLoaderFinished={() => setProgress(0)}
       />
-   <BrowserRouter basename="/">
+   <BrowserRouter basename="/index.html">
     <ScrolltoTop/>
     <Navbar/>
     <Routes>
