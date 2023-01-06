@@ -14,10 +14,10 @@ ConnectDB ();
 app.use(cors());
 app.use(express.json());
 
-app.use("/auth",authRouter);
-app.use("/links",LinksRouter);
-app.use("/blogs",BlogsRouter);
-app.use("/subscriber",SubsRouter);
+app.use("/api/auth",authRouter);
+app.use("/api/links",LinksRouter);
+app.use("/api/blogs",BlogsRouter);
+app.use("/api/subscriber",SubsRouter);
 
 if(process.env.NODE_ENV == 'production'){
     app.use(express.static("frontend/build"));

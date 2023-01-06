@@ -50,7 +50,7 @@ const BlogDetail = ({Toast}) => {
    })
  
    const getBlogSlug = async()=>{
-    const response = await fetch(`/blogs/slug/${url}`, {
+    const response = await fetch(`/api/blogs/slug/${url}`, {
       method: "GET",
       headers: {
         'Content-Type': "application/json",

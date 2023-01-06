@@ -25,7 +25,7 @@ export const Footer = ({Toast}) => {
   const Submitform =async (e)=>{
     e.preventDefault();
     const { email } = subscriber;
-    const response = await fetch(`/subscriber`, {
+    const response = await fetch(`/api/subscriber`, {
         method: "POST",
         headers: {
           'Content-Type': "application/json",

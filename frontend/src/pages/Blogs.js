@@ -28,7 +28,7 @@ if(totalBlogs){
   // get paginateBlogs 
 
   const getPaginateBlogs = async()=>{
-    const response = await fetch(`/blogs/pagination/?page=1&limit=${limit}`, {
+    const response = await fetch(`/api/blogs/pagination/?page=1&limit=${limit}`, {
       method: "GET",
       headers: {
         'Content-Type': "application/json",
@@ -42,7 +42,7 @@ if(totalBlogs){
   // change paginateBlogs page 
 
   const fetchPaginateBlogs = async(currentPage)=>{
-    const response = await fetch(`/blogs/pagination/?page=${currentPage}&limit=${limit}`, {
+    const response = await fetch(`/api/blogs/pagination/?page=${currentPage}&limit=${limit}`, {
         method: "GET",
         headers: {
           'Content-Type': "application/json",

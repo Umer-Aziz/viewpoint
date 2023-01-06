@@ -9,7 +9,7 @@ const Searchbar = () => {
    const onSearchSubmit = async (event) =>{
      event.preventDefault();
       try {
-        let url=`/blogs/search?title=${query}`;
+        let url=`/api/blogs/search?title=${query}`;
         const res =await fetch(url,{
             method:"GET",
             headers: {

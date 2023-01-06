@@ -57,7 +57,7 @@ const handleCheck = (event)=>{
   let { latest , trending , mustreads , randomposts , toppicks } = formstate;
   
    // API Call 
-   const response = await fetch(`/blogs/updateblogs/${_id}`, {
+   const response = await fetch(`/api/blogs/updateblogs/${_id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

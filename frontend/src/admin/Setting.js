@@ -38,7 +38,7 @@ const Setting = ({Toast}) => {
     const { name , profilePic , phone , Bio , email , password } = formstate;
 
       // API Call 
-   const response = await fetch(`/auth/updateuser/${_id}`, {
+   const response = await fetch(`/api/auth/updateuser/${_id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

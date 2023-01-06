@@ -20,7 +20,7 @@ const ApiState = (props)=>{
 
     // GET subscriber 
     const GetSubscriber = async()=>{
-        const response = await fetch(`/subscriber/getsubscriber`, {
+        const response = await fetch(`/api/subscriber/getsubscriber`, {
             method: "GET",
             headers: {
               'Content-Type': "application/json",
@@ -47,7 +47,7 @@ const ApiState = (props)=>{
 
 //    GET All Pending Blogs 
     const GetAllPendingBlogs = async()=>{
-        const response = await fetch(`/blogs/pending`, {
+        const response = await fetch(`/api/blogs/pending`, {
             method: "GET",
             headers: {
               'Content-Type': "application/json",
@@ -58,7 +58,7 @@ const ApiState = (props)=>{
     }
 //    GET All Published Blogs 
     const GetAllPublishedBlogs = async()=>{
-        const response = await fetch(`/blogs/published`, {
+        const response = await fetch(`/api/blogs/published`, {
             method: "GET",
             headers: {
               'Content-Type': "application/json",
@@ -70,7 +70,7 @@ const ApiState = (props)=>{
 
     //GET EDIT BLOG
     const getBlogsEdit = async(url)=>{
-      const response = await fetch(`/blogs/slug/${url}`, {
+      const response = await fetch(`/api/blogs/slug/${url}`, {
         method: "GET",
         headers: {
           'Content-Type': "application/json",
@@ -82,7 +82,7 @@ const ApiState = (props)=>{
    
     //GET USER DETAIL
     const getUserDetail = async()=>{
-      const response = await fetch(`/auth/getuser`, {
+      const response = await fetch(`/api/auth/getuser`, {
         method: "POST",
         headers: {
           'Content-Type': "application/json",
@@ -95,7 +95,7 @@ const ApiState = (props)=>{
 
     //GET Links 
     const getSocialLinks = async()=>{
-      const response = await fetch(`/links/getlinks`, {
+      const response = await fetch(`/api/links/getlinks`, {
         method: "GET",
         headers: {
           'Content-Type': "application/json",
@@ -107,7 +107,7 @@ const ApiState = (props)=>{
 
     //GET Latest  Blogs
     const getLatestBlogs = async()=>{
-      const response = await fetch(`/blogs/latest`, {
+      const response = await fetch(`/api/blogs/latest`, {
         method: "GET",
         headers: {
           'Content-Type': "application/json",
@@ -118,7 +118,7 @@ const ApiState = (props)=>{
     } 
      //GET Latest  Blogs
      const getTrendingBlogs = async()=>{
-      const response = await fetch(`/blogs/trending`, {
+      const response = await fetch(`/api/blogs/trending`, {
         method: "GET",
         headers: {
           'Content-Type': "application/json",
@@ -131,7 +131,7 @@ const ApiState = (props)=>{
     // GET mustreads blogs 
 
     const getMustreads = async()=>{
-      const response = await fetch(`/blogs/mustreads`, {
+      const response = await fetch(`/api/blogs/mustreads`, {
         method: "GET",
         headers: {
           'Content-Type': "application/json",
@@ -145,7 +145,7 @@ const ApiState = (props)=>{
      // GET randomposts blogs 
 
      const getRandomPosts = async()=>{
-      const response = await fetch(`/blogs/randomposts`, {
+      const response = await fetch(`/api/blogs/randomposts`, {
         method: "GET",
         headers: {
           'Content-Type': "application/json",
@@ -159,7 +159,7 @@ const ApiState = (props)=>{
      // GET toppicks blogs 
 
      const gettopPicksPosts = async()=>{
-      const response = await fetch(`/blogs/toppicks`, {
+      const response = await fetch(`/api/blogs/toppicks`, {
         method: "GET",
         headers: {
           'Content-Type': "application/json",
@@ -172,7 +172,7 @@ const ApiState = (props)=>{
 
      //GET Category  Blogs
      const getCategoryBlogs = async(category)=>{
-      const response = await fetch(`/blogs/category/${category}`, {
+      const response = await fetch(`/api/blogs/category/${category}`, {
         method: "GET",
         headers: {
           'Content-Type': "application/json",
@@ -185,7 +185,7 @@ const ApiState = (props)=>{
         // Next BLOG API 
   const GetNextBlogs = async (id) => {
     // API Call
-   const response =  await fetch(`/blogs/next/${id}`, {
+   const response =  await fetch(`/api/blogs/next/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -198,7 +198,7 @@ const ApiState = (props)=>{
   // Previous BLOG API 
   const GetPreviousBlogs = async (id) => {
   // API Call
-   const response = await fetch(`/blogs/previous/${id}`, {
+   const response = await fetch(`/api/blogs/previous/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -213,7 +213,7 @@ const ApiState = (props)=>{
       // DELETE BLOG API 
   const deleteBlogs = async (id) => {
     // API Call
-     await fetch(`/blogs/delete/${id}`, {
+     await fetch(`/api/blogs/delete/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -227,7 +227,7 @@ const ApiState = (props)=>{
   // DELETE Subscriber API 
      const deleteSubscriber = async (id) => {
         // API Call
-         await fetch(`/subscriber/delete/${id}`, {
+         await fetch(`/api/subscriber/delete/${id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
