@@ -95,36 +95,36 @@ const Navbar = () => {
                         <NavLink to="/">Explore</NavLink>
                     </li>
                     <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 ${path === "/category/business" && "border-b-2 border-orange-600"}`}>
-                        <a href="/category/business">Business</a>
+                        <a href="#/category/business">Business</a>
                     </li>
                     <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 ${path === "/category/technology" && "border-b-2 border-orange-600"}`}>
-                        <a href="/category/technology">Technology</a>
+                        <a href="#/category/technology">Technology</a>
                     </li>
                     <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 ${path === "/category/programming" && "border-b-2 border-orange-600"}`}>
-                        <a href="/category/programming">Programming</a>
+                        <a href="/#/category/programming">Programming</a>
                     </li>
                     <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 ${path === "/category/cybersecurity" && "border-b-2 border-orange-600"}`}>
-                        <a href="/category/cybersecurity">Cybersecurity</a>
+                        <a href="/#/category/cybersecurity">Cybersecurity</a>
 
                     </li>
                     <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 ${path === "/category/scamming" && "border-b-2 border-orange-600"}`}>
-                        <a href="/category/scamming">Scamming</a>
+                        <a href="/#/category/scamming">Scamming</a>
 
                     </li>
                     <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 ${path === "/category/fitness" && "border-b-2 border-orange-600"}`}>
-                        <a href="/category/fitness">Fitness</a>
+                        <a href="/#/category/fitness">Fitness</a>
 
                     </li>
                     <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 ${path === "/category/lifestyle" && "border-b-2 border-orange-600"}`}>
-                        <a href="/category/lifestyle">lifeStyle</a>
+                        <a href="/#/category/lifestyle">lifeStyle</a>
 
                     </li>
                     <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 ${path === "/category/sports" && "border-b-2 border-orange-600"}`}>
-                        <a href="/category/sports">Sports</a>
+                        <a href="/#/category/sports">Sports</a>
 
                     </li>
                     <li className={`py-2 hover:text-gray-700 dark:hover:text-gray-300 whitespace-nowrap ${path === "/category/others" && "border-b-2 border-orange-600"}`}>
-                        <a href="/category/others">Others</a>
+                        <a href="/#/category/others">Others</a>
 
                     </li>
                    </ul>

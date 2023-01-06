@@ -55,7 +55,7 @@ const PostSwitcher = () => {
               {
                 trendingBlog.length >= 0 ? trendingBlog.slice(0,5).map((post)=>{
                   return (
-                    <a key={post._id} href={`/article/${post.slug}`}>
+                    <a key={post._id} href={`/#/article/${post.slug}`}>
                     <li className="flex gap-x-3 group cursor-pointer">
                     <img
                       className="bg-cover rounded h-22 max-w-[8rem] md:w-24 md:w-22 xl:w-28 xl:h-22 object-cover w-full group-hover:scale-105 transition-all duration-500"
@@ -89,7 +89,7 @@ const PostSwitcher = () => {
               {
                 latestBlog.length > 0 ? latestBlog.slice(0,5).map((post)=>{
                   return (
-                    <a key={post._id} href={`/article/${post.slug}`}>
+                    <a key={post._id} href={`/#/article/${post.slug}`}>
                     <li className="flex gap-x-3 group cursor-pointer">
                     <img
                       className="bg-cover rounded h-22 max-w-[8rem] md:w-24 md:w-22 xl:w-28 xl:h-22 object-cover w-full group-hover:scale-105 transition-all duration-500"

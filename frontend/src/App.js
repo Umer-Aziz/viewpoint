@@ -3,7 +3,7 @@ import { Footer } from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import LoadingBar from 'react-top-loading-bar' ;
-import { HashRouter ,  BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 import ScrolltoTop from "./components/ScrolltoTop";
