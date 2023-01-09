@@ -11,6 +11,14 @@ const ConnectDB = require("./database/db");
 const PORT = process.env.PORT || 1000;
 ConnectDB ();
 
+app.use((req, res, next) => {
+  if (req.header('x-forwarded-proto') !== 'https') {
+    res.redirect(`https://${req.header('host')}${req.url}`)
+  } else {
+    next();
+  }
+});
+
 app.use(cors());
 app.use(express.json());
 
