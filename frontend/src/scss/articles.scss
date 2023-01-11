@@ -28,10 +28,14 @@
                 @apply absolute top-2 right-3 hover:text-orange-600 font-semibold;
             } 
             code:hover::after{
-             @apply text-orange-600;
+             color: #D65519 !important;
             }
             code {
                 @apply block mt-4 bg-[#282828]  whitespace-pre-wrap cursor-pointer;   
             }
-        }
+            code.hljs {
+                padding: 1em 0 !important;
+            }
+        }  
+
 }
