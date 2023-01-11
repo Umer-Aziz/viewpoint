@@ -21,8 +21,8 @@ const options = {
     loop:true,
     autoplay: true,
     animateOut:true,
-    smartSpeed: 1000,
-    autoplayTimeout:2000,
+    smartSpeed: 2000,
+    autoplayTimeout:3000,
     autoplayHoverPause:true,
     responsive: {
         0: {

@@ -71,7 +71,7 @@ const Navbar = () => {
                         <Link to="/blogs">Blogs</Link>
                     </li>
                     <li className='hover:text-gray-600 dark:hover:text-gray-300'>
-                    <a target="_blank" rel="noreferrer" href="https://umeraziz-engineer.herokuapp.com">About</a>
+                    <a target="_blank" rel="noreferrer" href="https://umeraziz.engineer">About</a>
                     </li>
                    </ul>
                     <span className='hidden sm:block text-sm text-gray-600 dark:text-gray-400 mt-0.5 font-semibold'>{date}</span>

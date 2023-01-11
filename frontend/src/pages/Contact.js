@@ -25,7 +25,7 @@ const Contact = () => {
         </Helmet>
         <section className="container min-h-screen py-10 grid gap-y-8 md:gap-y-0 lg:flex ">
     <div className="flex flex-col justify-center w-full lg:w-1/2">
-        <h1 className="text-3xl font-semibold text-gray-800 capitalize dark:text-white lg:text-5xl">hire us.</h1>
+        <h1 className="text-3xl font-semibold text-gray-800 capitalize dark:text-white lg:text-5xl">Contact us.</h1>
 
         <p className="mt-4 text-gray-500 dark:text-gray-400">
             Ask us everything and we would love
@@ -43,13 +43,13 @@ const Contact = () => {
                     <p className="flex items-center">
                         <BsTelephonePlus className='text-orange-600 md:text-xl'/>
 
-                        <a href='tel:923146018728' className="mx-3 text-gray-700 truncate w-72 dark:text-gray-400">(257) 563-7401</a>
+                        <a href='tel:923089752092' className="mx-3 text-gray-700 truncate w-72 dark:text-gray-400">(+92) 308-9752092</a>
                     </p>
 
                     <p className="flex items-center">
                        <FiMail className='text-orange-600 md:text-xl'/>
 
-                        <a href="mailto:umeraziz682@gmail.com" target="_blank" rel='noreferrer' className="mx-3 text-gray-700 truncate w-72 dark:text-gray-400">viewpoint@gmail.com</a>
+                        <a href="mailto:contact@umeraziz.engineer" target="_blank" rel='noreferrer' className="mx-3 text-gray-700 truncate w-72 dark:text-gray-400">contact@umeraziz.engineer</a>
                     </p>
                 </div>
 
