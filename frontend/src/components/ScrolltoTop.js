@@ -35,9 +35,9 @@ const ScrolltoTop = () => {
 
   return (
     <>
-   {  visible &&  <div className='fixed bottom-5 right-5'>
+   {  visible &&  <div className='fixed bottom-5 right-5 z-10'>
 
-            <button className='p-2 bg-orange-700 hover:bg-orange-600 z-50 rounded-full' onClick={goToTop}>
+            <button className='p-2 bg-orange-700 hover:bg-orange-600 rounded-full' onClick={goToTop}>
             <FaArrowUp className='animate-bounce text-gray-50'/>
             </button>
         </div>}
