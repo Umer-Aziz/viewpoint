@@ -152,6 +152,7 @@ const handleCheck = (event)=>{
                     <option value="business">Business</option>
                     <option value="technology">Technology</option>
                     <option value="programming">Programming</option>
+                    <option value="cybersecurity">Cybersecurity</option>
                     <option value="scamming">Scamming</option>
                     <option value="fitness">Fitness</option>
                     <option value="lifestyle">Lifestyle</option>
