@@ -38,7 +38,7 @@ router.get("/trending",async(req,res)=>{
 
   // ROUTE 5: Get All Random Blogs
 router.get("/randomposts",async(req,res)=>{
-    const blogs =await BlogPost.find({status:"published",randomposts:true}).sort({createdAt:"desc"}); 
+    const blogs =await BlogPost.find({status:"published",randomposts:true}).sort({createdAt:"asc"}); 
     res.json(blogs);  
 })
 
