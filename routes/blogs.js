@@ -32,19 +32,19 @@ router.get("/trending",async(req,res)=>{
 
   // ROUTE 4: Get All  must reads Blogs
   router.get("/mustreads",async(req,res)=>{
-    const blogs =await BlogPost.find({status:"published",mustreads:true}).sort({updatedAt:"desc"}); 
+    const blogs =await BlogPost.find({status:"published",mustreads:true}).sort({createdAt:"desc"}); 
     res.json(blogs);  
 })
 
   // ROUTE 5: Get All Random Blogs
 router.get("/randomposts",async(req,res)=>{
-    const blogs =await BlogPost.find({status:"published",randomposts:true}).sort({updatedAt:"desc"}); 
+    const blogs =await BlogPost.find({status:"published",randomposts:true}).sort({createdAt:"desc"}); 
     res.json(blogs);  
 })
 
   // ROUTE 6: Get All Top picks Blogs
 router.get("/toppicks",async(req,res)=>{
-    const blogs =await BlogPost.find({status:"published",toppicks:true}).sort({updatedAt:"desc"}); 
+    const blogs =await BlogPost.find({status:"published",toppicks:true}).sort({createdAt:"desc"}); 
     res.json(blogs);  
 })
 
