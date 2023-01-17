@@ -94,7 +94,7 @@ router.get("/slug/:slug",async(req,res)=>{
 
   // ROUTE 8: filter Blogs by  category
 router.get("/category/:category",async(req,res)=>{
-    const blogs = await BlogPost.find({ category : req.params.category });
+    const blogs = await BlogPost.find({ status:"published", category : req.params.category }).sort({updatedAt:"desc"});
     res.json(blogs)
 });
 
