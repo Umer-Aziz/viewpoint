@@ -168,7 +168,7 @@ router.delete("/delete/:id",fetchuser,async(req,res)=>{
 router.get("/search",async(req,res)=>{
      try {
          const searchField = req.query.title;
-         let filterBlogs = await BlogPost.find({title:{$regex: searchField , $options:"i"}});
+         let filterBlogs = await BlogPost.find({ status:"published", title:{$regex: searchField , $options:"i"}});
          if(!filterBlogs) { return res.status(400).send("No Result Found")};
          let success = true;
          res.status(200).json({success,filterBlogs});
