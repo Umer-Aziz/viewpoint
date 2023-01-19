@@ -1,6 +1,3 @@
-menu ol {
-    list-style: auto !important;
-  }
 .article-content{
     @apply py-6 md:px-8 dark:text-gray-300 overflow-x-hidden;
     
@@ -23,9 +20,13 @@ menu ol {
         }
       }
       ol {
+        li{
+         @apply list-auto;
+        }
         ::marker{
             @apply text-orange-600 font-medium;
         }
+        
       }
         a{
             @apply text-blue-800 dark:text-blue-500 hover:underline;
