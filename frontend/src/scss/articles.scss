@@ -15,14 +15,16 @@
     }
       ul {
         li:before {
-            @apply text-orange-600 relative -left-2 top-1 -ml-2 text-4xl;
+            @apply text-orange-600 relative -left-2 list-none top-1 -ml-2 text-4xl;
             content: "•";
         }
       }
       ol {
         ::marker{
-            @apply text-orange-600 font-medium list-item;
+            @apply text-orange-600 font-medium;
             list-style: auto !important;
+            display: list-item !important;
+
         }
       }
         a{
