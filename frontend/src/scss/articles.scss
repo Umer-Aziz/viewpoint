@@ -1,3 +1,6 @@
+menu ol {
+    list-style: auto !important;
+  }
 .article-content{
     @apply py-6 md:px-8 dark:text-gray-300 overflow-x-hidden;
     
@@ -21,10 +24,7 @@
       }
       ol {
         ::marker{
-            @apply text-orange-600 font-medium list-decimal;
-            list-style: auto !important;
-            display: list-item !important;
-
+            @apply text-orange-600 font-medium;
         }
       }
         a{
