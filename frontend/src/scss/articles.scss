@@ -30,7 +30,7 @@
             @apply text-blue-800 dark:text-blue-500 hover:underline;
         }
         pre{
-            @apply relative;
+            @apply relative w-[92vw] md:w-[320px] lg:w-[540px] xl:w-auto;
             code::after {
                 content: "Copy";
                 @apply absolute top-2 right-3 hover:text-orange-600 font-semibold;
@@ -39,7 +39,7 @@
              color: #D65519 !important;
             }
             code {
-                @apply block mt-4 bg-[#282828]  whitespace-pre-wrap cursor-pointer;   
+                @apply block mt-4 bg-[#282828]  whitespace-pre-wrap cursor-pointer overflow-x-scroll;   
             }
             code.hljs {
                 padding: 1em 0 !important;
