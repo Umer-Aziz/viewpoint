@@ -21,7 +21,8 @@
       }
       ol {
         ::marker{
-            @apply text-orange-600 font-medium;
+            @apply text-orange-600 font-medium list-item;
+            list-style: auto !important;
         }
       }
         a{
