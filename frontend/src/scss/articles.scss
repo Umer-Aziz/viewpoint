@@ -20,9 +20,7 @@
         }
       }
       ol {
-        li{
-         @apply list-auto;
-        }
+        list-style: auto !important;
         ::marker{
             @apply text-orange-600 font-medium;
         }
