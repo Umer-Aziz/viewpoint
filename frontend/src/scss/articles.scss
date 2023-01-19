@@ -13,11 +13,17 @@
     p{
         @apply pt-4;
     }
-
+      ul {
         li:before {
             @apply text-orange-600 relative -left-2 top-1 -ml-2 text-4xl;
             content: "•";
         }
+      }
+      ol {
+        ::marker{
+            @apply text-orange-600 font-medium;
+        }
+      }
         a{
             @apply text-blue-800 dark:text-blue-500 hover:underline;
         }
