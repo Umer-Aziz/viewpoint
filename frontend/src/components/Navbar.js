@@ -8,7 +8,7 @@ import ApiContext from '../context/ApiContext';
 import Searchbar from './Searchbar';
 const Navbar = () => {
 
-    const [ theme , setTheme ] = useState("dark");
+    const [ theme , setTheme ] = useState("");
     let path = useLocation().pathname;
     const { getSocialLinks , SocialLinks} = useContext(ApiContext);
 

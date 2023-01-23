@@ -159,7 +159,7 @@ if(!nextBlog.blogs){
             {/* tags keywords & Social Share  */}
             <div className="my-2 grid gap-y-2 lg:flex lg:justify-between items-center">
               <div className="flex gap-x-4 md:gap-x-6 text-sm font-medium text-orange-600">
-                <ul className="flex gap-x-3 capitalize">
+                <ul className="flex flex-wrap gap-x-3 capitalize">
                 {
                   tags && tags.map((tag,index)=>{
                     return (
