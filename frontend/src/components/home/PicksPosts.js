@@ -1,10 +1,19 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect , useRef , useState } from 'react';
 import { Link } from 'react-router-dom';
-import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
+
 import ApiContext from '../../context/ApiContext';
 import Categories from './Categories';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+
+
+// import required modules
+import { Autoplay, EffectCoverflow, Pagination } from "swiper";
 const PicksPosts = () => {
 
   const { toppicksBlogs , gettopPicksPosts } = useContext(ApiContext);
@@ -15,27 +24,23 @@ const PicksPosts = () => {
 
     //Owl Carousel Settings
 const options = {
-    margin: 30,
-    responsiveClass: true,
-    nav: true,
-    loop:true,
-    autoplay: true,
-    animateOut:true,
-    smartSpeed: 2000,
-    autoplayTimeout:3000,
-    autoplayHoverPause:true,
-    responsive: {
+  grabCursor:true,
+  pagination:true,
+  loop:true,
+  spaceBetween:30,
+  
+  breakpoints: {
         0: {
-            items: 1,
+          slidesPerView:1,
         },
         400: {
-            items: 1,
+          slidesPerView:1,
         },
         640: {
-            items: 2,
+          slidesPerView:2,
         },
         1280: {
-            items: 3,
+          slidesPerView:3,
         }
     },
   };
@@ -50,14 +55,26 @@ const options = {
                 <div className='w-12/12'>
   
                 <h3 className="px-3 py-2 text-gray-400 text-lg font-semibold border-l-2 border-orange-700 uppercase">Top Picks For You</h3>
-                <OwlCarousel  className='owl-theme slider-items owl-carousel py-8 grid md:grid-cols-2 gap-y-6 lg:grid-cols-3 lg:max-w-3xl xl:max-w-[58.5rem] gap-x-4' {...options}>
+                <Swiper effect={"coverflow"}
+              coverflowEffect={{
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+              }}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+        modules={[Autoplay, EffectCoverflow, Pagination]}   className='mySwiper relative my-8 grid md:grid-cols-2 gap-y-6 lg:grid-cols-3 lg:max-w-3xl xl:max-w-[58.5rem] gap-x-4' {...options}>
 
                  {
                   toppicksBlogs && toppicksBlogs.map && toppicksBlogs.slice(0,10).map((post)=>{
                     const { _id , slug , title , BImg , description , category  } = post;
                     return (
                       <Link key={_id} to={`/article/${slug}`}>
-                      <div className='item max-h-96 shadow group overflow-hidden relative'>
+                      <SwiperSlide className='item max-h-96 shadow group overflow-hidden relative'>
                           <div className='overflow-hidden rounded md:rounded-md cursor-pointer'>
                             <img className='rounded md:rounded-md bg-center
                              object-cover w-full h-96 group-hover:scale-110 transition-all duration-700
@@ -71,18 +88,19 @@ const options = {
                             <p className='z-10 p-2 absolute top-10 left-0 -translate-x-96 group-hover:translate-x-0 
                             group-hover:text-gray-50 transition-all duration-500'>{description}</p>
                             <div className='hidden dark:group-hover:hidden group-hover:block absolute top-0 left-0 right-0 bottom-0 bg-gray-700 bg-opacity-50 rounded md:rounded-md'></div>
-                     </div>
+                     </SwiperSlide>
                       </Link>
                     )
                   })
                  }   
-                </OwlCarousel>
+                </Swiper>
+              
+              
                 </div>
-
                 {/* categories */}
                 <Categories/>
             </div>
-
+           
         </section>
     </>
   )

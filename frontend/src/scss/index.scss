@@ -68,13 +68,14 @@ body {
        }
       }
     }
-    .owl-dots{
-      transform: translateY(-10px) !important;
-      margin-top: 24px !important;
-      .active span {
-        background-color: #EA4C13 !important;
-      }
+    .swiper-pagination-bullet{
+      border: 2px solid #EA4C13;
+      width: 10px;
+      height:10px;
+      background-color: #EA4C13 !important;
+
     }
+    
 }
 
 
