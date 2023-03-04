@@ -87,8 +87,11 @@ const Navbar = () => {
             <nav className='container pt-6'>
               <div className='flex justify-between items-center gap-x-6'>
               <NavLink to="/"><img className='w-28 md:w-32 lg:w-40 -ml-1' src="../img/logo.png" alt="logo" /></NavLink> 
-              <iframe src="http://www.profitabledisplaynetwork.com/20e3dfc6d5a9399049a58ca097cc5910/invoke.html?key=20e3dfc6d5a9399049a58ca097cc5910&format=iframe&height=60&width=468" frameBorder="0" scrolling="no" style={{ height: '60px', width: '468px' }}></iframe>
+              <iframe className='hidden md:flex' src="http://www.profitabledisplaynetwork.com/20e3dfc6d5a9399049a58ca097cc5910/invoke.html?key=20e3dfc6d5a9399049a58ca097cc5910&format=iframe&height=60&width=468" frameBorder="0" scrolling="no" style={{ height: '60px', width: '468px' }}></iframe>
                 <Searchbar/>
+              </div>
+              <div className='overflow-scroll w-[90vw] mx-auto my-3 block md:hidden'>
+              <iframe className='overflow-scroll' src="http://www.profitabledisplaynetwork.com/20e3dfc6d5a9399049a58ca097cc5910/invoke.html?key=20e3dfc6d5a9399049a58ca097cc5910&format=iframe&height=60&width=468" frameBorder="0" scrolling="no" style={{ height: '60px', width: '468px' }}></iframe>
               </div>
               <ul className='navbar-ul mt-5 flex gap-x-8 !gap-y-0 font-semibold border-b border-gray-500 border-opacity-30
                text-gray-600 dark:text-gray-100 overflow-x-scroll xl:overflow-x-hidden'>
