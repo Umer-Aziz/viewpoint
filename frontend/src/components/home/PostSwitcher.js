@@ -5,10 +5,6 @@ import moment from 'moment';
 const PostSwitcher = () => {
     const [show, setShow] = useState(true);
     const { getLatestBlogs , getTrendingBlogs , latestBlog , trendingBlog } = useContext(ApiContext);
-    const { updatedAt } = trendingBlog;
-    const trendingdate = moment(updatedAt).format('Do  MMMM, YYYY');
-    const latestDate = moment(latestBlog.updatedAt).format('Do  MMMM, YYYY');
-
     
     useEffect(()=>{
       getTrendingBlogs();
@@ -54,6 +50,7 @@ const PostSwitcher = () => {
               <ul className='my-8 grid gap-y-4'>
               {
                 trendingBlog.length >= 0 ? trendingBlog.slice(0,5).map((post)=>{
+                  const trendingdate = moment(post.updatedAt).format('Do  MMMM, YYYY');
                   return (
                     <a key={post._id} href={`/#/article/${post.slug}`}>
                     <li className="flex gap-x-3 group cursor-pointer">
@@ -88,6 +85,7 @@ const PostSwitcher = () => {
               <ul className='my-8 grid gap-y-4'>
               {
                 latestBlog.length > 0 ? latestBlog.slice(0,5).map((post)=>{
+                  const latestDate = moment(post.updatedAt).format('Do  MMMM, YYYY');
                   return (
                     <a key={post._id} href={`/#/article/${post.slug}`}>
                     <li className="flex gap-x-3 group cursor-pointer">
